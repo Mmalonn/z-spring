@@ -11,7 +11,6 @@ public class MaterialDto {
 	private Long cantidad;
 	private Double precio;
 	private ProveedorBo proveedorBo;
-	private TrabajoBo trabajoBo;
 	private CategoriaBo categoriaBo;
 	
 	public Long getId() {
@@ -44,27 +43,19 @@ public class MaterialDto {
 	public void setProveedorBo(ProveedorBo proveedorBo) {
 		this.proveedorBo = proveedorBo;
 	}
-	public TrabajoBo getTrabajoBo() {
-		return trabajoBo;
-	}
-	public void setTrabajoBo(TrabajoBo trabajoBo) {
-		this.trabajoBo = trabajoBo;
-	}
 	public CategoriaBo getCategoriaBo() {
 		return categoriaBo;
 	}
 	public void setCategoriaBo(CategoriaBo categoriaBo) {
 		this.categoriaBo = categoriaBo;
 	}
-	public MaterialDto(Long id, String nombre, Long cantidad, Double precio, ProveedorBo proveedorBo,
-			TrabajoBo trabajoBo, CategoriaBo categoriaBo) {
+	public MaterialDto(Long id, String nombre, Long cantidad, Double precio, ProveedorBo proveedorBo, CategoriaBo categoriaBo) {
 		super();
 		Id = id;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
 		this.precio = precio;
 		this.proveedorBo = proveedorBo;
-		this.trabajoBo = trabajoBo;
 		this.categoriaBo = categoriaBo;
 	}
 	public MaterialDto() {}

@@ -6,6 +6,7 @@ import java.util.List;
 
 import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
+import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.bo.UbicacionBo;
 
 public class TrabajoDto {
@@ -63,5 +64,12 @@ public class TrabajoDto {
 		this.materiales = materiales;
 		this.ubicacionBo = ubicacionBo;
 	}
-	public TrabajoDto() {}
+	public TrabajoDto(TrabajoBo trabajo) {
+		this.id = trabajo.getId();
+		this.nombre = trabajo.getNombre();
+		this.fecha = trabajo.getFecha();
+		this.trabajadorBo = trabajo.getTrabajadorBo();
+		this.materiales = trabajo.getMateriales();
+		this.ubicacionBo = trabajo.getUbicacionBo();
+	}
 }

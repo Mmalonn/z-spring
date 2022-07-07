@@ -17,8 +17,6 @@ public class MaterialBo {
 	@ManyToOne
 	private ProveedorBo proveedorBo;
 	@ManyToOne
-	private TrabajoBo trabajoBo;
-	@ManyToOne
 	private CategoriaBo categoriaBo;
 	
 	
@@ -37,12 +35,6 @@ public class MaterialBo {
 		this.proveedorBo = proveedorBo;
 	}
 
-	public TrabajoBo getTrabajoBo() {
-		return trabajoBo;
-	}
-	public void setTrabajoBo(TrabajoBo trabajoBo) {
-		this.trabajoBo = trabajoBo;
-	}
 	public Long getId() {
 		return Id;
 	}
@@ -68,7 +60,7 @@ public class MaterialBo {
 		this.precio = precio;
 	}
 	public MaterialBo(Long id, String nombre, Long cantidad, Double precio, ProveedorBo proveedorBo,
-			CategoriaBo categoriaBo, TrabajoBo trabajoBo) {
+			CategoriaBo categoriaBo) {
 		super();
 		Id = id;
 		this.nombre = nombre;
@@ -76,7 +68,7 @@ public class MaterialBo {
 		this.precio = precio;
 		this.proveedorBo = proveedorBo;
 		this.categoriaBo = categoriaBo;
-		this.trabajoBo = trabajoBo;
+
 	}
 	
 	public MaterialBo() {}
