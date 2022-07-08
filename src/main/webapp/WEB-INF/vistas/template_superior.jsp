@@ -22,7 +22,7 @@
 			<ul class="navbar-nav bd-navbar-nav flex-row">
 				<li class="nav-item mr-5 mt-1"><a class="nav-link" href="/"
 					onclick=" "><h2 class="border primary rounded-lg">Inicio</h2></a></li>
-				<li class="nav-item mt-3"><a class="nav-link active"
+				<li class="nav-item mt-3"><a class="nav-link"
 					href="/trabajos/lista" onclick=" "><p>
 							<u>Trabajos pendientes</u>
 						</p></a></li>

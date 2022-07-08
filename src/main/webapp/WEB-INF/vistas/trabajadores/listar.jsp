@@ -5,24 +5,23 @@
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
-<h1>Trabajos Terminados</h1>
+<h1>Trabajadores</h1>
 
-<table class="ml-3 mt-3">
+
+	<table class="ml-3 mt-3">
 		<thead>
 			<tr>
 				<th>Id</th>
 				<th>Nombre</th>
-				<th>fecha</th>
-				<th>fecha finalizacion</th>
+				<th>apellido</th>
 				<th></th>
 			</tr>
 		</thead>
-		<c:forEach items="${terminados}" var="t">
+		<c:forEach items="${trabajadores}" var="t">
 			<tr>
 				<td>${t.id}</td>
 				<td>${t.nombre}</td>
-				<td>${t.fecha}</td>
-				<td>${t.fechaFinalizacion}</td>
+				<td>${t.apellido}</td>
 			</tr>
 		</c:forEach>
 	</table>

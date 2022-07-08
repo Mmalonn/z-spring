@@ -5,6 +5,7 @@
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
+<h1>Trabajos pendientes</h1>
 
 
 	<table class="ml-3 mt-3">

@@ -20,7 +20,7 @@ import edu.curso.java.spring.zspring.service.interf.TrabajoTerminadoService;
 @RequestMapping("/api")
 public class TrabajoTerminadoRestController {
 	
-	private static Logger log = LoggerFactory.getLogger(TrabajoRestController.class);
+	private static Logger log = LoggerFactory.getLogger(TrabajoTerminadoRestController.class);
 
 	@Autowired
 	private TrabajoTerminadoService trabajoTerminadoService;

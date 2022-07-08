@@ -20,7 +20,7 @@ import edu.curso.java.spring.zspring.service.interf.MaterialService;
 @RequestMapping("/api")
 public class MaterialRestController {
 
-	private static Logger log = LoggerFactory.getLogger(TrabajoRestController.class);
+	private static Logger log = LoggerFactory.getLogger(MaterialRestController.class);
 
 	@Autowired
 	private MaterialService materialService;

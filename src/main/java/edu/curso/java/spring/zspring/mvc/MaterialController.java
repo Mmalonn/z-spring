@@ -17,7 +17,7 @@ import edu.curso.java.spring.zspring.service.interf.MaterialService;
 @RequestMapping("/materiales")
 public class MaterialController {
 
-	private static  Logger log = LoggerFactory.getLogger(TrabajoController.class);
+	private static  Logger log = LoggerFactory.getLogger(MaterialController.class);
 
 	@Autowired
 	private MaterialService materialService;

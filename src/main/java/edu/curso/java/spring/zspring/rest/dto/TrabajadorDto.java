@@ -3,6 +3,7 @@ package edu.curso.java.spring.zspring.rest.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 
 public class TrabajadorDto {
@@ -67,6 +68,14 @@ public class TrabajadorDto {
 		this.telefono = telefono;
 		this.trabajos = trabajos;
 	}
-	public TrabajadorDto() {}
+	public TrabajadorDto(TrabajadorBo trabajador) {
+		this.id = trabajador.getId();
+		this.nombre = trabajador.getNombre();
+		this.apellido = trabajador.getApellido();
+		this.dni = trabajador.getDni();
+		this.sueldoPorHora = trabajador.getSueldoPorHora();
+		this.telefono = trabajador.getTelefono();
+		this.trabajos = trabajador.getTrabajos();	
+	}
 	
 }

@@ -17,7 +17,7 @@ import edu.curso.java.spring.zspring.service.interf.TrabajoTerminadoService;
 @RequestMapping("/terminados")
 public class TrabajoTerminadoController {
 
-	private static  Logger log = LoggerFactory.getLogger(TrabajoController.class);
+	private static  Logger log = LoggerFactory.getLogger(TrabajoTerminadoController.class);
 
 	@Autowired
 	private TrabajoTerminadoService trabajoTerminadoService;
