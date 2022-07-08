@@ -27,7 +27,7 @@
 							<u>Trabajos pendientes</u>
 						</p></a></li>
 				<li class="nav-item mt-3"><a class="nav-link "
-					href="/materiales" onclick=" "><p>
+					href="/materiales/lista" onclick=" "><p>
 							<u>Materiales</u>
 						</p></a></li>
 				<li class="nav-item mt-3"><a class="nav-link"

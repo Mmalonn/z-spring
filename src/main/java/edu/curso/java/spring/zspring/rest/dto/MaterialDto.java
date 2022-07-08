@@ -1,6 +1,7 @@
 package edu.curso.java.spring.zspring.rest.dto;
 
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
+import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 
@@ -58,5 +59,12 @@ public class MaterialDto {
 		this.proveedorBo = proveedorBo;
 		this.categoriaBo = categoriaBo;
 	}
-	public MaterialDto() {}
+	public MaterialDto(MaterialBo material) {
+		this.Id = material.getId();
+		this.nombre = material.getNombre();
+		this.cantidad = material.getCantidad();
+		this.precio = material.getPrecio();
+		this.proveedorBo = material.getProveedorBo();
+		this.categoriaBo = material.getCategoriaBo();
+	}
 }
