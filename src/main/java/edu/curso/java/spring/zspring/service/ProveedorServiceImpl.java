@@ -23,4 +23,5 @@ public class ProveedorServiceImpl implements ProveedorService {
 		return proveedorRepository.listarProveedores();
 	}
 
+
 }

@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoTerminadoBo;
+import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajoTerminadoService;
 
 @Controller
@@ -21,10 +23,14 @@ public class TrabajoTerminadoController {
 
 	@Autowired
 	private TrabajoTerminadoService trabajoTerminadoService;
+	@Autowired
+	private ProveedorService proveedorService;
 	
 	@GetMapping("/lista")
 	public String listar(Model model) {
 		List<TrabajoTerminadoBo> trabajosTerminados = trabajoTerminadoService.listarTrabajosTerminados();
+		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
 		model.addAttribute("terminados", trabajosTerminados);
 		log.info("mostrando terminados");
 		return "/terminados/listar";

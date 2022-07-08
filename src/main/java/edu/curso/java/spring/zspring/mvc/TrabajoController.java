@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
+import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajoService;
 
 
@@ -23,11 +25,16 @@ public class TrabajoController {
 
 	@Autowired
 	private TrabajoService trabajoservice;
+	@Autowired
+	private ProveedorService proveedorService;
 	
 	@GetMapping("/lista")
 	public String listar(Model model) {
 		List<TrabajoBo> trabajos = trabajoservice.listarTrabajos();
+		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
 		model.addAttribute("trabajos", trabajos);
+		
 		log.info("mostrando trabajos");
 		return "/trabajos/listar";
 	}

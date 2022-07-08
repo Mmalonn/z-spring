@@ -1,4 +1,6 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -46,10 +48,9 @@
 					aria-labelledby="bd-versions">
 					<a class="dropdown-item active" href="/proveedores">Proveedores</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/provedor1">Easy</a> <a
-						class="dropdown-item" href="/provedor2">Sanchez Martinez</a> <a
-						class="dropdown-item" href="/provedor3/">Ferrocons</a> <a
-						class="dropdown-item" href="/provedor4">Sodimac</a>
+					<c:forEach items="${proveedores}" var="p">
+						<a class="dropdown-item" href="/proveedor/${p.id}">${p.nombre}</a>
+					</c:forEach>
 				</div></li>
 
 		</ul>
