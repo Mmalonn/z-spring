@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 
 import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
+import edu.curso.java.spring.zspring.bo.TrabajoTerminadoBo;
 import edu.curso.java.spring.zspring.bo.UbicacionBo;
 
 public class TrabajoTerminadoDto {
@@ -97,7 +98,14 @@ public class TrabajoTerminadoDto {
 		this.fechaFinalizacion = fechaFinalizacion;
 	}
 
-	public TrabajoTerminadoDto() {
+	public TrabajoTerminadoDto(TrabajoTerminadoBo tTerminado) {
+		this.id = tTerminado.getId();
+		this.nombre = tTerminado.getNombre();
+		this.fecha = tTerminado.getFecha();
+		this.trabajadorBo = tTerminado.getTrabajadorBo();
+		this.materiales = tTerminado.getMateriales();
+		this.ubicacionBo = tTerminado.getUbicacionBo();
+		this.fechaFinalizacion = tTerminado.getFechaFinalizacion();
 	}
 
 }
