@@ -5,25 +5,40 @@
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
-<h1>Trabajadores</h1>
+
+<div class="mt-4 ml-3">
+	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">
+		Trabajadores
+	</h2>
+	<a class="d-inline border primary rounded-lg px-2 ml-3"
+		href="/trabajadores/nuevo">Agregar nuevo</a>
+</div>
 
 
-	<table class="ml-3 mt-3">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>apellido</th>
-				<th></th>
-			</tr>
-		</thead>
-		<c:forEach items="${trabajadores}" var="t">
-			<tr>
-				<td>${t.id}</td>
-				<td>${t.nombre}</td>
-				<td>${t.apellido}</td>
-			</tr>
-		</c:forEach>
-	</table>
+<table class="table mt-4 ">
+	<thead>
+		<tr>
+			<th scope="col">Nombre</th>
+			<th scope="col">Apellido</th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+	<c:forEach items="${trabajadores}" var="t">
+		<tr>
+			<td scope="row">${t.nombre}</td>
+			<td scope="row">${t.apellido}</td>
+			<td scope="row" class="flex-row-reverse">
+				<a type="button" class="btn btn-secondary btn-sm" href="/">Ver</a>
+				<a type="button" class="btn btn-secondary btn-sm" href="/">Editar</a>
+				<a type="button" class="btn btn-secondary btn-sm" href="/">Eliminar</a>
+			</td>
+		</tr>
+	</c:forEach>
+</table>
+
+
+
+
+</table>
 
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

@@ -18,7 +18,14 @@ public class ProveedorBo {
 	private String telefono;
 	@OneToMany
 	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
+	private String direccion;
 	
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 	public List<MaterialBo> getMateriales() {
 		return materiales;
 	}
@@ -43,12 +50,13 @@ public class ProveedorBo {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public ProveedorBo(Long id, String nombre, String telefono, List<MaterialBo> materiales) {
+	public ProveedorBo(Long id, String nombre, String telefono, List<MaterialBo> materiales, String direccion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.materiales = materiales;
+		this.direccion = direccion;
 	}
 	
 	public ProveedorBo() {}

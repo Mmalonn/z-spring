@@ -4,11 +4,13 @@
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
-
+<div class="mt-4 ml-3">
+	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Proveedor</h2>
+</div>
 <div class="card mt-2">
-	<h5 class="card-header">${proveedor.id}</h5>
+	<h5 class="card-header">${proveedor.nombre}</h5>
 	<div class="card-body">
-		<h5 class="card-title">${proveedor.nombre}</h5>
+		<h5 class="card-title">${proveedor.direccion}</h5>
 		<p class="card-text">
 			${proveedor.telefono}
 		</p>

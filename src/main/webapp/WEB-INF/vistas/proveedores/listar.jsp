@@ -5,24 +5,24 @@
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
-<h1>Trabajos Terminados</h1>
-
-<table class="ml-3 mt-3">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>telefono</th>
-				<th></th>
-			</tr>
-		</thead>
-		<c:forEach items="${proveedores}" var="p">
-			<tr>
-				<td>${p.id}</td>
-				<td>${p.nombre}</td>
-				<td>${p.telefono}</td>
-			</tr>
-		</c:forEach>
-	</table>
+<div class="mt-4 ml-3">
+	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Proveedores</h2>
+</div>
+<table class="table mt-4 ">
+	<thead>
+		<tr>
+			<th scope="col">Nombre</th>
+			<th scope="col">Telefono</th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+	<c:forEach items="${proveedores}" var="p">
+		<tr>
+			<td scope="row">${p.nombre}</td>
+			<td scope="row">${p.telefono}</td>
+			<td></td>
+		</tr>
+	</c:forEach>
+</table>
 
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>
