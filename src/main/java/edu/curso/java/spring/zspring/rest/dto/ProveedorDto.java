@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.curso.java.spring.zspring.bo.MaterialBo;
+import edu.curso.java.spring.zspring.bo.ProveedorBo;
 
 public class ProveedorDto {
 
@@ -42,6 +43,11 @@ public class ProveedorDto {
 		this.telefono = telefono;
 		this.materiales = materiales;
 	}
-	public ProveedorDto() {}
+	public ProveedorDto(ProveedorBo proveedor) {
+		this.id = proveedor.getId();
+		this.nombre = proveedor.getNombre();
+		this.telefono = proveedor.getTelefono();
+		this.materiales = proveedor.getMateriales();
+	}
 	
 }
