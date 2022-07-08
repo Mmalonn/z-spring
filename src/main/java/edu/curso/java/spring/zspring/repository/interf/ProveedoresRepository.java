@@ -7,4 +7,6 @@ import edu.curso.java.spring.zspring.bo.ProveedorBo;
 public interface ProveedoresRepository {
 
 	public List<ProveedorBo> listarProveedores();
+
+	public ProveedorBo obtenerProveedor(Long id);
 }

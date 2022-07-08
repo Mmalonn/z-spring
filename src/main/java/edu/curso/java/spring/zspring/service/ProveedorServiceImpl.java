@@ -23,5 +23,10 @@ public class ProveedorServiceImpl implements ProveedorService {
 		return proveedorRepository.listarProveedores();
 	}
 
+	@Override
+	public ProveedorBo obtenerProveedor(Long id) {
+		return proveedorRepository.obtenerProveedor(id);
+	}
+
 
 }

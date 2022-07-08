@@ -49,7 +49,7 @@
 					<a class="dropdown-item active" href="/proveedores">Proveedores</a>
 					<div class="dropdown-divider"></div>
 					<c:forEach items="${proveedores}" var="p">
-						<a class="dropdown-item" href="/proveedor/${p.id}">${p.nombre}</a>
+						<a class="dropdown-item" href="/proveedores/${p.id}">${p.nombre}</a>
 					</c:forEach>
 				</div></li>
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
@@ -28,5 +29,14 @@ public class ProveedorController {
 		model.addAttribute("proveedores", proveedores);
 		log.info("mostrando proveedores");
 		return "/proveedores/listar";
+	}
+	
+	@GetMapping("/{id}")
+	public String verProveedor(Model model, @PathVariable Long id) {
+		ProveedorBo proveedor= proveedorService.obtenerProveedor(id);
+		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
+		model.addAttribute("proveedor", proveedor);
+		return "/proveedores/proveedor";
 	}
 }

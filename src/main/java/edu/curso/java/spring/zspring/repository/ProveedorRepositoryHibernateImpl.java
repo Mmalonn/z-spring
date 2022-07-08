@@ -21,4 +21,9 @@ public class ProveedorRepositoryHibernateImpl implements ProveedoresRepository {
 		return entityManager.createQuery("from ProveedorBo as p order by p.nombre").getResultList();
 	}
 
+	@Override
+	public ProveedorBo obtenerProveedor(Long id) {
+		return entityManager.find(ProveedorBo.class, id);
+	}
+
 }
