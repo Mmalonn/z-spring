@@ -23,4 +23,9 @@ public class TrabajadorServiceImpl implements TrabajadorService {
 		return trabajadorRepository.listarTrabajadores();
 	}
 
+	@Override
+	public TrabajadorBo obtenerTrabajador(Long id) {
+		return trabajadorRepository.obtenerTrabajador(id);
+	}
+
 }

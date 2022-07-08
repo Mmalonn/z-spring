@@ -7,4 +7,6 @@ import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 public interface TrabajadorRepository {
 
 	public List<TrabajadorBo> listarTrabajadores();
+
+	public TrabajadorBo obtenerTrabajador(Long id);
 }
