@@ -18,9 +18,9 @@ import edu.curso.java.spring.zspring.service.interf.TrabajoService;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class TrabajoController {
+public class TrabajoRestController {
 
-	private static Logger log = LoggerFactory.getLogger(TrabajoController.class);
+	private static Logger log = LoggerFactory.getLogger(TrabajoRestController.class);
 	
 	@Autowired
 	private TrabajoService trabajoservice;
@@ -32,6 +32,7 @@ public class TrabajoController {
 		for(TrabajoBo trabajo: trabajos) {
 			trabajosDto.add(new TrabajoDto(trabajo));
 		}
+		log.info("mostrando trabajos");
 		return trabajosDto;
 	}
 }

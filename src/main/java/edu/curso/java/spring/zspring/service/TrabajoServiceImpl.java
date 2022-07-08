@@ -1,4 +1,4 @@
-package edu.curso.java.spring.zspring;
+package edu.curso.java.spring.zspring.service;
 
 import java.util.List;
 
