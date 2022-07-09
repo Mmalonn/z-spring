@@ -19,12 +19,39 @@ public class TrabajoBo {
 	private Long id;
 	private String nombre;
 	private Date fecha;
+	private String tarea;	
+	private Double horasEstimadas;
+	private Double precioFinal;
 	@ManyToOne
 	private TrabajadorBo trabajadorBo;
 	@OneToMany
 	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
 	@OneToOne
 	private UbicacionBo ubicacionBo;
+
+	public String getTarea() {
+		return tarea;
+	}
+
+	public void setTarea(String tarea) {
+		this.tarea = tarea;
+	}
+
+	public Double getHorasEstimadas() {
+		return horasEstimadas;
+	}
+
+	public void setHorasEstimadas(Double horasEstimadas) {
+		this.horasEstimadas = horasEstimadas;
+	}
+
+	public Double getPrecioFinal() {
+		return precioFinal;
+	}
+
+	public void setPrecioFinal(Double precioFinal) {
+		this.precioFinal = precioFinal;
+	}
 
 	public UbicacionBo getUbicacionBo() {
 		return ubicacionBo;
@@ -74,8 +101,8 @@ public class TrabajoBo {
 		this.fecha = fecha;
 	}
 
-	public TrabajoBo(Long id, String nombre, Date fecha, TrabajadorBo trabajadorBo, List<MaterialBo> materiales,
-			UbicacionBo ubicacionBo) {
+	public TrabajoBo(String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre, Date fecha,
+			TrabajadorBo trabajadorBo, List<MaterialBo> materiales, UbicacionBo ubicacionBo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -83,6 +110,9 @@ public class TrabajoBo {
 		this.trabajadorBo = trabajadorBo;
 		this.materiales = materiales;
 		this.ubicacionBo = ubicacionBo;
+		this.horasEstimadas = horasEstimadas;
+		this.precioFinal = precioFinal;
+		this.tarea = tarea;
 	}
 
 	public TrabajoBo() {

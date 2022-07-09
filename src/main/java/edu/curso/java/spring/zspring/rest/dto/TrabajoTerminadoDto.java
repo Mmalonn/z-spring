@@ -22,16 +22,40 @@ public class TrabajoTerminadoDto {
 	private Long id;
 	private String nombre;
 	private Date fecha;
-	@ManyToOne
 	private TrabajadorBo trabajadorBo;
-	@OneToMany
 	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
-	@OneToOne
 	private UbicacionBo ubicacionBo;
 	private Date fechaFinalizacion;
+	private String tarea;
+	private Double horasEstimadas;
+	private Double precioFinal;
 
 	public Long getId() {
 		return id;
+	}
+
+	public String getTarea() {
+		return tarea;
+	}
+
+	public void setTarea(String tarea) {
+		this.tarea = tarea;
+	}
+
+	public Double getHorasEstimadas() {
+		return horasEstimadas;
+	}
+
+	public void setHorasEstimadas(Double horasEstimadas) {
+		this.horasEstimadas = horasEstimadas;
+	}
+
+	public Double getPrecioFinal() {
+		return precioFinal;
+	}
+
+	public void setPrecioFinal(Double precioFinal) {
+		this.precioFinal = precioFinal;
 	}
 
 	public void setId(Long id) {
@@ -86,8 +110,9 @@ public class TrabajoTerminadoDto {
 		this.fechaFinalizacion = fechaFinalizacion;
 	}
 
-	public TrabajoTerminadoDto(Long id, String nombre, Date fecha, TrabajadorBo trabajadorBo,
-			List<MaterialBo> materiales, UbicacionBo ubicacionBo, Date fechaFinalizacion) {
+	public TrabajoTerminadoDto(String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre,
+			Date fecha, TrabajadorBo trabajadorBo, List<MaterialBo> materiales, UbicacionBo ubicacionBo,
+			Date fechaFinalizacion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -96,6 +121,9 @@ public class TrabajoTerminadoDto {
 		this.materiales = materiales;
 		this.ubicacionBo = ubicacionBo;
 		this.fechaFinalizacion = fechaFinalizacion;
+		this.tarea = tarea;
+		this.horasEstimadas = horasEstimadas;
+		this.precioFinal= precioFinal;
 	}
 
 	public TrabajoTerminadoDto(TrabajoTerminadoBo tTerminado) {
@@ -106,6 +134,9 @@ public class TrabajoTerminadoDto {
 		this.materiales = tTerminado.getMateriales();
 		this.ubicacionBo = tTerminado.getUbicacionBo();
 		this.fechaFinalizacion = tTerminado.getFechaFinalizacion();
+		this.tarea = tTerminado.getTarea();
+		this.horasEstimadas = tTerminado.getHorasEstimadas();
+		this.precioFinal= tTerminado.getPrecioFinal();
 	}
 
 }

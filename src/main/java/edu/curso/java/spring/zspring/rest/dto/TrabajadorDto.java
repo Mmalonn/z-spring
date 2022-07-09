@@ -15,6 +15,7 @@ public class TrabajadorDto {
 	private Double sueldoPorHora;
 	private String telefono;
 	private List<TrabajoBo> trabajos = new ArrayList <TrabajoBo>();
+	
 	public Long getId() {
 		return id;
 	}
