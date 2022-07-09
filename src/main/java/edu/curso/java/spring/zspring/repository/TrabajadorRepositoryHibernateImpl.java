@@ -26,6 +26,12 @@ public class TrabajadorRepositoryHibernateImpl implements TrabajadorRepository {
 	public TrabajadorBo obtenerTrabajador(Long id) {
 		return entityManager.find(TrabajadorBo.class, id);
 	}
+
+	@Override
+	public TrabajadorBo nuevoTrabajador(TrabajadorBo trabajadorBo) {
+		entityManager.persist(trabajadorBo);
+		return null;
+	}
 	
 
 }

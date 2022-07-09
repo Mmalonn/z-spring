@@ -13,6 +13,7 @@
 	<div class="card-body">
 		<h5 class="card-title">Telefono trabajador: ${trabajador.dni}</h5>
 		<p class="card-text">DNI trabajador: ${trabajador.dni}</p>
+		<p>trabajo: ${trabajador.trabajos}</p>
 	</div>
 </div>
 

@@ -9,4 +9,6 @@ public interface TrabajadorRepository {
 	public List<TrabajadorBo> listarTrabajadores();
 
 	public TrabajadorBo obtenerTrabajador(Long id);
+
+	public TrabajadorBo nuevoTrabajador(TrabajadorBo trabajadorBo);
 }

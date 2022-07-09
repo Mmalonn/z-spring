@@ -9,4 +9,6 @@ public interface TrabajadorService {
 	List<TrabajadorBo> listarTrabajadores();
 	
 	TrabajadorBo obtenerTrabajador(Long id);
+
+	TrabajadorBo nuevoTrabajador(TrabajadorBo trabajadorBo);
 }

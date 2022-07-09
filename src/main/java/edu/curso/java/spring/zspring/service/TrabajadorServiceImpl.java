@@ -28,4 +28,10 @@ public class TrabajadorServiceImpl implements TrabajadorService {
 		return trabajadorRepository.obtenerTrabajador(id);
 	}
 
+	@Override
+	public TrabajadorBo nuevoTrabajador(TrabajadorBo trabajadorBo) {
+		return trabajadorRepository.nuevoTrabajador(trabajadorBo);
+		
+	}
+
 }
