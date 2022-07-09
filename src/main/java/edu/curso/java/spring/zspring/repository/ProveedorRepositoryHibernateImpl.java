@@ -32,4 +32,20 @@ public class ProveedorRepositoryHibernateImpl implements ProveedoresRepository {
 		return null;
 	}
 
+	@Override
+	public void borrarProveedor(Long id) {
+		ProveedorBo proveedor = entityManager.find(ProveedorBo.class, id);
+		entityManager.remove(proveedor);
+	}
+
+	@Override
+	public void editarProveedor(ProveedorBo proveedorBo, Long id) {
+		ProveedorBo proveedor = entityManager.find(ProveedorBo.class, id);
+		proveedor.setNombre(proveedorBo.getNombre());
+		proveedor.setDireccion(proveedorBo.getDireccion());
+		proveedor.setTelefono(proveedorBo.getTelefono());
+		proveedor.setMateriales(proveedor.getMateriales());
+		entityManager.merge(proveedor);
+	}
+
 }

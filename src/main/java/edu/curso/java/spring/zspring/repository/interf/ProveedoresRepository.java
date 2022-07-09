@@ -11,4 +11,8 @@ public interface ProveedoresRepository {
 	public ProveedorBo obtenerProveedor(Long id);
 	
 	public ProveedorBo nuevoProveedor(ProveedorBo proveedorBo);
+
+	public void borrarProveedor(Long id);
+
+	public void editarProveedor(ProveedorBo proveedorBo, Long id);
 }

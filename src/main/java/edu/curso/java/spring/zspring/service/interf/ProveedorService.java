@@ -12,4 +12,8 @@ public interface ProveedorService {
 	ProveedorBo obtenerProveedor(Long id);
 	
 	ProveedorBo nuevoProveedor(ProveedorBo proveedorBo);
+
+	void borrarProveedor(Long id);
+
+	void editarProveedor(ProveedorBo proveedorBo, Long id);
 }

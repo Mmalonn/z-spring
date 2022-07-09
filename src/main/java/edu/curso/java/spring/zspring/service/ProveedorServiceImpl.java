@@ -33,5 +33,15 @@ public class ProveedorServiceImpl implements ProveedorService {
 		return proveedorRepository.nuevoProveedor(proveedorBo);
 	}
 
+	@Override
+	public void borrarProveedor(Long id) {
+		proveedorRepository.borrarProveedor(id);
+	}
+
+	@Override
+	public void editarProveedor(ProveedorBo proveedorBo, Long id) {
+		proveedorRepository.editarProveedor(proveedorBo, id);
+	}
+
 
 }
