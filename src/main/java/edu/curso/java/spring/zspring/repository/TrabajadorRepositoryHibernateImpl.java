@@ -32,6 +32,24 @@ public class TrabajadorRepositoryHibernateImpl implements TrabajadorRepository {
 		entityManager.persist(trabajadorBo);
 		return null;
 	}
+
+	@Override
+	public void editarTrabajador(TrabajadorBo trabajadorBo, Long id) {
+		TrabajadorBo trabajador = entityManager.find(TrabajadorBo.class, id);
+		trabajador.setNombre(trabajadorBo.getNombre());
+		trabajador.setApellido(trabajadorBo.getApellido());
+		trabajador.setDni(trabajadorBo.getDni());
+		trabajador.setTelefono(trabajadorBo.getTelefono());
+		trabajador.setSueldoPorHora(trabajadorBo.getSueldoPorHora());
+		trabajador.setTrabajos(trabajadorBo.getTrabajos());
+		entityManager.merge(trabajador);
+	}
+
+	@Override
+	public void borrarTrabajador(Long id) {
+		TrabajadorBo trabajador = entityManager.find(TrabajadorBo.class, id);
+		entityManager.remove(trabajador);
+	}
 	
 
 }

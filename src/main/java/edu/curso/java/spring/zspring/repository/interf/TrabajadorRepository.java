@@ -11,4 +11,8 @@ public interface TrabajadorRepository {
 	public TrabajadorBo obtenerTrabajador(Long id);
 
 	public TrabajadorBo nuevoTrabajador(TrabajadorBo trabajadorBo);
+
+	public void editarTrabajador(TrabajadorBo trabajadorBo, Long id);
+	
+	public void borrarTrabajador(Long id);
 }

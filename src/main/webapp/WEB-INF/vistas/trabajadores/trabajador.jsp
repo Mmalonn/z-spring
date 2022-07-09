@@ -5,7 +5,8 @@
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
-	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajador n ${trabajador.id}</h2>
+	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajador
+		n ${trabajador.id}</h2>
 </div>
 <div class="card mt-2">
 	<h5 class="card-header">${trabajador.nombre}
@@ -13,7 +14,28 @@
 	<div class="card-body">
 		<h5 class="card-title">Telefono trabajador: ${trabajador.dni}</h5>
 		<p class="card-text">DNI trabajador: ${trabajador.dni}</p>
-		<p>trabajo: ${trabajador.trabajos}</p>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Trabajos:</th>
+				</tr>
+			</thead>
+				<tr>			
+					<c:forEach items="${trabajador.trabajos}" var="t">
+						<td scope="row">
+							<p>${t.nombre}</p>
+						</td>
+						<td scope="row">
+							<p>${t.fecha}</p>
+						</td>
+					</c:forEach>
+				</tr>
+				
+		</table>
+
+
+
 	</div>
 </div>
 

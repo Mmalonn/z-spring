@@ -61,7 +61,7 @@ public class ProveedorRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(proveedorDto);
 	}
 	
-	@DeleteMapping("/proveedores/{id}")
+	@DeleteMapping("/proveedores/borrar/{id}")
 	public ResponseEntity<?> eliminarProveedor(@PathVariable Long id){
 		proveedorService.borrarProveedor(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);

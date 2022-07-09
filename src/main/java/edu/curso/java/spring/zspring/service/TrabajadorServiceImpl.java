@@ -34,4 +34,14 @@ public class TrabajadorServiceImpl implements TrabajadorService {
 		
 	}
 
+	@Override
+	public void editarTrabajador(TrabajadorBo trabajador, Long id) {
+		trabajadorRepository.editarTrabajador(trabajador, id);
+	}
+
+	@Override
+	public void borrarTrabajador(Long id) {
+		trabajadorRepository.borrarTrabajador(id);
+	}
+
 }

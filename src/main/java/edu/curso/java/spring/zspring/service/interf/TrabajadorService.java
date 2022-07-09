@@ -11,4 +11,8 @@ public interface TrabajadorService {
 	TrabajadorBo obtenerTrabajador(Long id);
 
 	TrabajadorBo nuevoTrabajador(TrabajadorBo trabajadorBo);
+
+	void editarTrabajador(TrabajadorBo trabajador, Long id);
+
+	void borrarTrabajador(Long id);
 }
