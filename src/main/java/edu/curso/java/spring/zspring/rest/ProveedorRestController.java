@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,13 @@ public class ProveedorRestController {
 		log.info("mostrando proveedores");
 		return proveedoresDto ;
 	}
+	@GetMapping("/proveedores/{id}")
+	public ResponseEntity<ProveedorDto> obtenerProveedor(@PathVariable Long id){
+	ProveedorBo proveedor = proveedorService.obtenerProveedor(id);
+	ProveedorDto proveedorDto = new ProveedorDto(proveedor);
+	return ResponseEntity.ok(proveedorDto);
+	
+	}
 	
 	@PostMapping("/proveedores")
 	public ResponseEntity<ProveedorDto> nuevoProveedor(@RequestBody ProveedorDto proveedorDto){
@@ -47,6 +55,7 @@ public class ProveedorRestController {
 		proveedor.setDireccion(proveedorDto.getDireccion());
 		proveedor.setTelefono(proveedorDto.getTelefono());
 		proveedor.setMateriales(proveedorDto.getMateriales());
+		proveedorService.nuevoProveedor(proveedor);
 		return ResponseEntity.status(HttpStatus.CREATED).body(proveedorDto);
 	}
 }

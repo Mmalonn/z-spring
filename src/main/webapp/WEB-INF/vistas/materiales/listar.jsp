@@ -9,10 +9,13 @@
 	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">
 		Materiales</h2>
 	<a class="d-inline border primary rounded-lg px-2 ml-3"
-		href="/materiales/nuevo">Agregar nuevo</a>
+		href="/materiales/nuevo">Agregar nuevo</a> 
 
 </div>
-
+<div class="mt-2 ml-3 ">
+	<a class="border primary  text-secondary rounded-lg"
+		href="/materiales/categorias">Categorias</a>
+</div>
 
 <table class="table mt-4 ">
 	<thead>
