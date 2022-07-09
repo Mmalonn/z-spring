@@ -23,4 +23,9 @@ public class TrabajoServiceImpl implements TrabajoService {
 		return trabajoRepository.listarTrabajos();
 	}
 
+	@Override
+	public TrabajoBo obtenerTrabajo(Long id) {
+		return trabajoRepository.obtenerTrabajo(id);
+	}
+
 }

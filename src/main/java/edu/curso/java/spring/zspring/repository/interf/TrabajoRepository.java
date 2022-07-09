@@ -7,4 +7,6 @@ import edu.curso.java.spring.zspring.bo.TrabajoBo;
 public interface TrabajoRepository {
 
 	public List<TrabajoBo> listarTrabajos();
+	
+	public TrabajoBo obtenerTrabajo(Long id);
 }

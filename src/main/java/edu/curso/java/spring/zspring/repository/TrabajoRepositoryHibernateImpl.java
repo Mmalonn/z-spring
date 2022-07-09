@@ -20,4 +20,9 @@ public class TrabajoRepositoryHibernateImpl implements TrabajoRepository {
 	public List<TrabajoBo> listarTrabajos() {	
 		return entityManager.createQuery("from TrabajoBo as t order by t.nombre").getResultList();
 	}
+
+	@Override
+	public TrabajoBo obtenerTrabajo(Long id) {
+		return entityManager.find(TrabajoBo.class, id);
+	}
 }

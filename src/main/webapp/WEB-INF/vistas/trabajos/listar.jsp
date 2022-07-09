@@ -24,7 +24,7 @@
 			<td scope="row">${t.ubicacionBo.nombre}</td>
 			<td scope="row">${t.fecha}</td>
 			<td scope="row">
-				<a type="button" class="btn btn-secondary btn-sm" href="/">Ver</a>
+				<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}">Ver</a>
 				<a type="button" class="btn btn-secondary btn-sm" href="/">Editar</a>
 				<a type="button" class="btn btn-secondary btn-sm" href="/">Eliminar</a>
 				<a type="button" class="btn btn-secondary btn-sm" href="/">Terminado</a>
