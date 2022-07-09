@@ -1,6 +1,7 @@
 package edu.curso.java.spring.zspring.rest.dto;
 
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
+import edu.curso.java.spring.zspring.bo.UbicacionBo;
 
 public class UbicacionDto {
 
@@ -40,5 +41,10 @@ public class UbicacionDto {
 		this.numero = numero;
 		this.trabajoBo = trabajoBo;
 	}
-	public UbicacionDto() {}
+	public UbicacionDto(UbicacionBo ubicacion) {
+		this.id = ubicacion.getId();
+		this.calle = ubicacion.getCalle();
+		this.numero = ubicacion.getNumero();
+		this.trabajoBo = ubicacion.getTrabajoBo();
+	}
 }

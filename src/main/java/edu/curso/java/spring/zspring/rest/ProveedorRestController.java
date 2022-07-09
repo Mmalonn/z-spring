@@ -42,6 +42,7 @@ public class ProveedorRestController {
 		log.info("mostrando proveedores");
 		return proveedoresDto ;
 	}
+	
 	@GetMapping("/proveedores/{id}")
 	public ResponseEntity<ProveedorDto> obtenerProveedor(@PathVariable Long id){
 	ProveedorBo proveedor = proveedorService.obtenerProveedor(id);
