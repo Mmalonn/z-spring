@@ -26,5 +26,25 @@ public class UbicacionRepositoryHibernateImpl implements UbicacionRepository {
 		return entityManager.find(UbicacionBo.class, id);
 	}
 
+	@Override
+	public void nuevaUbicacion(UbicacionBo ubicacion) {
+		entityManager.persist(ubicacion);
+	}
+
+	@Override
+	public void eliminarUbicacion(Long id) {
+		UbicacionBo ubicacion = entityManager.find(UbicacionBo.class, id);
+		entityManager.remove(ubicacion);
+	}
+
+	@Override
+	public void editarUbicacion(UbicacionBo ubicacionBo, Long id) {
+		UbicacionBo ubicacion = entityManager.find(UbicacionBo.class, id);
+		ubicacion.setCalle(ubicacionBo.getCalle());
+		ubicacion.setNumero(ubicacionBo.getNumero());
+		ubicacion.setTrabajoBo(ubicacionBo.getTrabajoBo());
+		entityManager.merge(ubicacion);
+	}
+
 	
 }

@@ -17,7 +17,7 @@ public class UbicacionServiceImpl implements UbicacionService {
 
 	@Autowired
 	private UbicacionRepository ubicacionRepository;
-	
+
 	@Override
 	public List<UbicacionBo> listarUbicaciones() {
 		return ubicacionRepository.listarUbicaciones();
@@ -26,6 +26,21 @@ public class UbicacionServiceImpl implements UbicacionService {
 	@Override
 	public UbicacionBo obtenerUbicacion(Long id) {
 		return ubicacionRepository.obtenerUbicacion(id);
+	}
+
+	@Override
+	public void nuevaUbicacion(UbicacionBo ubicacion) {
+		ubicacionRepository.nuevaUbicacion(ubicacion);
+	}
+
+	@Override
+	public void borrarUbicacion(Long id) {
+		ubicacionRepository.eliminarUbicacion(id);
+	}
+
+	@Override
+	public void editarUbicacion(UbicacionBo ubicacion, Long id) {
+		ubicacionRepository.editarUbicacion(ubicacion, id);
 	}
 
 }

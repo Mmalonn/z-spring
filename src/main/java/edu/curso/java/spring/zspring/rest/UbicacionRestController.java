@@ -6,10 +6,15 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,5 +50,32 @@ public class UbicacionRestController {
 		UbicacionDto ubicacionDto = new UbicacionDto(ubicacion);
 		return ResponseEntity.ok(ubicacionDto);
 	}
+	
+	@PostMapping("/ubicaciones")
+	public ResponseEntity<UbicacionDto> nuevaUbicacion(@RequestBody UbicacionDto ubicacionDto){
+		UbicacionBo ubicacion = new UbicacionBo();
+		ubicacion.setCalle(ubicacionDto.getCalle());
+		ubicacion.setNumero(ubicacionDto.getNumero());
+		ubicacion.setTrabajoBo(ubicacionDto.getTrabajoBo());
+		ubicacionService.nuevaUbicacion(ubicacion);
+		return ResponseEntity.status(HttpStatus.CREATED).body(ubicacionDto);
+	}
+	
+	@DeleteMapping("/ubicaciones/borrar/{id}")
+	public ResponseEntity<?> eliminarUbicacion(@PathVariable Long id){
+		ubicacionService.borrarUbicacion(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+	}
+	
+	@PutMapping("/ubicaciones/{id}")
+	public ResponseEntity<UbicacionDto> editarUbicacion(@RequestBody UbicacionDto ubicacionDto, @PathVariable Long id){
+		UbicacionBo ubicacion = new UbicacionBo();
+		ubicacion.setCalle(ubicacionDto.getCalle());
+		ubicacion.setNumero(ubicacionDto.getNumero());
+		ubicacion.setTrabajoBo(ubicacionDto.getTrabajoBo());
+		ubicacionService.editarUbicacion(ubicacion, id);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(ubicacionDto);
+	}
+	
 
 }

@@ -9,6 +9,12 @@ public interface UbicacionRepository {
 	public List<UbicacionBo> listarUbicaciones();
 	
 	public UbicacionBo obtenerUbicacion(Long id);
+
+	public void nuevaUbicacion(UbicacionBo ubicacion);
+
+	public void eliminarUbicacion(Long id);
+	
+	public void editarUbicacion(UbicacionBo ubicacionBo, Long id);
 	
 
 }

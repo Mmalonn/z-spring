@@ -9,4 +9,10 @@ public interface UbicacionService {
 	List<UbicacionBo> listarUbicaciones();
 	
 	UbicacionBo obtenerUbicacion(Long id);
+
+	void nuevaUbicacion(UbicacionBo ubicacion);
+
+	void borrarUbicacion(Long id);
+
+	void editarUbicacion(UbicacionBo ubicacion, Long id);
 }
