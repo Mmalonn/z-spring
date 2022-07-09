@@ -3,6 +3,7 @@ package edu.curso.java.spring.zspring.rest.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.curso.java.spring.zspring.bo.CategoriaBo;
 import edu.curso.java.spring.zspring.bo.MaterialBo;
 
 public class CategoriaDto {
@@ -34,5 +35,9 @@ public class CategoriaDto {
 		this.nombre = nombre;
 		this.materiales = materiales;
 	}
-	public CategoriaDto() {}
+	public CategoriaDto(CategoriaBo categoria) {
+		this.id = categoria.getId();
+		this.nombre = categoria.getNombre();
+		this.materiales = categoria.getMateriales();
+	}
 }
