@@ -28,5 +28,10 @@ public class ProveedorServiceImpl implements ProveedorService {
 		return proveedorRepository.obtenerProveedor(id);
 	}
 
+	@Override
+	public ProveedorBo nuevoProveedor(ProveedorBo proveedorBo) {
+		return proveedorRepository.nuevoProveedor(proveedorBo);
+	}
+
 
 }

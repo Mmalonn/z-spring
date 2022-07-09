@@ -12,6 +12,14 @@ public class ProveedorDto {
 	private String nombre;
 	private String telefono;
 	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
+	private String direccion;
+	
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -36,18 +44,20 @@ public class ProveedorDto {
 	public void setMateriales(List<MaterialBo> materiales) {
 		this.materiales = materiales;
 	}
-	public ProveedorDto(Long id, String nombre, String telefono, List<MaterialBo> materiales) {
+	public ProveedorDto(Long id, String nombre, String direccion, String telefono, List<MaterialBo> materiales) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.materiales = materiales;
+		this.direccion = direccion;
 	}
 	public ProveedorDto(ProveedorBo proveedor) {
 		this.id = proveedor.getId();
 		this.nombre = proveedor.getNombre();
 		this.telefono = proveedor.getTelefono();
 		this.materiales = proveedor.getMateriales();
+		this.direccion = proveedor.getDireccion();
 	}
 	
 }

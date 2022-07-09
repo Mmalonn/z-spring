@@ -9,4 +9,6 @@ public interface ProveedoresRepository {
 	public List<ProveedorBo> listarProveedores();
 
 	public ProveedorBo obtenerProveedor(Long id);
+	
+	public ProveedorBo nuevoProveedor(ProveedorBo proveedorBo);
 }

@@ -26,4 +26,10 @@ public class ProveedorRepositoryHibernateImpl implements ProveedoresRepository {
 		return entityManager.find(ProveedorBo.class, id);
 	}
 
+	@Override
+	public ProveedorBo nuevoProveedor(ProveedorBo proveedorBo) {
+		entityManager.persist(proveedorBo);
+		return null;
+	}
+
 }

@@ -10,4 +10,6 @@ public interface ProveedorService {
 	List<ProveedorBo> listarProveedores();
 
 	ProveedorBo obtenerProveedor(Long id);
+	
+	ProveedorBo nuevoProveedor(ProveedorBo proveedorBo);
 }
