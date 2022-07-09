@@ -15,6 +15,7 @@
 </div>
 
 
+
 <table class="table mt-4 ">
 	<thead>
 		<tr>
@@ -35,9 +36,6 @@
 		</tr>
 	</c:forEach>
 </table>
-
-
-
 
 </table>
 

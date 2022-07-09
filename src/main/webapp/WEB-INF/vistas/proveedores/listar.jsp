@@ -7,7 +7,10 @@
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
 	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Proveedores</h2>
+	<a class="d-inline border primary rounded-lg px-2 ml-3"
+		href="/proveedores/nuevo">Agregar nuevo</a>
 </div>
+
 <table class="table mt-4 ">
 	<thead>
 		<tr>

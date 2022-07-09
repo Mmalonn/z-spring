@@ -23,4 +23,9 @@ public class TrabajoTerminadoServiceImpl implements TrabajoTerminadoService {
 		return trabajoTerminadoRepository.listarTrabajosTerminados();
 	}
 
+	@Override
+	public TrabajoTerminadoBo obtenerTerminado(Long id) {
+		return trabajoTerminadoRepository.obtenerTerminado(id);
+	}
+
 }

@@ -24,7 +24,7 @@
 			<td scope="row">${t.ubicacionBo.nombre}</td>
 			<td scope="row">${t.fechaFinalizacion}</td>
 			<td scope="row" class="flex-row-reverse">
-				<a type="button" class="btn btn-secondary btn-sm" href="/">Ver</a>
+				<a type="button" class="btn btn-secondary btn-sm" href="/terminados/${t.id }">Ver</a>
 			</td>
 		</tr>
 	</c:forEach>

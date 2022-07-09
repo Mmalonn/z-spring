@@ -7,4 +7,6 @@ import edu.curso.java.spring.zspring.bo.TrabajoTerminadoBo;
 public interface TrabajoTerminadoService {
 
 	List<TrabajoTerminadoBo> listarTrabajosTerminados();
+	
+	TrabajoTerminadoBo obtenerTerminado(Long id);
 }

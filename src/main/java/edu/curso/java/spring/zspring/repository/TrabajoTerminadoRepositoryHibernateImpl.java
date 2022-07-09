@@ -21,4 +21,9 @@ public class TrabajoTerminadoRepositoryHibernateImpl implements TrabajoTerminado
 		return entityManager.createQuery("from TrabajoTerminadoBo as t order by t.nombre").getResultList();
 	}
 
+	@Override
+	public TrabajoTerminadoBo obtenerTerminado(Long id) {
+		return entityManager.find(TrabajoTerminadoBo.class, id);
+	}
+
 }
