@@ -6,6 +6,15 @@
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
+
+
+
+
+
+
+
+
+
 <div class="mt-4 ml-3">
 	<h2 class="d-inline border primary rounded-lg bg-secondary px-2"> Materiales</h2>
 	<a class="d-inline border primary rounded-lg px-2 ml-3"
@@ -33,15 +42,15 @@
 		</div>
 		<div class="form-group">
 			<label>Cantidad a comprar</label>
-			<form:input path="cantidad" cssClass="form-control" />
+			<form:input path="cantidad" cssClass="form-control" id="cantidad"/>
 		</div>
 		<div class="form-group">
 			<label>Precio</label>
 			<form:input path="precio" cssClass="form-control" readonly="true"/>
 		</div>
-		<div>
-			<label class="mr-4">Total a pagar</label>
-			<p cssClass="form-control" class="btn btn-dark ml-4" id="total">cricri<p>
+		<div class="form-group">
+			<h2 class="p-2">Total a pagar     <span class="badge bg-secondary" id="total"></span></h2>
+			<button class="btn btn-primary" id="boton">Calcular costo</button>
 		</div>
 
 
@@ -49,5 +58,20 @@
 	</div>
 </form:form>
 
+<script type="text/javascript">
+
+let valor = ${materialForm.precio};
+
+document.getElementById("boton").addEventListener("click", function(e){
+	let cantidad = document.getElementById("cantidad").value;
+	e.preventDefault()
+	document.getElementById("total").innerHTML = cantidad*valor;
+	  
+	});
+
+
+
+
+</script>
 
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>
