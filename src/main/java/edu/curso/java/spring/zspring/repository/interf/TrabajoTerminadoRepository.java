@@ -9,4 +9,6 @@ public interface TrabajoTerminadoRepository {
 	List<TrabajoTerminadoBo> listarTrabajosTerminados();
 
 	public TrabajoTerminadoBo obtenerTerminado(Long id);
+
+	void nuevoTerminado(TrabajoTerminadoBo trabajo);
 }

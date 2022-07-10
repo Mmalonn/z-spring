@@ -10,4 +10,10 @@ public interface TrabajoService {
 	
 	TrabajoBo obtenerTrabajo(Long id);
 
+	void agregarTrabajador(TrabajoBo trabajo);
+
+	void eliminarTrabajo(Long id);
+
+	void editarTrabajo(TrabajoBo trabajo, Long id);
+
 }

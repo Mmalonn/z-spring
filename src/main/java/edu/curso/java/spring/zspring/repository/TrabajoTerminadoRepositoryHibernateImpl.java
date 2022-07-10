@@ -26,4 +26,11 @@ public class TrabajoTerminadoRepositoryHibernateImpl implements TrabajoTerminado
 		return entityManager.find(TrabajoTerminadoBo.class, id);
 	}
 
+	@Override
+	public void nuevoTerminado(TrabajoTerminadoBo trabajo) {
+		entityManager.persist(trabajo);		
+	}
+
+
+
 }

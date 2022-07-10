@@ -42,7 +42,6 @@ public class UbicacionRepositoryHibernateImpl implements UbicacionRepository {
 		UbicacionBo ubicacion = entityManager.find(UbicacionBo.class, id);
 		ubicacion.setCalle(ubicacionBo.getCalle());
 		ubicacion.setNumero(ubicacionBo.getNumero());
-		ubicacion.setTrabajoBo(ubicacionBo.getTrabajoBo());
 		entityManager.merge(ubicacion);
 	}
 

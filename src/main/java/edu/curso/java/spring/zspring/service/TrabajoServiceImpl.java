@@ -28,4 +28,19 @@ public class TrabajoServiceImpl implements TrabajoService {
 		return trabajoRepository.obtenerTrabajo(id);
 	}
 
+	@Override
+	public void agregarTrabajador(TrabajoBo trabajo) {
+		trabajoRepository.agregarTrabajo(trabajo);
+	}
+
+	@Override
+	public void eliminarTrabajo(Long id) {
+		trabajoRepository.borrarTrabajo(id);
+	}
+
+	@Override
+	public void editarTrabajo(TrabajoBo trabajo, Long id) {
+		trabajoRepository.editarTrabajo(trabajo, id);
+	}
+
 }

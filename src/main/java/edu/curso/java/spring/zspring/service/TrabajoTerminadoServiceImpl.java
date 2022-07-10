@@ -28,4 +28,9 @@ public class TrabajoTerminadoServiceImpl implements TrabajoTerminadoService {
 		return trabajoTerminadoRepository.obtenerTerminado(id);
 	}
 
+	@Override
+	public void nuevoTerminado(TrabajoTerminadoBo trabajo) {
+		trabajoTerminadoRepository.nuevoTerminado(trabajo);
+	}
+
 }

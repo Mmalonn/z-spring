@@ -15,28 +15,29 @@
 </div>
 
 
-
+<div class="container">
 <table class="table mt-4 ">
 	<thead>
 		<tr>
 			<th scope="col">Nombre</th>
 			<th scope="col">Apellido</th>
-			<th scope="col"></th>
+
+			<th scope="col">Opciones</th>
 		</tr>
 	</thead>
 	<c:forEach items="${trabajadores}" var="t">
 		<tr>
-			<td scope="row">${t.nombre}</td>
-			<td scope="row">${t.apellido}</td>
-			<td scope="row" class="flex-row-reverse">
-				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}">Ver</a>
+			<td>${t.nombre}</td>
+			<td>${t.apellido}</td>
+			<td>	
 				<a type="button" class="btn btn-secondary btn-sm" href="/">Editar</a>
+				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}">Ver</a>	
 				<a type="button" class="btn btn-secondary btn-sm" href="/">Eliminar</a>
 			</td>
 		</tr>
 	</c:forEach>
 </table>
+</div>
 
-</table>
 
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

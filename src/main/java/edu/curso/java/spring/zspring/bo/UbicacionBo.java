@@ -13,15 +13,9 @@ public class UbicacionBo {
 	private Long id;
 	private String calle;
 	private String numero;
-	@OneToOne
-	private TrabajoBo trabajoBo;
 	
-	public TrabajoBo getTrabajoBo() {
-		return trabajoBo;
-	}
-	public void setTrabajoBo(TrabajoBo trabajoBo) {
-		this.trabajoBo = trabajoBo;
-	}
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -45,7 +39,6 @@ public class UbicacionBo {
 		this.id = id;
 		this.calle = calle;
 		this.numero = numero;
-		this.trabajoBo = trabajoBo;
 	}
 	
 	public UbicacionBo() {}

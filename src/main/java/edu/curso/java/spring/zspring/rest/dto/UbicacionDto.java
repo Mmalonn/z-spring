@@ -8,7 +8,6 @@ public class UbicacionDto {
 	private Long id;
 	private String calle;
 	private String numero;
-	private TrabajoBo trabajoBo;
 	
 	public Long getId() {
 		return id;
@@ -28,23 +27,16 @@ public class UbicacionDto {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	public TrabajoBo getTrabajoBo() {
-		return trabajoBo;
-	}
-	public void setTrabajoBo(TrabajoBo trabajoBo) {
-		this.trabajoBo = trabajoBo;
-	}
+
 	public UbicacionDto(Long id, String calle, String numero, TrabajoBo trabajoBo) {
 		super();
 		this.id = id;
 		this.calle = calle;
 		this.numero = numero;
-		this.trabajoBo = trabajoBo;
 	}
 	public UbicacionDto(UbicacionBo ubicacion) {
 		this.id = ubicacion.getId();
 		this.calle = ubicacion.getCalle();
 		this.numero = ubicacion.getNumero();
-		this.trabajoBo = ubicacion.getTrabajoBo();
 	}
 }

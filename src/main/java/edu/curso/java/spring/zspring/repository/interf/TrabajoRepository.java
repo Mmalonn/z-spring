@@ -9,4 +9,10 @@ public interface TrabajoRepository {
 	public List<TrabajoBo> listarTrabajos();
 	
 	public TrabajoBo obtenerTrabajo(Long id);
+
+	public void agregarTrabajo(TrabajoBo trabajo);
+
+	public void borrarTrabajo(Long id);
+
+	public void editarTrabajo(TrabajoBo trabajo, Long id);
 }

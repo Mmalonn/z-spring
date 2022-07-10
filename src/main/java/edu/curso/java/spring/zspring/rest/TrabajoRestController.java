@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,9 +50,39 @@ public class TrabajoRestController {
 		return ResponseEntity.ok(trabajoDto);
 	}
 	
-//	@PostMapping("/trabajos")
-//	public ResponseEntity<TrabajoDto> nuevoTrabajo(@RequestBody TrabajoDto trabajoDto){
-//		TrabajoBo trabajo = new TrabajoBo();
-//		return ResponseEntity.status(HttpStatus.CREATED).body(trabajoDto);
-//	}
+	@PostMapping("/trabajos")
+	public ResponseEntity<TrabajoDto> nuevoTrabajo(@RequestBody TrabajoDto trabajoDto){
+		TrabajoBo trabajo = new TrabajoBo();
+		trabajo.setNombre(trabajoDto.getNombre());
+		trabajo.setTarea(trabajoDto.getTarea());
+		trabajo.setFecha(trabajoDto.getFecha());
+		trabajo.setUbicacionBo(trabajoDto.getUbicacionBo());
+		trabajo.setHorasEstimadas(trabajoDto.getHorasEstimadas());
+		trabajo.setTrabajadorBo(trabajoDto.getTrabajadorBo());
+		trabajo.setMateriales(trabajoDto.getMateriales());
+		trabajo.setPrecioFinal(trabajoDto.getPrecioFinal());
+		trabajoService.agregarTrabajador(trabajo);
+		return ResponseEntity.status(HttpStatus.CREATED).body(trabajoDto);
+	}
+	
+	@DeleteMapping("/trabajos/borrar/{id}")
+	public ResponseEntity<?> eliminarTrabajo(@PathVariable Long id){
+		trabajoService.eliminarTrabajo(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+	}
+	
+	@PutMapping("/trabajos/{id}")
+	public ResponseEntity<TrabajoDto> editarTrabajo(@RequestBody TrabajoDto trabajoDto, @PathVariable Long id){
+		TrabajoBo trabajo = new TrabajoBo();
+		trabajo.setNombre(trabajoDto.getNombre());
+		trabajo.setTarea(trabajoDto.getTarea());
+		trabajo.setFecha(trabajoDto.getFecha());
+		trabajo.setUbicacionBo(trabajoDto.getUbicacionBo());
+		trabajo.setHorasEstimadas(trabajoDto.getHorasEstimadas());
+		trabajo.setTrabajadorBo(trabajoDto.getTrabajadorBo());
+		trabajo.setMateriales(trabajoDto.getMateriales());
+		trabajo.setPrecioFinal(trabajoDto.getPrecioFinal());
+		trabajoService.editarTrabajo(trabajo, id);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(trabajoDto);
+	}
 }

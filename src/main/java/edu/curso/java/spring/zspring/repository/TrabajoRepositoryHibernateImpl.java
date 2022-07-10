@@ -25,4 +25,29 @@ public class TrabajoRepositoryHibernateImpl implements TrabajoRepository {
 	public TrabajoBo obtenerTrabajo(Long id) {
 		return entityManager.find(TrabajoBo.class, id);
 	}
+
+	@Override
+	public void agregarTrabajo(TrabajoBo trabajo) {
+		entityManager.persist(trabajo);
+	}
+
+	@Override
+	public void borrarTrabajo(Long id) {
+		TrabajoBo trabajo = entityManager.find(TrabajoBo.class, id);
+		entityManager.remove(trabajo);
+	}
+
+	@Override
+	public void editarTrabajo(TrabajoBo trabajoBo, Long id) {
+		TrabajoBo trabajo = entityManager.find(TrabajoBo.class, id);
+		trabajo.setNombre(trabajoBo.getNombre());
+		trabajo.setTarea(trabajoBo.getTarea());
+		trabajo.setFecha(trabajoBo.getFecha());
+		trabajo.setUbicacionBo(trabajoBo.getUbicacionBo());
+		trabajo.setHorasEstimadas(trabajoBo.getHorasEstimadas());
+		trabajo.setTrabajadorBo(trabajoBo.getTrabajadorBo());
+		trabajo.setMateriales(trabajoBo.getMateriales());
+		trabajo.setPrecioFinal(trabajoBo.getPrecioFinal());
+		entityManager.merge(trabajo);
+	}
 }

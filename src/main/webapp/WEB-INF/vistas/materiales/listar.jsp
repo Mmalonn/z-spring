@@ -36,8 +36,7 @@
 			<td scope="row">${m.precio}</td>
 			<td scope="row">${m.cantidad}</td>
 			<td scope="row" class="flex-row-reverse"><a type="button"
-				class="btn btn-secondary btn-sm" href="/">Editar</a> <a
-				type="button" class="btn btn-secondary btn-sm" href="/">Eliminar</a>
+				class="btn btn-secondary btn-sm" href="/">Editar</a>
 			</td>
 		</tr>
 	</c:forEach>

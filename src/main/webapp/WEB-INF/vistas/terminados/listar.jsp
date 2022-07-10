@@ -9,25 +9,26 @@
 	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajos
 		terminados</h2>
 </div>
-<table class="table mt-4 ">
-	<thead>
-		<tr>
-			<th scope="col">Nombre</th>
-			<th scope="col">Ubicacion</th>
-			<th scope="col">Fecha Finalizado</th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<c:forEach items="${terminados}" var="t">
-		<tr>
-			<td scope="row">${t.nombre}</td>
-			<td scope="row">${t.ubicacionBo.nombre}</td>
-			<td scope="row">${t.fechaFinalizacion}</td>
-			<td scope="row" class="flex-row-reverse">
-				<a type="button" class="btn btn-secondary btn-sm" href="/terminados/${t.id }">Ver</a>
-			</td>
-		</tr>
-	</c:forEach>
-</table>
-
+<div class="container ">
+	<table class="table mt-4 ">
+		<thead>
+			<tr>
+				<th scope="col">Nombre</th>
+				<th scope="col">Ubicacion</th>
+				<th scope="col">Fecha Finalizado</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<c:forEach items="${terminados}" var="t">
+			<tr>
+				<td scope="row">${t.nombre}</td>
+				<td>${t.ubicacionBo.nombre}</td>
+				<td>${t.fechaFinalizacion}</td>
+				<td><a type="button"
+					class="btn btn-secondary btn-sm" href="/terminados/${t.id }">Ver</a>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+</div>
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

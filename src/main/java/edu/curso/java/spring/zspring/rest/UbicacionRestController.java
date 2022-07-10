@@ -56,7 +56,6 @@ public class UbicacionRestController {
 		UbicacionBo ubicacion = new UbicacionBo();
 		ubicacion.setCalle(ubicacionDto.getCalle());
 		ubicacion.setNumero(ubicacionDto.getNumero());
-		ubicacion.setTrabajoBo(ubicacionDto.getTrabajoBo());
 		ubicacionService.nuevaUbicacion(ubicacion);
 		return ResponseEntity.status(HttpStatus.CREATED).body(ubicacionDto);
 	}
@@ -72,7 +71,6 @@ public class UbicacionRestController {
 		UbicacionBo ubicacion = new UbicacionBo();
 		ubicacion.setCalle(ubicacionDto.getCalle());
 		ubicacion.setNumero(ubicacionDto.getNumero());
-		ubicacion.setTrabajoBo(ubicacionDto.getTrabajoBo());
 		ubicacionService.editarUbicacion(ubicacion, id);
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(ubicacionDto);
 	}
