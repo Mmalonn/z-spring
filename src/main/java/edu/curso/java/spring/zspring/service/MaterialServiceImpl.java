@@ -83,4 +83,10 @@ public class MaterialServiceImpl implements MaterialService {
 		materialRepository.nuevoMaterial(material);
 	}
 
+	@Override
+	public Long obtenerStock(Long idMaterial) {
+		MaterialBo material=materialRepository.obtenerMaterial(idMaterial);
+		return material.getCantidad();
+	}
+
 }

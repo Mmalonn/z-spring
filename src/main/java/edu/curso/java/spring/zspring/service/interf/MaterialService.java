@@ -18,4 +18,6 @@ public interface MaterialService {
 	void nuevoMaterial(MaterialBo material, Long idCategoria, Long idProveedor);
 
 	void nuevoMaterial(MaterialBo material);
+
+	Long obtenerStock(Long idMaterial);
 }

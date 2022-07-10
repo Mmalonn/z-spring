@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -63,14 +64,34 @@ public class MaterialController {
 			material = materialService.obtenerMaterial(idMaterial);
 		}
 		material.setNombre(materialForm.getNombre());
-		material.setCantidad(materialForm.getCantidad());
 		material.setPrecio(materialForm.getPrecio());
 		if(idMaterial == null) {
+			material.setCantidad(materialForm.getCantidad());
+			material.setCantidad(materialForm.getCantidad());
 			materialService.nuevoMaterial(material, materialForm.getIdCategoria(), materialForm.getIdProveedor());
 		} else {
+			Long stockActual= materialService.obtenerStock(idMaterial);
+			material.setCantidad(materialForm.getCantidad()+stockActual);
 			materialService.editarMaterial(material, idMaterial);
 		}
 		return "redirect:/materiales/lista";
 	}
+
+	
+	@GetMapping("/{id}/comprar")
+	public String comprar(Model model, @PathVariable Long id) {
+		MaterialBo material = materialService.obtenerMaterial(id);
+		MaterialForm form = new MaterialForm();
+		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
+		form.setId(material.getId());
+		form.setNombre(material.getNombre());
+		form.setPrecio(material.getPrecio());
+		form.setProveedorBo(material.getProveedorBo());
+		model.addAttribute("materialForm", form);
+		return "/materiales/comprar";
+	}
+	
+	
 	
 }

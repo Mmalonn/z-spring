@@ -84,6 +84,8 @@ public class TrabajadorController {
 	public String editar(Model model, @PathVariable Long id) {
 		TrabajadorBo trabajador= trabajadorService.obtenerTrabajador(id);
 		TrabajadorForm form = new TrabajadorForm();
+		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
 		form.setId(trabajador.getId());
 		form.setNombre(trabajador.getNombre());
 		form.setApellido(trabajador.getApellido());

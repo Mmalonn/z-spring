@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class TrabajoBo {
@@ -23,6 +25,7 @@ public class TrabajoBo {
 	private Double horasEstimadas;
 	private Double precioFinal;
 	@ManyToOne
+	@JsonIgnore
 	private TrabajadorBo trabajadorBo;
 	@OneToMany
 	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
