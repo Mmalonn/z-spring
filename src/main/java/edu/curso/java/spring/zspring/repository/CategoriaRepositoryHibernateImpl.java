@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
+import edu.curso.java.spring.zspring.bo.MaterialBo;
+import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.repository.interf.CategoriaRepository;
 
 @Repository
@@ -37,6 +39,11 @@ public class CategoriaRepositoryHibernateImpl implements CategoriaRepository {
 		categoria.setNombre(categoriaBo.getNombre());
 		categoria.setMateriales(categoriaBo.getMateriales());
 		entityManager.merge(categoria);
+	}
+
+	@Override
+	public List<MaterialBo> obtenerMaterialesCategoria(CategoriaBo categoriaBo) {
+		return entityManager.createQuery("select materiales from CategoriaBo as b where b.nombre = :custName").setParameter("custName", categoriaBo.getNombre()).getResultList();
 	}
 
 

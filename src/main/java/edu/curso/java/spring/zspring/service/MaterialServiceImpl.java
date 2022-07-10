@@ -21,13 +21,13 @@ public class MaterialServiceImpl implements MaterialService {
 
 	@Autowired
 	private MaterialRepository materialRepository;
-	
+
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
+
 	@Autowired
 	private ProveedoresRepository proveedorRepository;
-	
+
 	@Override
 	public List<MaterialBo> listarMateriales() {
 		return materialRepository.listarMateriales();
@@ -52,9 +52,30 @@ public class MaterialServiceImpl implements MaterialService {
 	public void nuevoMaterial(MaterialBo material, Long idCategoria, Long idProveedor) {
 		CategoriaBo categoria = categoriaRepository.obtenerCategoria(idCategoria);
 		ProveedorBo proveedor = proveedorRepository.obtenerProveedor(idProveedor);
+		
 		material.setCategoriaBo(categoria);
 		material.setProveedorBo(proveedor);
-		materialRepository.nuevoMaterial(material);		
+		materialRepository.nuevoMaterial(material);
+		try {
+			List<MaterialBo> materiales = proveedorRepository.obtenerMaterialesProveedor(proveedor);
+			materiales.add(material);
+			System.out.println(material.getNombre());
+			proveedor.setMateriales(materiales);
+			proveedorRepository.editarProveedor(proveedor, idProveedor);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("malio sal");
+		}
+		try {
+			List<MaterialBo> materiales = categoriaRepository.obtenerMaterialesCategoria(categoria);
+			materiales.add(material);
+			System.out.println(material.getNombre());
+			categoria.setMateriales(materiales);
+			categoriaRepository.editarCategoria(categoria, idCategoria);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("malio sal 2");
+		}
 	}
 
 	@Override

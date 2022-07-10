@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.repository.interf.ProveedoresRepository;
 
@@ -46,6 +47,11 @@ public class ProveedorRepositoryHibernateImpl implements ProveedoresRepository {
 		proveedor.setTelefono(proveedorBo.getTelefono());
 		proveedor.setMateriales(proveedor.getMateriales());
 		entityManager.merge(proveedor);
+	}
+
+	@Override
+	public List<MaterialBo> obtenerMaterialesProveedor(ProveedorBo proveedorBo) {
+		return entityManager.createQuery("select materiales from ProveedorBo as p where p.nombre = :custName").setParameter("custName", proveedorBo.getNombre()).getResultList();
 	}
 
 }
