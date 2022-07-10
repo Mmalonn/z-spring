@@ -5,15 +5,21 @@
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
-	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Proveedor n ${proveedor.id }</h2>
+	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Proveedor N ${proveedor.id }</h2>
 </div>
 <div class="card mt-2">
 	<h5 class="card-header">${proveedor.nombre}</h5>
 	<div class="card-body">
 		<h5 class="card-title">${proveedor.direccion}</h5>
-		<p class="card-text">
-			${proveedor.telefono}
-		</p>
+		<p class="card-text">${proveedor.telefono}</p>
+			<div class="container">
+				<h6>Lista de materiales</h6>
+				<select class="form-control">
+					<c:forEach items="${proveedor.materiales}" var="m">
+						<option>${m.nombre}</option>
+					</c:forEach>
+				</select>
+			</div>
 	</div>
 </div>
 

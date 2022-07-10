@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.curso.java.spring.zspring.bo.MaterialBo;
+import edu.curso.java.spring.zspring.rest.dto.CategoriaDto;
 import edu.curso.java.spring.zspring.rest.dto.MaterialDto;
 import edu.curso.java.spring.zspring.service.interf.MaterialService;
 
@@ -32,27 +33,30 @@ public class MaterialRestController {
 
 	@Autowired
 	private MaterialService materialService;
-	
+
 	@GetMapping("/materiales")
-	public List<MaterialDto> listarMateriales(){
+	public List<MaterialDto> listarMateriales() {
 		List<MaterialBo> materiales = materialService.listarMateriales();
 		List<MaterialDto> materialesDto = new ArrayList<MaterialDto>();
-		for(MaterialBo material: materiales) {
+		for (MaterialBo material : materiales) {
 			materialesDto.add(new MaterialDto(material));
+			System.out.println(material);
 		}
-		log.info("mostrando materiales");
-		return materialesDto ;
+		System.out.println(materiales);
+		System.out.println(materialesDto);
+		
+		return materialesDto;
 	}
-	
+
 	@GetMapping("/materiales/{id}")
-	public ResponseEntity<MaterialDto> obtenerMaterial(@PathVariable Long id){
+	public ResponseEntity<MaterialDto> obtenerMaterial(@PathVariable Long id) {
 		MaterialBo material = materialService.obtenerMaterial(id);
 		MaterialDto materialDto = new MaterialDto(material);
 		return ResponseEntity.ok(materialDto);
 	}
-	
+
 	@PostMapping("/materiales")
-	public ResponseEntity<MaterialDto> nuevoMaterial(@RequestBody MaterialDto materialDto){
+	public ResponseEntity<MaterialDto> nuevoMaterial(@RequestBody MaterialDto materialDto) {
 		MaterialBo material = new MaterialBo();
 		material.setNombre(materialDto.getNombre());
 		material.setPrecio(materialDto.getPrecio());
@@ -62,15 +66,15 @@ public class MaterialRestController {
 		materialService.nuevoMaterial(material);
 		return ResponseEntity.status(HttpStatus.CREATED).body(materialDto);
 	}
-	
+
 	@DeleteMapping("/materiales/borrar/{id}")
-	public ResponseEntity<?> eliminarMaterial(@PathVariable Long id){
+	public ResponseEntity<?> eliminarMaterial(@PathVariable Long id) {
 		materialService.eliminarMaterial(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
 	}
-	
+
 	@PutMapping("/materiales/{id}")
-	public ResponseEntity<MaterialDto> actualizarMaterial(@RequestBody MaterialDto materialDto, @PathVariable Long id){
+	public ResponseEntity<MaterialDto> actualizarMaterial(@RequestBody MaterialDto materialDto, @PathVariable Long id) {
 		MaterialBo material = new MaterialBo();
 		material.setNombre(materialDto.getNombre());
 		material.setCantidad(materialDto.getCantidad());

@@ -3,7 +3,6 @@ package edu.curso.java.spring.zspring.rest.dto;
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
 import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
-import edu.curso.java.spring.zspring.bo.TrabajoBo;
 
 public class MaterialDto {
 
