@@ -28,4 +28,14 @@ public class CategoriaServiceImpl implements CategoriaService {
 		return categoriaRepository.obtenerCategoria(id);
 	}
 
+	@Override
+	public void nuevaCategoria(CategoriaBo categoria) {
+		categoriaRepository.nuevaCategoria(categoria);
+	}
+
+	@Override
+	public void nuevaCategoria(CategoriaBo categoria, Long id) {
+		categoriaRepository.editarCategoria(categoria, id);
+	}
+
 }

@@ -6,9 +6,14 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,5 +47,24 @@ public class CategoriaRestController {
 		CategoriaBo categoria = categoriaService.obtenerCategoria(id);
 		CategoriaDto cateogoriaDto = new CategoriaDto(categoria);
 		return cateogoriaDto;
+	}
+	
+	@PostMapping("/materiales/categorias")
+	public ResponseEntity<CategoriaDto> nuevaCategoria(@RequestBody CategoriaDto categoriaDto){
+		CategoriaBo categoria = new CategoriaBo();
+		categoria.setNombre(categoriaDto.getNombre());
+		categoria.setMateriales(categoriaDto.getMateriales());
+		categoriaService.nuevaCategoria(categoria);
+		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaDto);
+	}
+	
+	@PutMapping("/materiales/categorias/{id}")
+	public ResponseEntity<CategoriaDto> editarCategoria(@RequestBody CategoriaDto categoriaDto, @PathVariable Long id){
+		CategoriaBo categoria = new CategoriaBo();
+		categoria.setNombre(categoriaDto.getNombre());
+		categoria.setMateriales(categoriaDto.getMateriales());
+		categoriaService.nuevaCategoria(categoria, id);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(categoriaDto);
+
 	}
 }

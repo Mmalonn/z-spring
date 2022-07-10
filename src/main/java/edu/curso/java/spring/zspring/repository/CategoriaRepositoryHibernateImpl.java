@@ -26,6 +26,19 @@ public class CategoriaRepositoryHibernateImpl implements CategoriaRepository {
 		return entityManager.find(CategoriaBo.class, id);
 	}
 
+	@Override
+	public void nuevaCategoria(CategoriaBo categoria) {
+		entityManager.persist(categoria);
+	}
+
+	@Override
+	public void editarCategoria(CategoriaBo categoriaBo, Long id) {
+		CategoriaBo categoria = entityManager.find(CategoriaBo.class, id);
+		categoria.setNombre(categoriaBo.getNombre());
+		categoria.setMateriales(categoriaBo.getMateriales());
+		entityManager.merge(categoria);
+	}
+
 
 
 }

@@ -9,4 +9,8 @@ public interface CategoriaService {
 	List<CategoriaBo> listarCategorias();
 	
 	CategoriaBo obtenerCategoria(Long id);
+
+	void nuevaCategoria(CategoriaBo categoria);
+
+	void nuevaCategoria(CategoriaBo categoria, Long id);
 }

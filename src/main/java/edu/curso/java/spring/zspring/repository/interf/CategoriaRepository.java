@@ -10,4 +10,8 @@ public interface CategoriaRepository {
 	
 	public CategoriaBo obtenerCategoria(Long id);
 
+	public void nuevaCategoria(CategoriaBo categoria);
+
+	public void editarCategoria(CategoriaBo categoria, Long id);
+
 }
