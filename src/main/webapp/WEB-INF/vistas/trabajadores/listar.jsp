@@ -29,10 +29,10 @@
 		<tr>
 			<td>${t.nombre}</td>
 			<td>${t.apellido}</td>
-			<td>	
-				<a type="button" class="btn btn-secondary btn-sm" href="/">Editar</a>
-				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}">Ver</a>	
-				<a type="button" class="btn btn-secondary btn-sm" href="/">Eliminar</a>
+			<td>
+				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}">Ver</a>		
+				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}/editar">Editar</a>			
+				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}/eliminar">Eliminar</a>
 			</td>
 		</tr>
 	</c:forEach>
