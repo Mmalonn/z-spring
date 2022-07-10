@@ -6,7 +6,7 @@
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
 	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajador
-		n ${trabajador.id}</h2>
+		N ${trabajador.id}</h2>
 </div>
 <div class="card mt-2">
 	<h5 class="card-header">${trabajador.nombre}

@@ -15,4 +15,6 @@ public interface ProveedoresRepository {
 	public void borrarProveedor(Long id);
 
 	public void editarProveedor(ProveedorBo proveedorBo, Long id);
+	
+
 }

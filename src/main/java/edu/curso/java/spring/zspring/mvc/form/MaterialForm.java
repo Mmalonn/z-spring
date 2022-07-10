@@ -7,11 +7,27 @@ import edu.curso.java.spring.zspring.bo.ProveedorBo;
 public class MaterialForm {
 
 	private Long Id;
+	private Long idCategoria;
+	private Long idProveedor;
 	private String nombre;
 	private Long cantidad;
 	private Double precio;
 	private ProveedorBo proveedorBo;
 	private CategoriaBo categoriaBo;
+	
+	public Long getIdCategoria() {
+		return idCategoria;
+	}
+	public void setIdCategoria(Long idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+	public Long getIdProveedor() {
+		return idProveedor;
+	}
+	public void setIdProveedor(Long idProveedor) {
+		this.idProveedor = idProveedor;
+	}
+	
 	
 	public Long getId() {
 		return Id;

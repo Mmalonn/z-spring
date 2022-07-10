@@ -6,43 +6,52 @@
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
-	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajador
-		n </h2>
+	<c:if test="${materialForm.id > 0}">
+		<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Material N ${trabajadorForm.id}</h2>
+	</c:if>
+	<c:if test="${materialForm.id == null}">
+		<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Material nuevo</h2>
+	</c:if>
+	
 </div>
 
-<form:form method="POST" action="/" >
+<form:form method="POST" action="/materiales/guardar" modelAttribute="materialForm">
 	<div class="container mt-4">
 	
-		<c:if test="">
+		<c:if test="${materialForm.id > 0}">
 			<div class="form-group">
-				<label>Id trabajador</label>
-				<form:input cssClass="form-control" readonly="true"/>
+				<label>Id material</label>
+				<form:input path="id" cssClass="form-control" readonly="true"/>
 			</div>
 		</c:if>
 		
 		<div class="form-group">
 			<label>Nombre</label>
-			<form:input cssClass="form-control" />
+			<form:input path="nombre" cssClass="form-control" />
 		</div>
 		<div class="form-group">
-			<label for="precio">Apellido</label> 
-			<form:input cssClass="form-control" />
+			<label>Cantidad</label>
+			<form:input path="cantidad" cssClass="form-control" />
 		</div>
 		<div class="form-group">
-			<label for="precio">dni</label> 
-			<form:input cssClass="form-control" />
+			<label>Precio</label>
+			<form:input path="precio" cssClass="form-control" />
 		</div>
 		<div class="form-group">
-			<label for="precio">telefono</label> 
-			<form:input cssClass="form-control" />
+			<label>Categoria</label>
+			<form:select path="idCategoria" items="${categorias}"
+			itemLabel="nombre" itemValue="id" cssClass="form-control"
+			id="select-categorias" />
 		</div>
 		<div class="form-group">
-			<label for="precio">Sueldo por Hora</label> 
-			<form:input cssClass="form-control" />
+			<label>Proveedor</label>
+			<form:select path="idProveedor" items="${proveedores}"
+			itemLabel="nombre" itemValue="id" cssClass="form-control"
+			id="select-categorias" />
 		</div>
-		
 
-		<button type="submit" class="btn btn-primary mt-2">Guardar Trabajador</button>
+
+		<button type="submit" class="btn btn-primary mt-2">Guardar Material</button>
 	</div>
 </form:form>
 

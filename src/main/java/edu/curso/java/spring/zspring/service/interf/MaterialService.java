@@ -11,9 +11,11 @@ public interface MaterialService {
 
 	MaterialBo obtenerMaterial(Long id);
 
-	void nuevoMaterial(MaterialBo material);
-
 	void eliminarMaterial(Long id);
 
 	void editarMaterial(MaterialBo material, Long id);
+
+	void nuevoMaterial(MaterialBo material, Long idCategoria, Long idProveedor);
+
+	void nuevoMaterial(MaterialBo material);
 }
