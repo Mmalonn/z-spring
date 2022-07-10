@@ -6,44 +6,39 @@
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
-	<c:if test="${trabajadorForm.id > 0}">
-		<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajador n ${trabajadorForm.id}</h2>
-	</c:if>
-	<c:if test="${trabajadorForm.id == null}">
-		<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajador nuevo</h2>
-	</c:if>
-	
+	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajador
+		n </h2>
 </div>
 
-<form:form method="POST" action="/trabajadores/guardar" modelAttribute="trabajadorForm">
+<form:form method="POST" action="/" >
 	<div class="container mt-4">
 	
-		<c:if test="${trabajadorForm.id > 0}">
+		<c:if test="">
 			<div class="form-group">
 				<label>Id trabajador</label>
-				<form:input path="id" cssClass="form-control" readonly="true"/>
+				<form:input cssClass="form-control" readonly="true"/>
 			</div>
 		</c:if>
 		
 		<div class="form-group">
 			<label>Nombre</label>
-			<form:input path="nombre" cssClass="form-control" />
+			<form:input cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label for="precio">Apellido</label> 
-			<form:input path="apellido" cssClass="form-control" />
+			<form:input cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label for="precio">dni</label> 
-			<form:input path="dni" cssClass="form-control" />
+			<form:input cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label for="precio">telefono</label> 
-			<form:input path="telefono" cssClass="form-control" />
+			<form:input cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label for="precio">Sueldo por Hora</label> 
-			<form:input path="sueldoPorHora" cssClass="form-control" />
+			<form:input cssClass="form-control" />
 		</div>
 		
 

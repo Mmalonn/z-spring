@@ -23,4 +23,24 @@ public class MaterialServiceImpl implements MaterialService {
 		return materialRepository.listarMateriales();
 	}
 
+	@Override
+	public MaterialBo obtenerMaterial(Long id) {
+		return materialRepository.obtenerMaterial(id);
+	}
+
+	@Override
+	public void nuevoMaterial(MaterialBo material) {
+		materialRepository.nuevoMaterial(material);
+	}
+
+	@Override
+	public void eliminarMaterial(Long id) {
+		materialRepository.eliminarMaterial(id);
+	}
+
+	@Override
+	public void editarMaterial(MaterialBo material, Long id) {
+		materialRepository.editarMaterial(material, id);
+	}
+
 }

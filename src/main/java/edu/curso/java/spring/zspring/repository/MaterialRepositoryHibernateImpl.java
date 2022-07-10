@@ -21,4 +21,32 @@ public class MaterialRepositoryHibernateImpl implements MaterialRepository {
 		return entityManager.createQuery("from MaterialBo as m order by m.nombre").getResultList();
 	}
 
+	@Override
+	public MaterialBo obtenerMaterial(Long id) {
+		return entityManager.find(MaterialBo.class, id);
+	}
+
+	@Override
+	public void nuevoMaterial(MaterialBo material) {
+		entityManager.persist(material);
+	}
+
+	@Override
+	public void eliminarMaterial(Long id) {
+		MaterialBo material = entityManager.find(MaterialBo.class, id);
+		entityManager.remove(material);
+	}
+
+	@Override
+	public void editarMaterial(MaterialBo materialBo, Long id) {
+		MaterialBo material = entityManager.find(MaterialBo.class, id);
+		material.setNombre(materialBo.getNombre());
+		material.setCantidad(materialBo.getCantidad());
+		material.setPrecio(materialBo.getPrecio());
+		material.setCategoriaBo(materialBo.getCategoriaBo());
+		material.setProveedorBo(materialBo.getProveedorBo());
+		entityManager.merge(material);
+	}
+	
+
 }
