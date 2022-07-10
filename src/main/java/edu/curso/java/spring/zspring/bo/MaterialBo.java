@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class MaterialBo {
@@ -14,8 +15,10 @@ public class MaterialBo {
 	private String nombre;
 	private Long cantidad;
 	private Double precio;
+	@JsonIgnore
 	@ManyToOne
 	private ProveedorBo proveedorBo;
+	@JsonIgnore
 	@ManyToOne
 	private CategoriaBo categoriaBo;
 	
