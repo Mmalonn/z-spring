@@ -17,12 +17,18 @@ public class TrabajoForm {
 	private Double horasEstimadas;
 	private Double precioFinal;
 	private TrabajadorBo trabajadorBo;
-	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
 	private MaterialBo material;
 	private UbicacionBo ubicacionBo;
+	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
 	
 	
 	
+	public List<MaterialBo> getMateriales() {
+		return materiales;
+	}
+	public void setMateriales(List<MaterialBo> materiales) {
+		this.materiales = materiales;
+	}
 	public MaterialBo getMaterial() {
 		return material;
 	}
@@ -71,12 +77,6 @@ public class TrabajoForm {
 	}
 	public void setTrabajadorBo(TrabajadorBo trabajadorBo) {
 		this.trabajadorBo = trabajadorBo;
-	}
-	public List<MaterialBo> getMateriales() {
-		return materiales;
-	}
-	public void setMateriales(List<MaterialBo> materiales) {
-		this.materiales = materiales;
 	}
 	public UbicacionBo getUbicacionBo() {
 		return ubicacionBo;

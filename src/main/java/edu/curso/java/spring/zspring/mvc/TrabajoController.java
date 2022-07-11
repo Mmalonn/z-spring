@@ -63,7 +63,7 @@ public class TrabajoController {
 		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
 		model.addAttribute("proveedores", proveedores);
 		List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
-		model.addAttribute("trabajadores", trabajadores);
+		model.addAttribute("trabajadores", trabajadores); 
 		List<MaterialBo> materiales = materialService.listarMateriales();
 		model.addAttribute("materiales", materiales);
 		model.addAttribute("trabajoForm", new TrabajoForm());
