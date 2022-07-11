@@ -12,7 +12,7 @@
 	<h5 class="card-header">${trabajador.nombre}
 		${trabajador.apellido}</h5>
 	<div class="card-body">
-		<h5 class="card-title">Telefono trabajador: ${trabajador.dni}</h5>
+		<h5 class="card-title">Telefono trabajador: ${trabajador.telefono}</h5>
 		<p class="card-text">DNI trabajador: ${trabajador.dni}</p>
 
 		<table class="table">

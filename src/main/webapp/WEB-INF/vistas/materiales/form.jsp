@@ -40,8 +40,7 @@
 		<div class="form-group">
 			<label>Categoria</label>
 			<form:select path="idCategoria" items="${categorias}"
-			itemLabel="nombre" itemValue="id" cssClass="form-control"
-			id="select-categorias" />
+			itemLabel="nombre" itemValue="id" cssClass="form-control"/>
 		</div>
 		<div class="form-group">
 			<label>Proveedor</label>

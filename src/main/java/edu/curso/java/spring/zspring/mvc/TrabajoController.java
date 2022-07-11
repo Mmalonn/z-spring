@@ -12,9 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
+import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
+import edu.curso.java.spring.zspring.mvc.form.TrabajoForm;
+import edu.curso.java.spring.zspring.service.interf.MaterialService;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
+import edu.curso.java.spring.zspring.service.interf.TrabajadorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajoService;
 
 
@@ -28,6 +33,10 @@ public class TrabajoController {
 	private TrabajoService trabajoservice;
 	@Autowired
 	private ProveedorService proveedorService;
+	@Autowired
+	private TrabajadorService trabajadorService;
+	@Autowired
+	private MaterialService materialService;
 	
 	@GetMapping("/lista")
 	public String listar(Model model) {
@@ -47,5 +56,18 @@ public class TrabajoController {
 		model.addAttribute("proveedores", proveedores);
 		model.addAttribute("trabajo", trabajo);
 		return "/trabajos/trabajo";
+	}
+	
+	@GetMapping("/nuevo")
+	public String nuevoTrabajo(Model model) {
+		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
+		List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
+		model.addAttribute("trabajadores", trabajadores);
+		List<MaterialBo> materiales = materialService.listarMateriales();
+		model.addAttribute("materiales", materiales);
+		model.addAttribute("trabajoForm", new TrabajoForm());
+		return "/trabajos/form";
+		
 	}
 }
