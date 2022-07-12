@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,11 +28,11 @@ public class TrabajoBo {
 	@ManyToOne
 	@JsonIgnore
 	private TrabajadorBo trabajadorBo;
-	@OneToMany
-	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
+	@ElementCollection
+	private List<String> materiales = new ArrayList<String>();
 	@OneToOne
 	private UbicacionBo ubicacionBo;
-
+ 
 	public String getTarea() {
 		return tarea;
 	}
@@ -64,11 +65,11 @@ public class TrabajoBo {
 		this.ubicacionBo = ubicacionBo;
 	}
 
-	public List<MaterialBo> getMateriales() {
+	public List<String> getMateriales() {
 		return materiales;
 	}
 
-	public void setMateriales(List<MaterialBo> materiales) {
+	public void setMateriales(List<String> materiales) {
 		this.materiales = materiales;
 	}
 
@@ -105,7 +106,7 @@ public class TrabajoBo {
 	}
 
 	public TrabajoBo(String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre, Date fecha,
-			TrabajadorBo trabajadorBo, List<MaterialBo> materiales, UbicacionBo ubicacionBo) {
+			TrabajadorBo trabajadorBo, List<String> materiales, UbicacionBo ubicacionBo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

@@ -3,6 +3,7 @@ package edu.curso.java.spring.zspring.mvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import edu.curso.java.spring.zspring.service.interf.MaterialService;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajadorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajoService;
+import edu.curso.java.spring.zspring.service.interf.TrabajoTerminadoService;
 import edu.curso.java.spring.zspring.service.interf.UbicacionService;
 
 @Controller
@@ -42,6 +44,8 @@ public class TrabajoController {
 	private MaterialService materialService;
 	@Autowired
 	private UbicacionService ubicacionService;
+	@Autowired
+	private TrabajoTerminadoService trabajoTerminadoService;
 
 
 	@GetMapping("/lista")
@@ -84,12 +88,13 @@ public class TrabajoController {
 		trabajo.setTarea(trabajoForm.getTarea());
 		trabajo.setHorasEstimadas(trabajoForm.getHorasEstimadas());
 		trabajo.setFecha(trabajoForm.getFecha());			
-		List<Long> numeros = trabajoForm.getIdMateriales();
-		List<MaterialBo> materiales = new ArrayList<MaterialBo>();
-		for (Long material : numeros) {
-			MaterialBo obtenido = materialService.obtenerMaterial(material);
-			materiales.add(obtenido);
-		}		
+		List<Long> materialesForm = trabajoForm.getIdMateriales();
+		List<String> materiales = new ArrayList<String>();
+		for (Long id : materialesForm) {			
+			MaterialBo material = materialService.obtenerMaterial(id);
+			materiales.add(material.getNombre());
+		}
+		System.out.println(materiales);
 		trabajo.setMateriales(materiales);
 		trabajo.setPrecioFinal(trabajoForm.getPrecioFinal());		
 		UbicacionBo ubicacion = new UbicacionBo();
@@ -106,6 +111,15 @@ public class TrabajoController {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id2);
 		trabajadorService.borrarTrabajoTrabajador(id, trabajador);
 		trabajoService.eliminarTrabajo(id);
+		return "redirect:/trabajos/lista";
+	}
+	
+	@GetMapping("/{id}/terminar/{id2}")
+	public String terminarTrabajo(Model model, @PathVariable Long id, @PathVariable Long id2) {
+		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id2);
+		trabajadorService.borrarTrabajoTrabajador(id, trabajador);
+		TrabajoBo trabajo = trabajoService.obtenerTrabajo(id);
+		trabajoTerminadoService.nuevoTerminado(trabajo);
 		return "redirect:/trabajos/lista";
 	}
 }

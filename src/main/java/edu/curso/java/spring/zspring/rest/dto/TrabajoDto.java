@@ -15,7 +15,7 @@ public class TrabajoDto {
 	private String nombre;
 	private Date fecha;
 	private TrabajadorBo trabajadorBo;
-	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
+	private List<String> materiales = new ArrayList<String>();
 	private UbicacionBo ubicacionBo;
 	private String tarea;
 	private Double horasEstimadas;
@@ -77,11 +77,11 @@ public class TrabajoDto {
 		this.trabajadorBo = trabajadorBo;
 	}
 
-	public List<MaterialBo> getMateriales() {
+	public List<String> getMateriales() {
 		return materiales;
 	}
 
-	public void setMateriales(List<MaterialBo> materiales) {
+	public void setMateriales(List<String> materiales) {
 		this.materiales = materiales;
 	}
 
@@ -94,7 +94,7 @@ public class TrabajoDto {
 	}
 
 	public TrabajoDto(String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre, Date fecha,
-			TrabajadorBo trabajadorBo, List<MaterialBo> materiales, UbicacionBo ubicacionBo) {
+			TrabajadorBo trabajadorBo, List<String> materiales, UbicacionBo ubicacionBo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

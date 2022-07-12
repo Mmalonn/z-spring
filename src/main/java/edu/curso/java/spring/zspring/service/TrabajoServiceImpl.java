@@ -50,6 +50,7 @@ public class TrabajoServiceImpl implements TrabajoService {
 			trabajadorRepository.editarTrabajador(trabajadorBo, id);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("hola");
 		}
 	}
 
