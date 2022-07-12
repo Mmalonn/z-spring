@@ -24,12 +24,11 @@
 			<c:forEach items="${trabajos}" var="t">
 				<tr>
 					<td scope="row">${t.nombre}</td>
-					<td>${t.ubicacionBo.calle}</td>
+					<td>${t.ubicacionBo.direccion}</td>
 					<td>${t.fecha}</td>
-					<td><a type="button" class="btn btn-secondary btn-sm"
-						href="/trabajos/${t.id}">Ver</a> <a type="button"
-						class="btn btn-secondary btn-sm" href="/">Editar</a> <a
-						type="button" class="btn btn-secondary btn-sm" href="/">Eliminar</a>
+					<td>
+						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}">Ver</a>
+						<a type="button" class="btn btn-secondary btn-sm" href="/">Eliminar</a>
 						<a type="button" class="btn btn-secondary btn-sm" href="/">Terminado</a>
 					</td>
 				</tr>

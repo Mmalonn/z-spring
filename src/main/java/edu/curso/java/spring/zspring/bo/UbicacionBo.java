@@ -11,10 +11,7 @@ public class UbicacionBo {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String calle;
-	private String numero;
-	
-	
+	private String direccion;
 	
 	public Long getId() {
 		return id;
@@ -22,25 +19,12 @@ public class UbicacionBo {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getCalle() {
-		return calle;
+	public String getDireccion() {
+		return direccion;
 	}
-	public void setCalle(String calle) {
-		this.calle = calle;
-	}
-	public String getNumero() {
-		return numero;
-	}
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-	public UbicacionBo(Long id, String calle, String numero, TrabajoBo trabajoBo) {
-		super();
-		this.id = id;
-		this.calle = calle;
-		this.numero = numero;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 	
-	public UbicacionBo() {}
 	
 }

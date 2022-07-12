@@ -6,8 +6,8 @@ import edu.curso.java.spring.zspring.bo.UbicacionBo;
 public class UbicacionDto {
 
 	private Long id;
-	private String calle;
-	private String numero;
+	private String direccion;
+	
 	
 	public Long getId() {
 		return id;
@@ -15,28 +15,19 @@ public class UbicacionDto {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getCalle() {
-		return calle;
+	public String getDireccion() {
+		return direccion;
 	}
-	public void setCalle(String calle) {
-		this.calle = calle;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
-	public String getNumero() {
-		return numero;
-	}
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public UbicacionDto(Long id, String calle, String numero, TrabajoBo trabajoBo) {
+	public UbicacionDto(Long id, String direccion, TrabajoBo trabajoBo) {
 		super();
 		this.id = id;
-		this.calle = calle;
-		this.numero = numero;
+		this.direccion = direccion;
 	}
 	public UbicacionDto(UbicacionBo ubicacion) {
 		this.id = ubicacion.getId();
-		this.calle = ubicacion.getCalle();
-		this.numero = ubicacion.getNumero();
+		this.direccion = ubicacion.getDireccion();
 	}
 }

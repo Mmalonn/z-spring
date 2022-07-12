@@ -25,7 +25,7 @@ public class TrabajoServiceImpl implements TrabajoService {
 	private UbicacionRepository ubicacionRepository;
 	@Autowired
 	private TrabajadorRepository trabajadorRepository;
-	
+
 	@Override
 	public List<TrabajoBo> listarTrabajos() {
 		return trabajoRepository.listarTrabajos();
@@ -40,10 +40,17 @@ public class TrabajoServiceImpl implements TrabajoService {
 	public void agregarTrabajo(TrabajoBo trabajo, Long id) {
 		UbicacionBo ubicacion = trabajo.getUbicacionBo();
 		ubicacionRepository.nuevaUbicacion(ubicacion);
-		TrabajadorBo trabajadorBo = trabajadorRepository.obtenerTrabajador(id);
-		List<TrabajoBo> trabajos = trabajadorRepository.obtenerTrabajosTrabajador(trabajadorBo);
-		trabajos.add(trabajo);
-		trabajadorRepository.editarTrabajador(trabajadorBo, id);
+		TrabajadorBo trabajadorBo = trabajadorRepository.obtenerTrabajador(id);		
+		trabajo.setTrabajadorBo(trabajadorBo);
+		trabajoRepository.agregarTrabajo(trabajo);
+		try {
+			List<TrabajoBo> trabajos = trabajadorRepository.obtenerTrabajosTrabajador(trabajadorBo);
+			trabajos.add(trabajo);
+			trabajadorBo.setTrabajos(trabajos);
+			trabajadorRepository.editarTrabajador(trabajadorBo, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		trabajoRepository.agregarTrabajo(trabajo);
 	}
 

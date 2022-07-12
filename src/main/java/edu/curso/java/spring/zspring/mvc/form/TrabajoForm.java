@@ -18,7 +18,7 @@ public class TrabajoForm {
 	private Double precioFinal;
 	private TrabajadorBo trabajadorBo;
 	private MaterialBo material;
-	private UbicacionBo ubicacionBo;
+	private String ubicacionBo;
 	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
 	private Long idTrabajador;
 	private Long idMaterial;
@@ -92,10 +92,10 @@ public class TrabajoForm {
 	public void setTrabajadorBo(TrabajadorBo trabajadorBo) {
 		this.trabajadorBo = trabajadorBo;
 	}
-	public UbicacionBo getUbicacionBo() {
+	public String getUbicacionBo() {
 		return ubicacionBo;
 	}
-	public void setUbicacionBo(UbicacionBo ubicacionBo) {
+	public void setUbicacionBo(String ubicacionBo) {
 		this.ubicacionBo = ubicacionBo;
 	}
 	

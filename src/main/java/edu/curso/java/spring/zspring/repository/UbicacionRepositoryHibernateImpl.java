@@ -18,7 +18,7 @@ public class UbicacionRepositoryHibernateImpl implements UbicacionRepository {
 
 	@Override
 	public List<UbicacionBo> listarUbicaciones() {
-		return entityManager.createQuery("from UbicacionBo as u order by u.calle").getResultList();
+		return entityManager.createQuery("from UbicacionBo as u order by u.direccion").getResultList();
 	}
 
 	@Override
@@ -40,8 +40,7 @@ public class UbicacionRepositoryHibernateImpl implements UbicacionRepository {
 	@Override
 	public void editarUbicacion(UbicacionBo ubicacionBo, Long id) {
 		UbicacionBo ubicacion = entityManager.find(UbicacionBo.class, id);
-		ubicacion.setCalle(ubicacionBo.getCalle());
-		ubicacion.setNumero(ubicacionBo.getNumero());
+		ubicacion.setDireccion(ubicacionBo.getDireccion());
 		entityManager.merge(ubicacion);
 	}
 

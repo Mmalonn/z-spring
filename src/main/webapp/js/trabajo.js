@@ -49,13 +49,17 @@ document.getElementById("boton").addEventListener("click", function(e) {
 });
 
 let cargarMateriales = () => {
-	let array = [];
-	let m1 = document.getElementById("m1");
-	let m2 = document.getElementById("m2");
-	let m3 = document.getElementById("m3");
-	array.push(m1.value);
-	array.push(m2.value);
-	array.push(m3.value);
+	let m1 = document.getElementById("m1").value;
+	let m2 = document.getElementById("m2").value;
+	let m3 = document.getElementById("m3").value;
+
+	let array = [
+		m1,
+		m2,
+		m3
+	];
+
+
 	document.getElementById("materialesEnviar").value = array;
 };
 
@@ -68,7 +72,7 @@ let asignarCantidades = () => {
 	document.getElementById("c1").value = cc1;
 	document.getElementById("c2").value = cc2;
 	document.getElementById("c3").value = cc3;
-	
+
 }
 
 document.getElementById("boton2").addEventListener("click", function(e) {
@@ -77,7 +81,7 @@ document.getElementById("boton2").addEventListener("click", function(e) {
 	let totalMaterial1 = document.getElementById("c1").value * document.getElementById("precioM1").value;
 	let totalMaterial2 = document.getElementById("c2").value * document.getElementById("precioM2").value;
 	let totalMaterial3 = document.getElementById("c3").value * document.getElementById("precioM3").value;
-	let total = precioTrabajador + totalMaterial1+ totalMaterial2 + totalMaterial3;
+	let total = precioTrabajador + totalMaterial1 + totalMaterial2 + totalMaterial3;
 	console.log(total);
 	document.getElementById("final").value = total;
 });

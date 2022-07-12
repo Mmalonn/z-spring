@@ -17,11 +17,13 @@ import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
+import edu.curso.java.spring.zspring.bo.UbicacionBo;
 import edu.curso.java.spring.zspring.mvc.form.TrabajoForm;
 import edu.curso.java.spring.zspring.service.interf.MaterialService;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajadorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajoService;
+import edu.curso.java.spring.zspring.service.interf.UbicacionService;
 
 @Controller
 @RequestMapping("/trabajos")
@@ -37,6 +39,8 @@ public class TrabajoController {
 	private TrabajadorService trabajadorService;
 	@Autowired
 	private MaterialService materialService;
+	@Autowired
+	private UbicacionService ubicacionService;
 
 	@GetMapping("/lista")
 	public String listar(Model model) {
@@ -77,12 +81,20 @@ public class TrabajoController {
 		trabajo.setTarea(trabajoForm.getTarea());
 		trabajo.setHorasEstimadas(trabajoForm.getHorasEstimadas());
 		trabajo.setFecha(trabajoForm.getFecha());
-		trabajo.setMateriales(trabajoForm.getMateriales());
-		trabajo.setTrabajadorBo(trabajoForm.getTrabajadorBo());
-		trabajo.setPrecioFinal(trabajoForm.getPrecioFinal());
-		trabajo.setUbicacionBo(trabajoForm.getUbicacionBo());
+		List<MaterialBo> materiales = trabajoForm.getMateriales();
+		for (MaterialBo materialBo : materiales) {
+			System.out.println("hola");
+		}
+
+		
+		trabajo.setMateriales(materiales);
+		trabajo.setPrecioFinal(trabajoForm.getPrecioFinal());		
+		UbicacionBo ubicacion = new UbicacionBo();
+		ubicacion.setDireccion(trabajoForm.getUbicacionBo()); 
+		trabajo.setUbicacionBo(ubicacion);
 		Long trabajadorId = trabajoForm.getIdTrabajador();
-		trabajoService.agregarTrabajo(trabajo, trabajadorId);
+		//ubicacionService.nuevaUbicacion(ubicacion);
+		//trabajoService.agregarTrabajo(trabajo, trabajadorId);
 		return "redirect:/trabajos/lista";
 	}
 }

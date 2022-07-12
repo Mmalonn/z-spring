@@ -54,8 +54,7 @@ public class UbicacionRestController {
 	@PostMapping("/ubicaciones")
 	public ResponseEntity<UbicacionDto> nuevaUbicacion(@RequestBody UbicacionDto ubicacionDto){
 		UbicacionBo ubicacion = new UbicacionBo();
-		ubicacion.setCalle(ubicacionDto.getCalle());
-		ubicacion.setNumero(ubicacionDto.getNumero());
+		ubicacion.setDireccion(ubicacionDto.getDireccion());
 		ubicacionService.nuevaUbicacion(ubicacion);
 		return ResponseEntity.status(HttpStatus.CREATED).body(ubicacionDto);
 	}
@@ -69,8 +68,7 @@ public class UbicacionRestController {
 	@PutMapping("/ubicaciones/{id}")
 	public ResponseEntity<UbicacionDto> editarUbicacion(@RequestBody UbicacionDto ubicacionDto, @PathVariable Long id){
 		UbicacionBo ubicacion = new UbicacionBo();
-		ubicacion.setCalle(ubicacionDto.getCalle());
-		ubicacion.setNumero(ubicacionDto.getNumero());
+		ubicacion.setDireccion(ubicacionDto.getDireccion());
 		ubicacionService.editarUbicacion(ubicacion, id);
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(ubicacionDto);
 	}

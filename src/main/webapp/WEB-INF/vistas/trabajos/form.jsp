@@ -65,9 +65,16 @@
 				<label for="primero">Ingrese Cantidad</label> <input type="number" class="form-control" id="cc3">
 			</div>
 		</div>
+		
+		
+		
+		
 		<div class="form-group">
-			<form:input path="materiales" cssClass="form-control" id="materialesEnviar" readonly="true" hidden="true" />
+			<form:input path="materiales" id="materialesEnviar" readonly="true"/>
 		</div>
+
+
+
 
 		<div class="container" hidden="true" id="cont">
  			 <div class="row border-bottom">
