@@ -22,9 +22,8 @@ public class TrabajoTerminadoDto {
 	private Long id;
 	private String nombre;
 	private Date fecha;
-	private TrabajadorBo trabajadorBo;
-	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
-	private UbicacionBo ubicacionBo;
+	private String trabajadorBo;
+	private String ubicacionBo;
 	private Date fechaFinalizacion;
 	private String tarea;
 	private Double horasEstimadas;
@@ -78,27 +77,19 @@ public class TrabajoTerminadoDto {
 		this.fecha = fecha;
 	}
 
-	public TrabajadorBo getTrabajadorBo() {
+	public String getTrabajadorBo() {
 		return trabajadorBo;
 	}
 
-	public void setTrabajadorBo(TrabajadorBo trabajadorBo) {
+	public void setTrabajadorBo(String trabajadorBo) {
 		this.trabajadorBo = trabajadorBo;
 	}
 
-	public List<MaterialBo> getMateriales() {
-		return materiales;
-	}
-
-	public void setMateriales(List<MaterialBo> materiales) {
-		this.materiales = materiales;
-	}
-
-	public UbicacionBo getUbicacionBo() {
+	public String getUbicacionBo() {
 		return ubicacionBo;
 	}
 
-	public void setUbicacionBo(UbicacionBo ubicacionBo) {
+	public void setUbicacionBo(String ubicacionBo) {
 		this.ubicacionBo = ubicacionBo;
 	}
 
@@ -111,14 +102,13 @@ public class TrabajoTerminadoDto {
 	}
 
 	public TrabajoTerminadoDto(String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre,
-			Date fecha, TrabajadorBo trabajadorBo, List<MaterialBo> materiales, UbicacionBo ubicacionBo,
+			Date fecha, String trabajadorBo, String ubicacionBo,
 			Date fechaFinalizacion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.fecha = fecha;
 		this.trabajadorBo = trabajadorBo;
-		this.materiales = materiales;
 		this.ubicacionBo = ubicacionBo;
 		this.fechaFinalizacion = fechaFinalizacion;
 		this.tarea = tarea;
@@ -131,7 +121,6 @@ public class TrabajoTerminadoDto {
 		this.nombre = tTerminado.getNombre();
 		this.fecha = tTerminado.getFecha();
 		this.trabajadorBo = tTerminado.getTrabajadorBo();
-		this.materiales = tTerminado.getMateriales();
 		this.ubicacionBo = tTerminado.getUbicacionBo();
 		this.fechaFinalizacion = tTerminado.getFechaFinalizacion();
 		this.tarea = tTerminado.getTarea();

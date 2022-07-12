@@ -29,7 +29,7 @@
 					<td>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}">Ver</a>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/eliminar/${t.trabajadorBo.id}">Eliminar</a>
-						<a type="button" class="btn btn-secondary btn-sm" href="/">Terminado</a>
+						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/terminar/${t.trabajadorBo.id}"}">Terminado</a>
 					</td>
 				</tr>
 			</c:forEach>

@@ -12,4 +12,6 @@ public interface TrabajoTerminadoService {
 	TrabajoTerminadoBo obtenerTerminado(Long id);
 
 	void nuevoTerminado(TrabajoBo trabajo);
+
+	void nuevoTerminado(TrabajoTerminadoBo trabajo);
 }

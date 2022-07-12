@@ -3,7 +3,6 @@ package edu.curso.java.spring.zspring.mvc;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,6 +119,7 @@ public class TrabajoController {
 		trabajadorService.borrarTrabajoTrabajador(id, trabajador);
 		TrabajoBo trabajo = trabajoService.obtenerTrabajo(id);
 		trabajoTerminadoService.nuevoTerminado(trabajo);
+		trabajoService.eliminarTrabajo(id);
 		return "redirect:/trabajos/lista";
 	}
 }

@@ -22,7 +22,7 @@
 		<c:forEach items="${terminados}" var="t">
 			<tr>
 				<td scope="row">${t.nombre}</td>
-				<td>${t.ubicacionBo.nombre}</td>
+				<td>${t.ubicacionBo}</td>
 				<td>${t.fechaFinalizacion}</td>
 				<td><a type="button"
 					class="btn btn-secondary btn-sm" href="/terminados/${t.id }">Ver</a>

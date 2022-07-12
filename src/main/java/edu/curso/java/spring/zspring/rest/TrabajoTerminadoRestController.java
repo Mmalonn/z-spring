@@ -57,7 +57,6 @@ public class TrabajoTerminadoRestController {
 		trabajo.setUbicacionBo(trabajoTerminadoDto.getUbicacionBo());
 		trabajo.setHorasEstimadas(trabajoTerminadoDto.getHorasEstimadas());
 		trabajo.setTrabajadorBo(trabajoTerminadoDto.getTrabajadorBo());
-		trabajo.setMateriales(trabajoTerminadoDto.getMateriales());
 		trabajo.setPrecioFinal(trabajoTerminadoDto.getPrecioFinal());
 		trabajo.setFechaFinalizacion(trabajoTerminadoDto.getFechaFinalizacion());
 		trabajoTerminadoService.nuevoTerminado(trabajo);

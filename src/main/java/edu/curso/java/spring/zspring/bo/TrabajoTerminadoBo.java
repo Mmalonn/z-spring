@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,12 +23,8 @@ public class TrabajoTerminadoBo {
 	private Double horasEstimadas;
 	private Double precioFinal;
 	private Date fecha;
-	@ManyToOne
-	private TrabajadorBo trabajadorBo;
-	@OneToMany
-	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
-	@OneToOne
-	private UbicacionBo ubicacionBo;
+	private String trabajadorBo;
+	private String ubicacionBo;
 	private Date fechaFinalizacion;
 
 	public String getTarea() {
@@ -80,27 +77,19 @@ public class TrabajoTerminadoBo {
 		this.fecha = fecha;
 	}
 
-	public TrabajadorBo getTrabajadorBo() {
+	public String getTrabajadorBo() {
 		return trabajadorBo;
 	}
 
-	public void setTrabajadorBo(TrabajadorBo trabajadorBo) {
+	public void setTrabajadorBo(String trabajadorBo) {
 		this.trabajadorBo = trabajadorBo;
 	}
 
-	public List<MaterialBo> getMateriales() {
-		return materiales;
-	}
-
-	public void setMateriales(List<MaterialBo> materiales) {
-		this.materiales = materiales;
-	}
-
-	public UbicacionBo getUbicacionBo() {
+	public String getUbicacionBo() {
 		return ubicacionBo;
 	}
 
-	public void setUbicacionBo(UbicacionBo ubicacionBo) {
+	public void setUbicacionBo(String ubicacionBo) {
 		this.ubicacionBo = ubicacionBo;
 	}
 
@@ -113,14 +102,13 @@ public class TrabajoTerminadoBo {
 	}
 
 	public TrabajoTerminadoBo(String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre,
-			Date fecha, TrabajadorBo trabajadorBo, List<MaterialBo> materiales, UbicacionBo ubicacionBo,
+			Date fecha, String trabajadorBo, List<String> materiales, String ubicacionBo,
 			Date fechaFinalizacion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.fecha = fecha;
 		this.trabajadorBo = trabajadorBo;
-		this.materiales = materiales;
 		this.ubicacionBo = ubicacionBo;
 		this.fechaFinalizacion = fechaFinalizacion;
 		this.horasEstimadas = horasEstimadas;

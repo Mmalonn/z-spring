@@ -32,8 +32,20 @@ public class TrabajoTerminadoServiceImpl implements TrabajoTerminadoService {
 	@Override
 	public void nuevoTerminado(TrabajoBo trabajo) {
 		TrabajoTerminadoBo terminado = new TrabajoTerminadoBo();
-		
+		terminado.setNombre(trabajo.getNombre());
+		terminado.setFecha(trabajo.getFecha());
+		terminado.setTarea(trabajo.getTarea());
+		terminado.setHorasEstimadas(trabajo.getHorasEstimadas());
+		terminado.setTrabajadorBo(trabajo.getTrabajadorBo().getNombre());
+		terminado.setPrecioFinal(trabajo.getPrecioFinal());
+		terminado.setUbicacionBo(trabajo.getUbicacionBo().getDireccion());
+		terminado.setFechaFinalizacion(null);
 		trabajoTerminadoRepository.nuevoTerminado(terminado);
+	}
+
+	@Override
+	public void nuevoTerminado(TrabajoTerminadoBo trabajo) {
+		trabajoTerminadoRepository.nuevoTerminado(trabajo);
 	}
 
 }
