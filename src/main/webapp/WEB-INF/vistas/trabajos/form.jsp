@@ -44,6 +44,12 @@
 			<label>Ingrese Horas Estimadas</label>
 			<form:input path="horasEstimadas" cssClass="form-control" id="hhoras" />
 		</div>
+		
+		
+		
+		
+		
+		
 		<div class="form-group">
 			<label>Seleccione primer material</label>
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m1" />
@@ -51,6 +57,15 @@
 				<label for="primero">Ingrese Cantidad</label> <input type="number" class="form-control" id="cc1">
 			</div>
 		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<div class="form-group">
 			<label>Seleccione segundo material</label>
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m2" />

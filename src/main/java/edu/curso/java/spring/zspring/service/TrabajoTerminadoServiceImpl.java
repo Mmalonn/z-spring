@@ -1,5 +1,6 @@
 package edu.curso.java.spring.zspring.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -39,7 +40,8 @@ public class TrabajoTerminadoServiceImpl implements TrabajoTerminadoService {
 		terminado.setTrabajadorBo(trabajo.getTrabajadorBo().getNombre());
 		terminado.setPrecioFinal(trabajo.getPrecioFinal());
 		terminado.setUbicacionBo(trabajo.getUbicacionBo().getDireccion());
-		terminado.setFechaFinalizacion(null);
+		LocalDate localDate = LocalDate.now();
+		terminado.setFechaFinalizacion(localDate);
 		trabajoTerminadoRepository.nuevoTerminado(terminado);
 	}
 

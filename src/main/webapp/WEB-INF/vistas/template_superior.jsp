@@ -47,7 +47,8 @@
 					<c:forEach items="${proveedores}" var="p">
 						<a class="dropdown-item" href="/proveedores/${p.id}">${p.nombre}</a>
 					</c:forEach>
-				</div></li>
+				</div>
+			</li>
 
 		</ul>
 

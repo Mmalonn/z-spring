@@ -1,6 +1,7 @@
 package edu.curso.java.spring.zspring.bo;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class TrabajoTerminadoBo {
 	private Date fecha;
 	private String trabajadorBo;
 	private String ubicacionBo;
-	private Date fechaFinalizacion;
+	private LocalDate fechaFinalizacion;
 
 	public String getTarea() {
 		return tarea;
@@ -93,17 +94,17 @@ public class TrabajoTerminadoBo {
 		this.ubicacionBo = ubicacionBo;
 	}
 
-	public Date getFechaFinalizacion() {
+	public LocalDate getFechaFinalizacion() {
 		return fechaFinalizacion;
 	}
 
-	public void setFechaFinalizacion(Date fechaFinalizacion) {
+	public void setFechaFinalizacion(LocalDate fechaFinalizacion) {
 		this.fechaFinalizacion = fechaFinalizacion;
 	}
 
 	public TrabajoTerminadoBo(String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre,
 			Date fecha, String trabajadorBo, List<String> materiales, String ubicacionBo,
-			Date fechaFinalizacion) {
+			LocalDate fechaFinalizacion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

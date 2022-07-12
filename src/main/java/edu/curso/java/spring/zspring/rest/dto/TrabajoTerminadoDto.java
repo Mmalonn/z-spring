@@ -1,6 +1,7 @@
 package edu.curso.java.spring.zspring.rest.dto;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class TrabajoTerminadoDto {
 	private Date fecha;
 	private String trabajadorBo;
 	private String ubicacionBo;
-	private Date fechaFinalizacion;
+	private LocalDate fechaFinalizacion;
 	private String tarea;
 	private Double horasEstimadas;
 	private Double precioFinal;
@@ -93,17 +94,17 @@ public class TrabajoTerminadoDto {
 		this.ubicacionBo = ubicacionBo;
 	}
 
-	public Date getFechaFinalizacion() {
+	public LocalDate getFechaFinalizacion() {
 		return fechaFinalizacion;
 	}
 
-	public void setFechaFinalizacion(Date fechaFinalizacion) {
+	public void setFechaFinalizacion(LocalDate fechaFinalizacion) {
 		this.fechaFinalizacion = fechaFinalizacion;
 	}
 
 	public TrabajoTerminadoDto(String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre,
 			Date fecha, String trabajadorBo, String ubicacionBo,
-			Date fechaFinalizacion) {
+			LocalDate fechaFinalizacion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
