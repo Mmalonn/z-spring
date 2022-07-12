@@ -39,45 +39,32 @@
 		<div class="form-group">
 			<label>Seleccione Trabajador</label>
 			<form:select path="idTrabajador" items="${trabajadores}" itemLabel="nombre" itemValue="id" cssClass="form-control" id="t" />
-		</div>
-		<div class="form-group">
+		</div>		
+		<div class="form-group mb-4">
 			<label>Ingrese Horas Estimadas</label>
-			<form:input path="horasEstimadas" cssClass="form-control" id="hhoras" />
-		</div>
-		
-		
-		
-		
-		
-		
-		<div class="form-group">
+			<form:input path="horasEstimadas" type="number" cssClass="form-control" id="hhoras" />
+		</div>	
+			
+		<div class="form-group	mt-5 pt-5 pl-5 pr-5">
 			<label>Seleccione primer material</label>
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m1" />
-			<div class="form-group">
-				<label for="primero">Ingrese Cantidad</label> <input type="number" class="form-control" id="cc1">
+			<div class="form-group mt-1">
+				<label>Ingrese Cantidad</label>
+				<input class="bg-secondary" type="number" class="form-control" id="cc1">
 			</div>
-		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<div class="form-group">
+		</div>			
+		<div class="form-group pl-5 pr-5">
 			<label>Seleccione segundo material</label>
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m2" />
-			<div class="form-group">
-				<label for="primero">Ingrese Cantidad</label> <input type="number" class="form-control" id="cc2">
+			<div class="form-group mt-1">
+				<label>Ingrese Cantidad</label> <input class="bg-secondary" type="number" class="form-control" id="cc2">
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group pl-5 pr-5">
 			<label>Seleccione tercer material</label>
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m3" />
-			<div class="form-group">
-				<label for="primero">Ingrese Cantidad</label> <input type="number" class="form-control" id="cc3">
+			<div class="form-group mt-1">
+				<label >Ingrese Cantidad</label> <input class="bg-secondary" type="number" class="form-control" id="cc3">
 			</div>
 		</div>
 		
