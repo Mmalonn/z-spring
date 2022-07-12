@@ -70,7 +70,7 @@
 		
 		
 		<div class="form-group">
-			<form:input path="idMateriales" id="materialesEnviar" readonly="true"/>
+			<form:input path="idMateriales" id="materialesEnviar" hidden="true" readonly="true"/>
 		</div>
 
 

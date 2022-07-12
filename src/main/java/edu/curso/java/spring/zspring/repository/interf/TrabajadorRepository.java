@@ -18,4 +18,5 @@ public interface TrabajadorRepository {
 	public void borrarTrabajador(Long id);
 
 	public List<TrabajoBo> obtenerTrabajosTrabajador(TrabajadorBo trabajadorBo);
+
 }

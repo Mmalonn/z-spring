@@ -14,6 +14,6 @@ public interface TrabajoService {
 
 	void eliminarTrabajo(Long id);
 
-	void editarTrabajo(TrabajoBo trabajo, Long id);
+	void editarTrabajo(TrabajoBo trabajo, Long id2);
 
 }

@@ -51,7 +51,8 @@ public class ProveedorRepositoryHibernateImpl implements ProveedoresRepository {
 
 	@Override
 	public List<MaterialBo> obtenerMaterialesProveedor(ProveedorBo proveedorBo) {
-		return entityManager.createQuery("select materiales from ProveedorBo as p where p.nombre = :custName").setParameter("custName", proveedorBo.getNombre()).getResultList();
+		return entityManager.createQuery("select materiales from ProveedorBo as p where p.nombre = :custName")
+				.setParameter("custName", proveedorBo.getNombre()).getResultList();
 	}
 
 }

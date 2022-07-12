@@ -54,8 +54,11 @@ public class TrabajadorRepositoryHibernateImpl implements TrabajadorRepository {
 
 	@Override
 	public List<TrabajoBo> obtenerTrabajosTrabajador(TrabajadorBo trabajadorBo) {
-		return entityManager.createQuery("select trabajos from TrabajadorBo as t where t.nombre = :custName").setParameter("custName", trabajadorBo.getNombre()).getResultList();
+		return entityManager.createQuery("select trabajos from TrabajadorBo as t where t.nombre = :custName")
+				.setParameter("custName", trabajadorBo.getNombre()).getResultList();
 	}
-	
+
+
+
 
 }

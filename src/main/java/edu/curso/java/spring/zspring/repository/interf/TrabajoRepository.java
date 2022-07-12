@@ -14,5 +14,5 @@ public interface TrabajoRepository {
 
 	public void borrarTrabajo(Long id);
 
-	public void editarTrabajo(TrabajoBo trabajo, Long id);
+	public void editarTrabajo(TrabajoBo trabajoBo, Long id);
 }

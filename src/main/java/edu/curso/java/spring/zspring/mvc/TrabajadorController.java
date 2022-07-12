@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
+import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.mvc.form.TrabajadorForm;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajadorService;
+import edu.curso.java.spring.zspring.service.interf.TrabajoService;
 
 @Controller
 @RequestMapping("/trabajadores")
@@ -44,6 +46,8 @@ public class TrabajadorController {
 	public String verTrabajador(Model model, @PathVariable Long id) {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id);
 		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+		List<TrabajoBo> trabajos = trabajadorService.obtenerTrabajosTrabajador(id);
+		model.addAttribute("trabajos", trabajos);
 		model.addAttribute("proveedores", proveedores);
 		model.addAttribute("trabajador", trabajador);
 		return "/trabajadores/trabajador";

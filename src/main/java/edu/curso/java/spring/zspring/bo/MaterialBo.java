@@ -23,6 +23,7 @@ public class MaterialBo {
 	private CategoriaBo categoriaBo;
 	
 	
+	
 	public CategoriaBo getCategoriaBo() {
 		return categoriaBo;
 	}

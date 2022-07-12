@@ -59,8 +59,10 @@ public class TrabajoServiceImpl implements TrabajoService {
 	}
 
 	@Override
-	public void editarTrabajo(TrabajoBo trabajo, Long id) {
-		trabajoRepository.editarTrabajo(trabajo, id);
+	public void editarTrabajo(TrabajoBo trabajoBo, Long id2) {
+		TrabajoBo trabajo = trabajoRepository.obtenerTrabajo(id2);
+		Long id = trabajo.getId();
+		trabajoRepository.editarTrabajo(trabajo, id2);
 	}
 
 }

@@ -43,12 +43,14 @@ public class TrabajoController {
 	@Autowired
 	private UbicacionService ubicacionService;
 
+
 	@GetMapping("/lista")
 	public String listar(Model model) {
 		List<TrabajoBo> trabajos = trabajoService.listarTrabajos();
 		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
 		model.addAttribute("proveedores", proveedores);
 		model.addAttribute("trabajos", trabajos);
+		
 
 		log.info("mostrando trabajos");
 		return "/trabajos/listar";
@@ -96,6 +98,14 @@ public class TrabajoController {
 		Long trabajadorId = trabajoForm.getIdTrabajador();
 		ubicacionService.nuevaUbicacion(ubicacion);
 		trabajoService.agregarTrabajo(trabajo, trabajadorId);
+		return "redirect:/trabajos/lista";
+	}
+	
+	@GetMapping("/{id}/eliminar/{id2}")
+	public String eliminarTrabajo(Model model, @PathVariable Long id, @PathVariable Long id2) {
+		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id2);
+		trabajadorService.borrarTrabajoTrabajador(id, trabajador);
+		trabajoService.eliminarTrabajo(id);
 		return "redirect:/trabajos/lista";
 	}
 }

@@ -35,9 +35,7 @@
 			<td scope="row">${m.categoriaBo.nombre}</td>
 			<td scope="row">${m.precio}</td>
 			<td scope="row">${m.cantidad}</td>
-			<td scope="row" class="flex-row-reverse"><a type="button"
-				class="btn btn-secondary btn-sm" href="/materiales/${m.id}/comprar">Comprar mas</a>
-			</td>
+			<td scope="row" class="flex-row-reverse"><a type="button" class="btn btn-secondary btn-sm" href="/materiales/${m.id}/comprar">Comprar mas</a></td>
 		</tr>
 	</c:forEach>
 </table>

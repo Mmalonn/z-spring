@@ -21,21 +21,13 @@
 					<th scope="col">Trabajos:</th>
 				</tr>
 			</thead>
-				<tr>			
-					<c:forEach items="${trabajador.trabajos}" var="t">
-						<td scope="row">
-							<p>${t.nombre}</p>
-						</td>
-						<td scope="row">
-							<p>${t.fecha}</p>
-						</td>
-					</c:forEach>
+			<c:forEach items="${trabajos}" var="t">
+				<tr>						
+					<td scope="row">${t.nombre}</td>
+					<td scope="row">${t.fecha}</td>					
 				</tr>
-				
+			</c:forEach>	
 		</table>
-
-
-
 	</div>
 </div>
 

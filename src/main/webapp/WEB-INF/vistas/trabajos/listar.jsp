@@ -28,7 +28,7 @@
 					<td>${t.fecha}</td>
 					<td>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}">Ver</a>
-						<a type="button" class="btn btn-secondary btn-sm" href="/">Eliminar</a>
+						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/eliminar/${t.trabajadorBo.id}">Eliminar</a>
 						<a type="button" class="btn btn-secondary btn-sm" href="/">Terminado</a>
 					</td>
 				</tr>
