@@ -5,14 +5,14 @@
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
-	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajo
+	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajo
 		n ${trabajo.id}</h2>
 </div>
 <div class="card mt-2">
 	<h5 class="card-header">${trabajo.nombre}</h5>
 	<div class="card-body">
-		<h5 class="card-title"></h5>
-		<p class="card-text"></p>
+		<h5 class="card-title">${trabajo.ubicacionBo.direccion}</h5>
+		<p class="card-text">${trabajo.tarea}</p>
 	</div>
 </div>
 

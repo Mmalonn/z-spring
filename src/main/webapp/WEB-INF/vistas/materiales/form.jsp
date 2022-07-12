@@ -7,10 +7,10 @@
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
 	<c:if test="${materialForm.id > 0}">
-		<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Material N ${trabajadorForm.id}</h2>
+		<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Material N ${trabajadorForm.id}</h2>
 	</c:if>
 	<c:if test="${materialForm.id == null}">
-		<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Material nuevo</h2>
+		<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Material nuevo</h2>
 	</c:if>
 	
 </div>
@@ -50,7 +50,7 @@
 		</div>
 
 
-		<button type="submit" class="btn btn-primary mt-2">Guardar Material</button>
+		<button type="submit" class="btn btn-secondary mt-2">Guardar Material</button>
 	</div>
 </form:form>
 

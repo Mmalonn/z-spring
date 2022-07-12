@@ -6,7 +6,7 @@
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
-	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajos
+	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajos
 		terminados</h2>
 </div>
 <div class="container ">

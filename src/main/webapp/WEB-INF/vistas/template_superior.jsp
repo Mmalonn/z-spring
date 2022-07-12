@@ -18,12 +18,12 @@
 </head>
 <body>
 	<header
-		class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar border primary rounded-lg bg-secondary">
+		class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar border secondary rounded-lg bg-secondary">
 
 		<div class="navbar-nav-scroll ">
 			<ul class="navbar-nav bd-navbar-nav flex-row">
 				<li class="nav-item mr-5 mt-1"><a class="nav-link" href="/"
-					onclick=" "><h2 class="border primary rounded-lg px-3">Inicio</h2></a></li>
+					onclick=" "><h2 class="border secondary rounded-lg px-3">Inicio</h2></a></li>
 				<li class="nav-item mt-3"><a class="nav-link"
 					href="/trabajos/lista" onclick=" "><p>
 							<u>Trabajos pendientes</u>
@@ -40,13 +40,9 @@
 		</div>
 
 		<ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-			<li class="nav-item dropdown"><a
-				class="nav-item nav-link dropdown-toggle mr-md-2" href="#"
-				id="bd-versions" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> Proveedores </a>
-				<div class="dropdown-menu dropdown-menu-right"
-					aria-labelledby="bd-versions">
-					<a class="dropdown-item active" href="/proveedores">Proveedores</a>
+			<li class="nav-item dropdown"><a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Proveedores </a>
+				<div class="dropdown-menu dropdown-menu-right " aria-labelledby="bd-versions">
+					<a class="dropdown-item active bg-secondary" href="/proveedores">Proveedores</a>
 					<div class="dropdown-divider"></div>
 					<c:forEach items="${proveedores}" var="p">
 						<a class="dropdown-item" href="/proveedores/${p.id}">${p.nombre}</a>

@@ -7,11 +7,8 @@
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 
 <div class="mt-4 ml-3">
-	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">
-		Trabajadores
-	</h2>
-	<a class="d-inline border primary rounded-lg px-2 ml-3"
-		href="/trabajadores/nuevo">Agregar nuevo</a>
+	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajadores</h2>
+	<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/trabajadores/nuevo">Agregar nuevo</a>
 </div>
 
 
@@ -21,7 +18,6 @@
 		<tr>
 			<th scope="col">Nombre</th>
 			<th scope="col">Apellido</th>
-
 			<th scope="col">Opciones</th>
 		</tr>
 	</thead>

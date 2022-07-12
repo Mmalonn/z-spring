@@ -16,13 +16,13 @@
 
 
 <div class="mt-4 ml-3">
-	<h2 class="d-inline border primary rounded-lg bg-secondary px-2"> Materiales</h2>
-	<a class="d-inline border primary rounded-lg px-2 ml-3"
+	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2"> Materiales</h2>
+	<a class="d-inline border secondary rounded-lg px-2 ml-3"
 		href="/materiales/nuevo">Agregar nuevo</a> 
 
 </div>
 <div class="mt-2 ml-3 ">
-	<a class="border primary  text-secondary rounded-lg"
+	<a class="border secondary  text-secondary rounded-lg"
 		href="/materiales/categorias">Categorias</a>
 </div>
 
@@ -50,11 +50,11 @@
 		</div>
 		<div class="form-group">
 			<h2 class="p-2">Total a pagar     <span class="badge bg-secondary" id="total"></span></h2>
-			<button class="btn btn-primary" id="boton">Calcular costo</button>
+			<button class="btn btn-secondary" id="boton">Calcular costo</button>
 		</div>
 
 
-		<button type="submit" class="btn btn-primary mt-2">Comprar mas en ${materialForm.proveedorBo.nombre}</button>
+		<button type="submit" class="btn btn-secondary mt-2">Comprar mas en ${materialForm.proveedorBo.nombre}</button>
 	</div>
 </form:form>
 

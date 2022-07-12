@@ -6,9 +6,8 @@
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
-	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajos</h2>
-	<a class="d-inline border primary rounded-lg px-2 ml-3"
-		href="/trabajos/nuevo">Agregar nuevo</a>
+	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajos</h2>
+	<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/trabajos/nuevo">Agregar nuevo</a>
 </div>
 <div class="container">
 	<table class="table mt-4 ">

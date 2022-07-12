@@ -6,15 +6,12 @@
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
-	<h2 class="d-inline border primary rounded-lg bg-secondary px-2">
-		Materiales</h2>
-	<a class="d-inline border primary rounded-lg px-2 ml-3"
-		href="/materiales/nuevo">Agregar nuevo</a> 
+	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Materiales</h2>
+	<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/materiales/nuevo">Agregar nuevo</a> 
 
 </div>
 <div class="mt-2 ml-3 ">
-	<a class="border primary  text-secondary rounded-lg"
-		href="/materiales/categorias">Categorias</a>
+	<a class="border secondary  text-secondary rounded-lg" href="/materiales/categorias">Categorias</a>
 </div>
 
 <table class="table mt-4 ">

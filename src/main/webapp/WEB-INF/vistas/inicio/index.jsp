@@ -18,7 +18,7 @@
 </head>
 <body>
 	<header
-		class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar border primary rounded-lg bg-secondary">
+		class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar border  rounded-lg bg-secondary">
 
 		<div class="navbar-nav-scroll ">
 			<ul class="navbar-nav bd-navbar-nav flex-row">
@@ -27,7 +27,7 @@
 			</ul>
 		</div>	
 	</header>
-	<a class="btn btn-primary btn-lg ml-5 mt-5" href="/trabajos/lista">Ingresar</an>
+	<a class="btn btn-secondary btn-lg ml-5 mt-5" href="/trabajos/lista">Ingresar</an>
 	
 </body>
 </html>

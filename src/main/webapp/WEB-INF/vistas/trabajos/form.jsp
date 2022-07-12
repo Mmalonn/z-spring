@@ -7,7 +7,7 @@
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
 	<c:if test="${trabajoForm.id == null}">
-		<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajo nuevo</h2>
+		<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajo nuevo</h2>
 	</c:if>
 
 </div>
@@ -136,17 +136,17 @@
 				</div>
 				<div class="col-sm">		
 				</div>
-				<button class="btn btn-primary mt-3 ml-5" id="boton2">Calcular total</button>	
+				<button class="btn btn-secondary mt-3 ml-5" id="boton2">Calcular total</button>	
 			</div>
 		</div>
-		  	<button class="btn btn-primary mt-3 mr-5" id="boton">Calcular Previo</button>
+		  	<button class="btn btn-secondary mt-3 mr-5" id="boton">Calcular Previo</button>
 
 		<div class="form-group">
 			<h2 class="p-2 mt-3">Total a pagar</h2>
 			<h1 class="d-inline">$</h1>
-			<form:input class="d-inline" path="precioFinal" cssClass="mt-4 ml-3 alert alert-primary" readonly="true" id="final"/>
+			<form:input class="d-inline" path="precioFinal" cssClass="mt-4 ml-3 alert alert-secondary" readonly="true" id="final"/>
 		</div>
-		<button type="submit" class="btn btn-primary mb-3">Guardar Trabajo Nuevo</button>
+		<button type="submit" class="btn btn-secondary mb-3">Guardar Trabajo Nuevo</button>
 	</div>
 </form:form>
 
