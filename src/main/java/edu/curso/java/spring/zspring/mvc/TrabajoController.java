@@ -1,5 +1,6 @@
 package edu.curso.java.spring.zspring.mvc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -80,21 +81,21 @@ public class TrabajoController {
 		trabajo.setNombre(trabajoForm.getNombre());
 		trabajo.setTarea(trabajoForm.getTarea());
 		trabajo.setHorasEstimadas(trabajoForm.getHorasEstimadas());
-		trabajo.setFecha(trabajoForm.getFecha());
-		List<MaterialBo> materiales = trabajoForm.getMateriales();
-		for (MaterialBo materialBo : materiales) {
-			System.out.println("hola");
-		}
-
-		
+		trabajo.setFecha(trabajoForm.getFecha());			
+		List<Long> numeros = trabajoForm.getIdMateriales();
+		List<MaterialBo> materiales = new ArrayList<MaterialBo>();
+		for (Long material : numeros) {
+			MaterialBo obtenido = materialService.obtenerMaterial(material);
+			materiales.add(obtenido);
+		}		
 		trabajo.setMateriales(materiales);
 		trabajo.setPrecioFinal(trabajoForm.getPrecioFinal());		
 		UbicacionBo ubicacion = new UbicacionBo();
 		ubicacion.setDireccion(trabajoForm.getUbicacionBo()); 
 		trabajo.setUbicacionBo(ubicacion);
 		Long trabajadorId = trabajoForm.getIdTrabajador();
-		//ubicacionService.nuevaUbicacion(ubicacion);
-		//trabajoService.agregarTrabajo(trabajo, trabajadorId);
+		ubicacionService.nuevaUbicacion(ubicacion);
+		trabajoService.agregarTrabajo(trabajo, trabajadorId);
 		return "redirect:/trabajos/lista";
 	}
 }

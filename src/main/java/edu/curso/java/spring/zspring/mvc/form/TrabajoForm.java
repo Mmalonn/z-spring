@@ -22,9 +22,16 @@ public class TrabajoForm {
 	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
 	private Long idTrabajador;
 	private Long idMaterial;
+	private List<Long> idMateriales = new ArrayList<Long>();
 	
 	
 	
+	public List<Long> getIdMateriales() {
+		return idMateriales;
+	}
+	public void setIdMateriales(List<Long> idMateriales) {
+		this.idMateriales = idMateriales;
+	}
 	public Long getIdMaterial() {
 		return idMaterial;
 	}

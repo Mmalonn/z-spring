@@ -40,7 +40,7 @@ public class TrabajoServiceImpl implements TrabajoService {
 	public void agregarTrabajo(TrabajoBo trabajo, Long id) {
 		UbicacionBo ubicacion = trabajo.getUbicacionBo();
 		ubicacionRepository.nuevaUbicacion(ubicacion);
-		TrabajadorBo trabajadorBo = trabajadorRepository.obtenerTrabajador(id);		
+		TrabajadorBo trabajadorBo = trabajadorRepository.obtenerTrabajador(id);
 		trabajo.setTrabajadorBo(trabajadorBo);
 		trabajoRepository.agregarTrabajo(trabajo);
 		try {
@@ -51,7 +51,6 @@ public class TrabajoServiceImpl implements TrabajoService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		trabajoRepository.agregarTrabajo(trabajo);
 	}
 
 	@Override
