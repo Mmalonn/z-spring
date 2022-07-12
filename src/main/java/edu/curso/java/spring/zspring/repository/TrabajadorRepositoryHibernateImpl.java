@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
+import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.repository.interf.TrabajadorRepository;
 
 @Repository
@@ -49,6 +50,11 @@ public class TrabajadorRepositoryHibernateImpl implements TrabajadorRepository {
 	public void borrarTrabajador(Long id) {
 		TrabajadorBo trabajador = entityManager.find(TrabajadorBo.class, id);
 		entityManager.remove(trabajador);
+	}
+
+	@Override
+	public List<TrabajoBo> obtenerTrabajosTrabajador(TrabajadorBo trabajadorBo) {
+		return entityManager.createQuery("select trabajoBo from trabajadorBo as t where t.nombre = :custName").setParameter("custName", trabajadorBo.getNombre()).getResultList();
 	}
 	
 

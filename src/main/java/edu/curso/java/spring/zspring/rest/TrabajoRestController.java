@@ -61,7 +61,7 @@ public class TrabajoRestController {
 		trabajo.setTrabajadorBo(trabajoDto.getTrabajadorBo());
 		trabajo.setMateriales(trabajoDto.getMateriales());
 		trabajo.setPrecioFinal(trabajoDto.getPrecioFinal());
-		trabajoService.agregarTrabajador(trabajo);
+		trabajoService.agregarTrabajo(trabajo, null);
 		return ResponseEntity.status(HttpStatus.CREATED).body(trabajoDto);
 	}
 	

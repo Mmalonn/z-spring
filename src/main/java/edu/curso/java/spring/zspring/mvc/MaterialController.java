@@ -67,7 +67,6 @@ public class MaterialController {
 		material.setPrecio(materialForm.getPrecio());
 		if(idMaterial == null) {
 			material.setCantidad(materialForm.getCantidad());
-			material.setCantidad(materialForm.getCantidad());
 			materialService.nuevoMaterial(material, materialForm.getIdCategoria(), materialForm.getIdProveedor());
 		} else {
 			Long stockActual= materialService.obtenerStock(idMaterial);

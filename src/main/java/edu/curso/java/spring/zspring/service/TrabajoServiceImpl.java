@@ -7,8 +7,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
+import edu.curso.java.spring.zspring.bo.UbicacionBo;
+import edu.curso.java.spring.zspring.repository.interf.TrabajadorRepository;
 import edu.curso.java.spring.zspring.repository.interf.TrabajoRepository;
+import edu.curso.java.spring.zspring.repository.interf.UbicacionRepository;
 import edu.curso.java.spring.zspring.service.interf.TrabajoService;
 
 @Service
@@ -17,6 +21,10 @@ public class TrabajoServiceImpl implements TrabajoService {
 
 	@Autowired
 	private TrabajoRepository trabajoRepository;
+	@Autowired
+	private UbicacionRepository ubicacionRepository;
+	@Autowired
+	private TrabajadorRepository trabajadorRepository;
 	
 	@Override
 	public List<TrabajoBo> listarTrabajos() {
@@ -29,7 +37,13 @@ public class TrabajoServiceImpl implements TrabajoService {
 	}
 
 	@Override
-	public void agregarTrabajador(TrabajoBo trabajo) {
+	public void agregarTrabajo(TrabajoBo trabajo, Long id) {
+		UbicacionBo ubicacion = trabajo.getUbicacionBo();
+		ubicacionRepository.nuevaUbicacion(ubicacion);
+		TrabajadorBo trabajadorBo = trabajadorRepository.obtenerTrabajador(id);
+		List<TrabajoBo> trabajos = trabajadorRepository.obtenerTrabajosTrabajador(trabajadorBo);
+		trabajos.add(trabajo);
+		trabajadorRepository.editarTrabajador(trabajadorBo, id);
 		trabajoRepository.agregarTrabajo(trabajo);
 	}
 

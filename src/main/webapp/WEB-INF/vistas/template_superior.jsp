@@ -6,12 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript"
-	src="<c:url value ="/js/jquery-3.6.0.js"/>"></script>
+<script type="text/javascript" src="<c:url value ="/js/jquery-3.6.0.js"/>"></script>
 <script type="text/javascript" src="<c:url value ="/js/bootstrap.js"/>"></script>
 
 <link href="/css/general.css" rel="stylesheet">
 <link href="/css/bootstrap.css" rel="stylesheet">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <meta charset="ISO-8859-1">
 <meta charset="ISO-8859-1">
 <title>Productos</title>

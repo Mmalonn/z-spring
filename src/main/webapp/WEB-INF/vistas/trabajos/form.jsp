@@ -5,23 +5,15 @@
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <div class="mt-4 ml-3">
-	<c:if test="${trabajoForm.id > 0}">
-		<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajo
-			N ${trabajoForm.id}</h2>
-	</c:if>
 	<c:if test="${trabajoForm.id == null}">
-		<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajo
-			nuevo</h2>
+		<h2 class="d-inline border primary rounded-lg bg-secondary px-2">Trabajo nuevo</h2>
 	</c:if>
 
 </div>
 
-<form:form method="POST" action="/trabajo/guardar"
-	modelAttribute="trabajoForm">
+<form:form method="POST" action="/trabajos/guardar" modelAttribute="trabajoForm">
 	<div class="container mt-4">
-
 		<c:if test="">
 			<div class="form-group">
 				<label>Id trabajador</label>
@@ -41,88 +33,117 @@
 			<form:input path="fecha" cssClass="form-control" />
 		</div>
 		<div class="form-group">
-			<label>Horas de duracion estimada</label>
-			<form:input path="horasEstimadas" cssClass="form-control" />
-		</div>
-		<div class="form-group">
 			<label>Ingrese Ubicacion</label>
 			<form:input path="ubicacionBo" cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label>Seleccione Trabajador</label>
-			<form:select path="trabajadorBo" items="${trabajadores}"
-				itemLabel="nombre" itemValue="id" cssClass="form-control" id="t"/>
+			<form:select path="idTrabajador" items="${trabajadores}" itemLabel="nombre" itemValue="id" cssClass="form-control" id="t" />
 		</div>
 		<div class="form-group">
 			<label>Ingrese Horas Estimadas</label>
-			<form:input path="horasEstimadas" cssClass="form-control" />
+			<form:input path="horasEstimadas" cssClass="form-control" id="hhoras" />
 		</div>
 		<div class="form-group">
 			<label>Seleccione primer material</label>
-			<form:select path="material" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m1"/>
+			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m1" />
 			<div class="form-group">
-				<label for="primero">Ingrese Cantidad</label> 
-				<input type="number" class="form-control" id="c1">
+				<label for="primero">Ingrese Cantidad</label> <input type="number" class="form-control" id="cc1">
 			</div>
 		</div>
 		<div class="form-group">
 			<label>Seleccione segundo material</label>
-			<form:select path="material" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m2"/>
+			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m2" />
 			<div class="form-group">
-				<label for="primero">Ingrese Cantidad</label> 
-				<input type="number" class="form-control" id="c2">
+				<label for="primero">Ingrese Cantidad</label> <input type="number" class="form-control" id="cc2">
 			</div>
 		</div>
 		<div class="form-group">
 			<label>Seleccione tercer material</label>
-			<form:select path="material" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m3"/>
+			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m3" />
 			<div class="form-group">
-				<label for="primero">Ingrese Cantidad</label> 
-				<input type="number" class="form-control" id="c3">
+				<label for="primero">Ingrese Cantidad</label> <input type="number" class="form-control" id="cc3">
 			</div>
 		</div>
 		<div class="form-group">
-			<form:input path="materiales" cssClass="form-control" id="materialesEnviar" readonly="true"/>
+			<form:input path="materiales" cssClass="form-control" id="materialesEnviar" readonly="true" hidden="true" />
 		</div>
+
+		<div class="container" hidden="true" id="cont">
+ 			 <div class="row border-bottom">
+ 				<div class="col-sm">
+ 			 	</div>
+   			 	<div class="col-sm">
+     		 		<input class="alert" readonly="true" value="Precios Unitarios">
+				</div>
+				<div class="col-sm">
+					<input class="alert" readonly="true" value="Cantidades">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<input class="alert" readonly="true" value="Precio Trabajador x hora">
+ 			 	</div>
+   			 	<div class="col-sm">
+					<input class="alert" readonly="true" id="sueldoTrabajador">
+				</div>
+				<div class="col-sm">
+					<input class="alert" readonly="true" id="horas">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<input class="alert" readonly="true" value="Precio material 1">
+ 			 	</div>
+   			 	<div class="col-sm">
+					<input class="alert" readonly="true" id="precioM1">
+				</div>
+				<div class="col-sm">
+					<input class="alert" readonly="true" id="c1">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<input class="alert" readonly="true" value="Precio material 2">
+ 			 	</div>
+   			 	<div class="col-sm">
+					<input class="alert" readonly="true" id="precioM2">
+				</div>					
+				<div class="col-sm">
+					<input class="alert" readonly="true" id="c2">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<input class="alert" readonly="true" value="Precio material 3">
+ 			 	</div>
+   			 	<div class="col-sm">
+					<input class="alert" readonly="true" id="precioM3">
+				</div>
+				<div class="col-sm">
+					<input class="alert" readonly="true" id="c3">
+				</div>
+			</div>
+			<div class="row">
+   			 	<div class="col-sm">
+				</div>
+				<div class="col-sm">		
+				</div>
+				<button class="btn btn-primary mt-3 ml-5" id="boton2">Calcular total</button>	
+			</div>
+		</div>
+		  	<button class="btn btn-primary mt-3 mr-5" id="boton">Calcular Previo</button>
+
 		<div class="form-group">
-			<h2 class="p-2">Total a pagar</h2>
-			<form:input path="precioFinal" cssClass="form-control" readonly="true" />
-			<button class="btn btn-primary mt-3" id="boton">Calcular costo</button>		
+			<h2 class="p-2 mt-3">Total a pagar</h2>
+			<h1 class="d-inline">$</h1>
+			<form:input class="d-inline" path="precioFinal" cssClass="mt-4 ml-3 alert alert-primary" readonly="true" id="final"/>
 		</div>
-		<button type="submit" class="btn btn-primary mt-2 mb-3	">Guardar Trabajo Nuevo</button>
+		<button type="submit" class="btn btn-primary mb-3">Guardar Trabajo Nuevo</button>
 	</div>
 </form:form>
 
-<script type="text/javascript">
 
-document.getElementById("boton").addEventListener("click", function(e){
-	e.preventDefault();
-	let array = [];
-		let m1 = document.getElementById("m1");
-		let m2 = document.getElementById("m2");
-		let m3 = document.getElementById("m3");
-		let idTrabajador = document.getElementById("t").value;
-		array.push(m1.value);
-		array.push(m2.value);
-		array.push(m3.value);
-		document.getElementById("materialesEnviar").value = array;
-		let trabajador = document.getElementById("t");
-		console.log(idTrabajador);
-		function obtenerTrabajador(){
-			axios.get(`http://192.168.0.231:8080/api/trabajadores`)
-			  .then((response) => {
-			   	let respuesta = response.data;
-			   	console.log(respuesta);
-			  })
-			  .catch((error) => {
-			    console.log(error);
-			  });
-			}
-		obtenerTrabajador();
-		
-		
-	});
-	
-</script>
+<script type="text/javascript" src="<c:url value ="/js/trabajo.js"/>"></script>
 
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

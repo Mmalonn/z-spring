@@ -48,7 +48,6 @@ public class TrabajadorRestController {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id);
 		TrabajadorDto trabajadorDto = new TrabajadorDto(trabajador);
 		System.out.println("******************");
-		System.out.println(trabajadorDto.getTrabajos().get(0).getNombre());
 		return trabajadorDto;
 	}
 	
