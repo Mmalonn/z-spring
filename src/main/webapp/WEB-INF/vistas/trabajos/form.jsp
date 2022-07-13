@@ -19,7 +19,7 @@
 			</div>
 		</c:if>
 		<div class="form-group">
-			<label>Nombre</label>
+			<label>Cliente</label>
 			<form:input path="nombre" required="true" cssClass="form-control" />
 		</div>
 		<div class="form-group">

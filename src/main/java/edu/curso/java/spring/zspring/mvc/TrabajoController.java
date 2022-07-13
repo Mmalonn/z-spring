@@ -20,6 +20,7 @@ import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.bo.UbicacionBo;
 import edu.curso.java.spring.zspring.mvc.form.TrabajoForm;
+import edu.curso.java.spring.zspring.service.interf.FacturaService;
 import edu.curso.java.spring.zspring.service.interf.MaterialService;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajadorService;
@@ -45,6 +46,8 @@ public class TrabajoController {
 	private UbicacionService ubicacionService;
 	@Autowired
 	private TrabajoTerminadoService trabajoTerminadoService;
+	@Autowired
+	private FacturaService facturaService;
 
 
 	@GetMapping("/lista")
@@ -105,6 +108,7 @@ public class TrabajoController {
 		materialService.restarMateriales(trabajoForm.getIdMaterial(), trabajoForm.getCantidad1());
 		materialService.restarMateriales(trabajoForm.getIdMaterial2(), trabajoForm.getCantidad2());
 		materialService.restarMateriales(trabajoForm.getIdMaterial3(), trabajoForm.getCantidad3());
+		facturaService.crearFactura(trabajoForm);
 		return "redirect:/trabajos/lista";
 	}
 	
@@ -125,6 +129,7 @@ public class TrabajoController {
 		TrabajoBo trabajo = trabajoService.obtenerTrabajo(id);
 		trabajoTerminadoService.nuevoTerminado(trabajo);
 		trabajoService.eliminarTrabajo(id);
+		
 		return "redirect:/trabajos/lista";
 	}
 }

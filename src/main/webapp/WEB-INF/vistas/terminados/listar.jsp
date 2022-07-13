@@ -13,7 +13,7 @@
 	<table class="table mt-4 ">
 		<thead>
 			<tr>
-				<th scope="col">Nombre</th>
+				<th scope="col">Cliente</th>
 				<th scope="col">Ubicacion</th>
 				<th scope="col">Fecha Finalizado</th>
 				<th scope="col"></th>
