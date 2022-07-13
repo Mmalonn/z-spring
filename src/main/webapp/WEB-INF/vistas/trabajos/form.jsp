@@ -9,9 +9,7 @@
 	<c:if test="${trabajoForm.id == null}">
 		<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajo nuevo</h2>
 	</c:if>
-
 </div>
-
 <form:form method="POST" action="/trabajos/guardar" modelAttribute="trabajoForm">
 	<div class="container mt-4">
 		<c:if test="">
@@ -50,29 +48,36 @@
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m1" />
 			<div class="form-group mt-1">
 				<label>Ingrese Cantidad</label>
-				<input class="bg-secondary" type="number" class="form-control" id="cc1">
+				<input class="bg-secondary ml-3" type="number" class="form-control" id="cc1">
 			</div>
 		</div>			
 		<div class="form-group pl-5 pr-5">
 			<label>Seleccione segundo material</label>
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m2" />
 			<div class="form-group mt-1">
-				<label>Ingrese Cantidad</label> <input class="bg-secondary" type="number" class="form-control" id="cc2">
+				<label>Ingrese Cantidad</label> 
+				<input class="bg-secondary ml-3" type="number" class="form-control" id="cc2">
 			</div>
 		</div>
 		<div class="form-group pl-5 pr-5">
 			<label>Seleccione tercer material</label>
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m3" />
 			<div class="form-group mt-1">
-				<label >Ingrese Cantidad</label> <input class="bg-secondary" type="number" class="form-control" id="cc3">
+				<label >Ingrese Cantidad</label>
+				<input class="bg-secondary ml-3" type="number" class="form-control" id="cc3">
 			</div>
 		</div>
 		
 		
 		
 		
+		
+		
 		<div class="form-group">
 			<form:input path="idMateriales" id="materialesEnviar" hidden="true" readonly="true"/>
+		</div>
+		<div class="form-group">
+			<form:input path="cantidades" id="cantidadesEnviar" hidden="true" readonly="true"/>
 		</div>
 
 
@@ -142,7 +147,6 @@
 			</div>
 		</div>
 		  	<button class="btn btn-secondary mt-3 mr-5" id="boton">Calcular Previo</button>
-
 		<div class="form-group">
 			<h2 class="p-2 mt-3">Total a pagar</h2>
 			<h1 class="d-inline">$</h1>

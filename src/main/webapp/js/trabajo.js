@@ -45,22 +45,14 @@ document.getElementById("boton").addEventListener("click", function(e) {
 	pedirSueldoTrabajador();
 	asignarCantidades();
 	document.getElementById("cont").hidden = false;
-
 });
 
 let cargarMateriales = () => {
 	let m1 = document.getElementById("m1").value;
 	let m2 = document.getElementById("m2").value;
 	let m3 = document.getElementById("m3").value;
-
-	let array = [
-		m1,
-		m2,
-		m3
-	];
-
-
-	document.getElementById("materialesEnviar").value = array;
+	let mids = [m1, m2, m3];
+	document.getElementById("materialesEnviar").value = mids;
 };
 
 let asignarCantidades = () => {
@@ -72,7 +64,8 @@ let asignarCantidades = () => {
 	document.getElementById("c1").value = cc1;
 	document.getElementById("c2").value = cc2;
 	document.getElementById("c3").value = cc3;
-
+	let cantidades = [cc1, cc2, cc3];
+	document.getElementById("cantidadesEnviar").value = cantidades;
 }
 
 document.getElementById("boton2").addEventListener("click", function(e) {

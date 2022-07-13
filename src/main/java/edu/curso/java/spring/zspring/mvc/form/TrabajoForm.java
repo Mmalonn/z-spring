@@ -23,9 +23,16 @@ public class TrabajoForm {
 	private Long idTrabajador;
 	private Long idMaterial;
 	private List<Long> idMateriales = new ArrayList<Long>();
+	private List<Long> cantidades = new ArrayList<Long>();
 	
 	
 	
+	public List<Long> getCantidades() {
+		return cantidades;
+	}
+	public void setCantidades(List<Long> cantidades) {
+		this.cantidades = cantidades;
+	}
 	public List<Long> getIdMateriales() {
 		return idMateriales;
 	}

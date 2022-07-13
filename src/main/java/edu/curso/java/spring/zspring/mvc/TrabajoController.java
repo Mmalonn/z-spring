@@ -102,6 +102,7 @@ public class TrabajoController {
 		Long trabajadorId = trabajoForm.getIdTrabajador();
 		ubicacionService.nuevaUbicacion(ubicacion);
 		trabajoService.agregarTrabajo(trabajo, trabajadorId);
+		trabajoService.restarMateriales(trabajoForm.getCantidades(), trabajoForm.getIdMateriales());
 		return "redirect:/trabajos/lista";
 	}
 	
