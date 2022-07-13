@@ -6,4 +6,6 @@ public interface FacturaRepository {
 
 	void nuevaFactura(FacturaBo factura);
 
+	FacturaBo obtenerFactura(Long id);
+
 }

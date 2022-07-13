@@ -20,4 +20,11 @@ public class FacturaRepositoryHibernateImpl implements FacturaRepository {
 		entityManager.persist(factura);
 	}
 
+
+	@Override
+	public FacturaBo obtenerFactura(Long id) {
+		return entityManager.find(FacturaBo.class, id);
+	}
+
+	
 }

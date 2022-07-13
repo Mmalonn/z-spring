@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.curso.java.spring.zspring.bo.FacturaBo;
 import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
@@ -69,6 +70,15 @@ public class TrabajoController {
 		model.addAttribute("proveedores", proveedores);
 		model.addAttribute("trabajo", trabajo);
 		return "/trabajos/trabajo";
+	}
+	
+	@GetMapping("/factura/{id}")
+	public String verFactura(Model model, @PathVariable Long id) {
+		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
+		FacturaBo factura = facturaService.obtenerFactura(id);
+		model.addAttribute("factura", factura);
+		return "/trabajos/factura";
 	}
 
 	@GetMapping("/nuevo")
@@ -132,4 +142,6 @@ public class TrabajoController {
 		
 		return "redirect:/trabajos/lista";
 	}
+	
+	
 }
