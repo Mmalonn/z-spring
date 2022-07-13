@@ -29,7 +29,7 @@
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}">Ver</a>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/eliminar/${t.trabajadorBo.id}">Eliminar</a>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/terminar/${t.trabajadorBo.id}"}">Terminado</a>
-						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/factura/${t.id}"}">Ver Factura</a>
+						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/factura/${t.factura.id}"}">Ver Factura</a>
 					</td>
 				</tr>
 			</c:forEach>

@@ -32,7 +32,17 @@ public class TrabajoBo {
 	private List<String> materiales = new ArrayList<String>();
 	@OneToOne
 	private UbicacionBo ubicacionBo;
+	@OneToOne
+	private FacturaBo factura;
  
+	public FacturaBo getFactura() {
+		return factura;
+	}
+
+	public void setFactura(FacturaBo factura) {
+		this.factura = factura;
+	}
+
 	public String getTarea() {
 		return tarea;
 	}
@@ -106,7 +116,7 @@ public class TrabajoBo {
 	}
 
 	public TrabajoBo(String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre, Date fecha,
-			TrabajadorBo trabajadorBo, List<String> materiales, UbicacionBo ubicacionBo) {
+			TrabajadorBo trabajadorBo, List<String> materiales, UbicacionBo ubicacionBo, FacturaBo factura) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -117,6 +127,7 @@ public class TrabajoBo {
 		this.horasEstimadas = horasEstimadas;
 		this.precioFinal = precioFinal;
 		this.tarea = tarea;
+		this.factura = factura;
 	}
 
 	public TrabajoBo() {

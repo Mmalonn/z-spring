@@ -114,11 +114,34 @@ public class TrabajoController {
 		trabajo.setUbicacionBo(ubicacion);
 		Long trabajadorId = trabajoForm.getIdTrabajador();
 		ubicacionService.nuevaUbicacion(ubicacion);
-		trabajoService.agregarTrabajo(trabajo, trabajadorId);
 		materialService.restarMateriales(trabajoForm.getIdMaterial(), trabajoForm.getCantidad1());
 		materialService.restarMateriales(trabajoForm.getIdMaterial2(), trabajoForm.getCantidad2());
 		materialService.restarMateriales(trabajoForm.getIdMaterial3(), trabajoForm.getCantidad3());
-		facturaService.crearFactura(trabajoForm);
+		FacturaBo factura = new FacturaBo();
+		factura.setNombre(trabajoForm.getNombre());
+		factura.setTarea(trabajoForm.getTarea());
+		factura.setFecha(trabajoForm.getFecha());
+		factura.setUbicacionBo(trabajoForm.getUbicacionBo());
+		factura.setHorasEstimadas(trabajoForm.getHorasEstimadas());
+		factura.setCantidad1(trabajoForm.getCantidad1());
+		factura.setCantidad2(trabajoForm.getCantidad2());
+		factura.setCantidad3(trabajoForm.getCantidad3());
+		factura.setPrecioFinal(trabajoForm.getPrecioFinal());
+		factura.setPrecioT(trabajoForm.getPrecioT());
+		factura.setPrecioM1(trabajoForm.getPrecioM1());
+		factura.setPrecioM2(trabajoForm.getPrecioM2());
+		factura.setPrecioM3(trabajoForm.getPrecioM3());
+		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(trabajoForm.getIdTrabajador());
+		factura.setTrabajadorBo(trabajador.getNombre() + " " + trabajador.getApellido());
+		String material1 = materialService.obtenerMaterial(trabajoForm.getIdMaterial1()).getNombre();
+		factura.setMaterial1(material1);
+		String material2 = materialService.obtenerMaterial(trabajoForm.getIdMaterial2()).getNombre();
+		factura.setMaterial2(material2);
+		String material3 = materialService.obtenerMaterial(trabajoForm.getIdMaterial3()).getNombre();
+		factura.setMaterial3(material3);
+		trabajo.setFactura(factura);
+		facturaService.crearFactura(factura);
+		trabajoService.agregarTrabajo(trabajo, trabajadorId);
 		return "redirect:/trabajos/lista";
 	}
 	

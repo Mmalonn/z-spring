@@ -118,7 +118,7 @@
 					<input class="alert" readonly="true" value="Precio Trabajador x hora">
  			 	</div>
    			 	<div class="col-sm">
-					<input class="alert" readonly="true" id="sueldoTrabajador">
+					<form:input class="alert" path="precioT" readonly="true" id="sueldoTrabajador"/>
 				</div>
 				<div class="col-sm">
 					<input class="alert" readonly="true" id="horas">
@@ -129,7 +129,7 @@
 					<input class="alert" readonly="true" value="Precio material 1">
  			 	</div>
    			 	<div class="col-sm">
-					<input class="alert" readonly="true" id="precioM1">
+					<form:input class="alert" path="precioM1" readonly="true" id="precioM1"/>
 				</div>
 				<div class="col-sm">
 					<input class="alert" readonly="true" id="c1">
@@ -140,7 +140,7 @@
 					<input class="alert" readonly="true" value="Precio material 2">
  			 	</div>
    			 	<div class="col-sm">
-					<input class="alert" readonly="true" id="precioM2">
+					<form:input class="alert" path="precioM2" readonly="true" id="precioM2"/>
 				</div>					
 				<div class="col-sm">
 					<input class="alert" readonly="true" id="c2">
@@ -151,7 +151,7 @@
 					<input class="alert" readonly="true" value="Precio material 3">
  			 	</div>
    			 	<div class="col-sm">
-					<input class="alert" readonly="true" id="precioM3">
+					<form:input class="alert" path="precioM3" readonly="true" id="precioM3"/>
 				</div>
 				<div class="col-sm">
 					<input class="alert" readonly="true" id="c3">

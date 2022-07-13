@@ -30,11 +30,39 @@ public class TrabajoForm {
 	private Long cantidad1;
 	private Long cantidad2;
 	private Long cantidad3;
+	private Long precioT;
+	private Long precioM1;
+	private Long precioM2;
+	private Long precioM3;
 	
 	
 	
 	
 	
+	public Long getPrecioT() {
+		return precioT;
+	}
+	public void setPrecioT(Long precioT) {
+		this.precioT = precioT;
+	}
+	public Long getPrecioM1() {
+		return precioM1;
+	}
+	public void setPrecioM1(Long precioM1) {
+		this.precioM1 = precioM1;
+	}
+	public Long getPrecioM2() {
+		return precioM2;
+	}
+	public void setPrecioM2(Long precioM2) {
+		this.precioM2 = precioM2;
+	}
+	public Long getPrecioM3() {
+		return precioM3;
+	}
+	public void setPrecioM3(Long precioM3) {
+		this.precioM3 = precioM3;
+	}
 	public Long getIdMaterial1() {
 		return idMaterial1;
 	}
