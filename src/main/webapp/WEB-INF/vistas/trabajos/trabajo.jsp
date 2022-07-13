@@ -9,11 +9,35 @@
 	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajo N ${trabajo.id}</h2>
 </div>
 <div class="card mt-2">
-	<h5 class="card-header">${trabajo.nombre}</h5>
+	<h5 class="card-header">Cliente: ${trabajo.nombre}</h5>
 	<div class="card-body">
-		<h5 class="card-title">${trabajo.ubicacionBo.direccion}</h5>
-		<p class="card-text">${trabajo.tarea}</p>
+		<h5 class="card-title">Ubicacion: ${trabajo.ubicacionBo.direccion}</h5>
+		<p class="card-text">Tarea: ${trabajo.tarea}</p>
 	</div>
+	<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Materiales:</th>
+				</tr>
+			</thead>
+			<c:forEach items="${trabajo.materiales}" var="t">
+				<tr>						
+					<td scope="row">${t}</td>			
+				</tr>
+			</c:forEach>	
+	</table>
+	<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Trabajador: </th>
+					<th scope="col">Fecha de inicio: </th>
+				</tr>
+			</thead>
+				<tr>						
+					<td scope="row">${trabajo.trabajadorBo.nombre} ${trabajo.trabajadorBo.apellido}</td>
+					<th scope="row">${trabajo.fecha}</th>					
+				</tr>
+	</table>
 </div>
 
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

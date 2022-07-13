@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+	<div class="row justify-content-center text-secondary">Proyecto de Marcos Torres</div>
 </div>
 </body>
 </html>

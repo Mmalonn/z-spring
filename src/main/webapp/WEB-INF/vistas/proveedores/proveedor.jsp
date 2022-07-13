@@ -13,12 +13,10 @@
 		<h5 class="card-title">${proveedor.direccion}</h5>
 		<p class="card-text">${proveedor.telefono}</p>
 			<div class="container">
-				<h6>Lista de materiales</h6>
-				<select class="form-control">
+				<h6 class="border-bottom">Lista de materiales</h6>
 					<c:forEach items="${proveedor.materiales}" var="m">
-						<option>${m.nombre}</option>
+						<p>${m.nombre}</p>
 					</c:forEach>
-				</select>
 			</div>
 	</div>
 </div>

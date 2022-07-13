@@ -14,7 +14,15 @@
 	<div class="card-body">
 		<h5 class="card-title">Telefono trabajador: ${trabajador.telefono}</h5>
 		<p class="card-text">DNI trabajador: ${trabajador.dni}</p>
-
+		
+		
+		
+		<div>
+			<div>Hola aca va la foto</div>
+		</div>
+		
+		
+		
 		<table class="table">
 			<thead>
 				<tr>
@@ -23,11 +31,12 @@
 			</thead>
 			<c:forEach items="${trabajos}" var="t">
 				<tr>						
-					<td scope="row">${t.nombre}</td>
-					<td scope="row">${t.fecha}</td>					
+					<td scope="row">Trabajo N: ${t.id}</td>
+					<td scope="row">Cliente: ${t.nombre}</td>
+					<td scope="row">Fecha de inicio: ${t.fecha}</td>					
 				</tr>
 			</c:forEach>	
-		</table>
+		</table>		
 	</div>
 </div>
 
