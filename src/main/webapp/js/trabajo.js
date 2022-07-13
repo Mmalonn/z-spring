@@ -39,13 +39,7 @@ let pedirSueldoTrabajador = () => {
 
 
 
-document.getElementById("boton").addEventListener("click", function(e) {
-	e.preventDefault();
-	cargarMateriales();
-	pedirSueldoTrabajador();
-	asignarCantidades();
-	document.getElementById("cont").hidden = false;
-});
+
 
 let cargarMateriales = () => {
 	let m1 = document.getElementById("m1").value;
@@ -65,7 +59,7 @@ let asignarCantidades = () => {
 	document.getElementById("c2").value = cc2;
 	document.getElementById("c3").value = cc3;
 	let cantidades = [cc1, cc2, cc3];
-	
+
 	let m1 = document.getElementById("m1").value;
 	let m2 = document.getElementById("m2").value;
 	let m3 = document.getElementById("m3").value;
@@ -83,11 +77,48 @@ let asignarCantidades = () => {
 
 document.getElementById("boton2").addEventListener("click", function(e) {
 	e.preventDefault();
+	
+	let m1 = document.getElementById("idMaterial1").value;
+	let m2 = document.getElementById("idMaterial2").value;
+	let m3 = document.getElementById("idMaterial3").value;
+	if (m1 == m2 || m1 == m3 || m1 == m2) {
+		e.preventDefault();
+		document.getElementById("noIguales").hidden = false;
+		setTimeout(function() {
+			document.getElementById("noIguales").hidden = true;
+		}, 2000);
+	}
+	
 	let precioTrabajador = document.getElementById("horas").value * document.getElementById("sueldoTrabajador").value;
 	let totalMaterial1 = document.getElementById("c1").value * document.getElementById("precioM1").value;
 	let totalMaterial2 = document.getElementById("c2").value * document.getElementById("precioM2").value;
 	let totalMaterial3 = document.getElementById("c3").value * document.getElementById("precioM3").value;
 	let total = precioTrabajador + totalMaterial1 + totalMaterial2 + totalMaterial3;
-	console.log(total);
 	document.getElementById("final").value = total;
+	
+	
+	
+});
+
+
+document.getElementById("guardarTrabajoNuevo").addEventListener("click", function(e) {
+
+	if (document.getElementById("final").value == 0) {
+		e.preventDefault();
+		document.getElementById("noCero").hidden = false;
+		setTimeout(function() {
+			document.getElementById("noCero").hidden = true;
+		}, 2000);
+	}
+	
+
+})
+
+
+document.getElementById("boton").addEventListener("click", function(e) {
+	e.preventDefault();
+	cargarMateriales();
+	pedirSueldoTrabajador();
+	asignarCantidades();
+	document.getElementById("cont").hidden = false;
 });

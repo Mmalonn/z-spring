@@ -15,24 +15,24 @@
 		<c:if test="">
 			<div class="form-group">
 				<label>Id trabajador</label>
-				<form:input path="id" cssClass="form-control" readonly="true" />
+				<form:input path="id" cssClass="form-control" required="true" readonly="true" />
 			</div>
 		</c:if>
 		<div class="form-group">
 			<label>Nombre</label>
-			<form:input path="nombre" cssClass="form-control" />
+			<form:input path="nombre" required="true" cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label>Tarea a realizar</label>
-			<form:input path="tarea" cssClass="form-control" />
+			<form:input path="tarea" required="true" cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label>Fecha del inicio</label>
-			<form:input path="fecha" value="2022-01-01" cssClass="form-control" />
+			<form:input path="fecha" type="date" required="true" value="2022-01-01" cssClass="form-control" />
 		</div>
-		<div class
+		<div class="form-group">
 			<label>Ingrese Ubicacion</label>
-			<form:input path="ubicacionBo" cssClass="form-control" />
+			<form:input path="ubicacionBo" required="true" cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label>Seleccione Trabajador</label>
@@ -40,15 +40,16 @@
 		</div>		
 		<div class="form-group mb-4">
 			<label>Ingrese Horas Estimadas</label>
-			<form:input path="horasEstimadas" type="number" cssClass="form-control" id="hhoras" />
-		</div>	
-			
-		<div class="form-group	mt-5 pt-5 pl-5 pr-5">
-			<label>Seleccione primer material</label>
+			<form:input path="horasEstimadas" type="number" required="true" cssClass="form-control" id="hhoras" />
+		</div>
+		<hr><hr>			
+		<div class="form-group	mt-2 pt-5 pl-5 pr-5">
+			<h1 class="mb-3">Materiales</h1>
+			<label class="mt-2">Seleccione primer material</label>
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m1" />
 			<div class="form-group mt-1">
 				<label>Ingrese Cantidad</label>
-				<input class="bg-secondary ml-3" type="number" class="form-control" id="cc1">
+				<input class="bg-secondary ml-3" type="number" required="true" class="form-control" id="cc1">
 			</div>
 		</div>			
 		<div class="form-group pl-5 pr-5">
@@ -56,7 +57,7 @@
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m2" />
 			<div class="form-group mt-1">
 				<label>Ingrese Cantidad</label> 
-				<input class="bg-secondary ml-3" type="number" class="form-control" id="cc2">
+				<input class="bg-secondary ml-3" type="number" required="true" class="form-control" id="cc2">
 			</div>
 		</div>
 		<div class="form-group pl-5 pr-5">
@@ -64,13 +65,10 @@
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m3" />
 			<div class="form-group mt-1">
 				<label >Ingrese Cantidad</label>
-				<input class="bg-secondary ml-3" type="number" class="form-control" id="cc3">
+				<input class="bg-secondary ml-3" type="number" required="true" class="form-control" id="cc3">
 			</div>
 		</div>
-		
-		
-		
-		
+		<h1 hidden="true" id="noIguales">Ingrese distintos materiales</h1>
 		
 		
 		<div class="form-group">
@@ -97,6 +95,9 @@
 		<div class="form-group">
 			<form:input path="cantidad3" id="cantidad3" hidden="true" readonly="true"/>
 		</div>
+		
+		
+
 
 
 
@@ -156,6 +157,7 @@
 					<input class="alert" readonly="true" id="c3">
 				</div>
 			</div>
+			<h1 hidden="true" id="noIguales">Ingrese distintos materiales</h1>
 			<div class="row">
    			 	<div class="col-sm">
 				</div>
@@ -164,15 +166,18 @@
 				<button class="btn btn-secondary mt-3 ml-5" id="boton2">Calcular total</button>	
 			</div>
 		</div>
-		  	<button class="btn btn-secondary mt-3 mr-5" id="boton">Calcular Previo</button>
-		<div class="form-group">
+		  	<button class="btn btn-secondary mt-3 mr-5 mb-5" id="boton">Calcular Previo</button>
+		<div class="form-group mt-5">
+		<hr><hr>	
 			<h2 class="p-2 mt-3">Total a pagar</h2>
+			<h1 hidden="true" id="noCero">El valor del precio a pagar no puede ser cero</h1>
 			<h1 class="d-inline">$</h1>
-			<form:input class="d-inline" path="precioFinal" cssClass="mt-4 ml-3 alert alert-secondary" readonly="true" id="final"/>
+			<form:input class="d-inline" path="precioFinal" required="true" cssClass="mt-4 ml-3 alert alert-secondary" readonly="true" id="final"/>
 		</div>
-		<button type="submit" class="btn btn-secondary mb-3">Guardar Trabajo Nuevo</button>
+		<button type="submit" class="btn btn-secondary mb-3" id="guardarTrabajoNuevo">Guardar Trabajo Nuevo</button>
 	</div>
 </form:form>
+
 
 
 <script type="text/javascript" src="<c:url value ="/js/trabajo.js"/>"></script>

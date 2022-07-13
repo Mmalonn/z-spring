@@ -14,28 +14,38 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <meta charset="ISO-8859-1">
 <meta charset="ISO-8859-1">
-<title>Productos</title>
+<title>z-Spring</title>
 </head>
 <body>
-	<header
-		class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar border secondary rounded-lg bg-secondary">
-
+	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar border secondary rounded-lg bg-secondary">
 		<div class="navbar-nav-scroll ">
 			<ul class="navbar-nav bd-navbar-nav flex-row">
-				<li class="nav-item mr-5 mt-1"><a class="nav-link" href="/"
-					onclick=" "><h2 class="border secondary rounded-lg px-3">Inicio</h2></a></li>
-				<li class="nav-item mt-3"><a class="nav-link"
-					href="/trabajos/lista" onclick=" "><p>
+				<li class="nav-item mr-5 mt-1">
+					<a class="nav-link" href="/" onclick=" ">
+						<h2 class="border secondary rounded-lg px-3">Inicio</h2>
+					</a>
+				</li>
+				<li class="nav-item mt-3">
+					<a class="nav-link" href="/trabajos/lista" onclick=" ">
+						<p>
 							<u>Trabajos pendientes</u>
-						</p></a></li>
-				<li class="nav-item mt-3"><a class="nav-link "
-					href="/materiales/lista" onclick=" "><p>
+						</p>
+					</a>
+				</li>
+				<li class="nav-item mt-3">
+					<a class="nav-link " href="/materiales/lista" onclick=" ">
+						<p>
 							<u>Materiales</u>
-						</p></a></li>
-				<li class="nav-item mt-3"><a class="nav-link"
-					href="/trabajadores/lista" onclick=" "><p>
-							<u>Personal</u>
-						</p></a></li>
+						</p>
+					</a>
+				</li>
+				<li class="nav-item mt-3">
+					<a class="nav-link" href="/trabajadores/lista" onclick=" ">
+						<p>
+						<u>Personal</u>
+						</p>
+					</a>
+				</li>
 			</ul>
 		</div>
 
@@ -49,11 +59,8 @@
 					</c:forEach>
 				</div>
 			</li>
-
 		</ul>
 
-		<a
-			class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3"
-			href="/terminados/lista">Trabajos Terminados</a>
+		<a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/terminados/lista">Trabajos Terminados</a>
 	</header>
 	<div>

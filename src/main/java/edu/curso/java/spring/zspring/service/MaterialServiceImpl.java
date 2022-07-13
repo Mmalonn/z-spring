@@ -52,7 +52,7 @@ public class MaterialServiceImpl implements MaterialService {
 	public void nuevoMaterial(MaterialBo material, Long idCategoria, Long idProveedor) {
 		CategoriaBo categoria = categoriaRepository.obtenerCategoria(idCategoria);
 		ProveedorBo proveedor = proveedorRepository.obtenerProveedor(idProveedor);
-		
+
 		material.setCategoriaBo(categoria);
 		material.setProveedorBo(proveedor);
 		materialRepository.nuevoMaterial(material);
@@ -85,7 +85,7 @@ public class MaterialServiceImpl implements MaterialService {
 
 	@Override
 	public Long obtenerStock(Long idMaterial) {
-		MaterialBo material=materialRepository.obtenerMaterial(idMaterial);
+		MaterialBo material = materialRepository.obtenerMaterial(idMaterial);
 		return material.getCantidad();
 	}
 
@@ -93,9 +93,12 @@ public class MaterialServiceImpl implements MaterialService {
 	public void restarMateriales(Long idMaterial, Long cantidad) {
 		MaterialBo material = materialRepository.obtenerMaterial(idMaterial);
 		Long cantidadObtenida = material.getCantidad() - cantidad;
-		material.setCantidad(cantidadObtenida);
-		materialRepository.editarMaterial(material, cantidadObtenida);
-		
+		if (cantidadObtenida < 1) {
+			System.out.println("no alcanza, compra mas");
+		} else {
+			material.setCantidad(cantidadObtenida);
+			materialRepository.editarMaterial(material, idMaterial);
+		}
 	}
 
 }
