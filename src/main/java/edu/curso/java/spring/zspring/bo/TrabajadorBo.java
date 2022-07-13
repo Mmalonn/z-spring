@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class TrabajadorBo {
@@ -14,10 +16,15 @@ public class TrabajadorBo {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@NotNull
 	private String nombre;
+	@NotNull
 	private String apellido;
+	@NotNull
 	private String dni;
+	@NotNull
 	private Double sueldoPorHora;
+	@NotNull
 	private String telefono;
 	@OneToMany
 	private List<TrabajoBo> trabajos = new ArrayList <TrabajoBo>();

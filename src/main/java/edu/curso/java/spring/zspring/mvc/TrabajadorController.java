@@ -2,11 +2,14 @@ package edu.curso.java.spring.zspring.mvc;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +22,6 @@ import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.mvc.form.TrabajadorForm;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajadorService;
-import edu.curso.java.spring.zspring.service.interf.TrabajoService;
 
 @Controller
 @RequestMapping("/trabajadores")
@@ -62,7 +64,14 @@ public class TrabajadorController {
 	}
 
 	@PostMapping("/guardar")
-	public String guardar(@ModelAttribute(name = "trabajadorForm") TrabajadorForm trabajadorForm, Model model) {
+	public String guardar(@Valid @ModelAttribute(name = "trabajadorForm") TrabajadorForm trabajadorForm, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+			model.addAttribute("proveedores", proveedores);
+			model.addAttribute("trabajadorForm", new TrabajadorForm());
+			return"/trabajadores/form";
+		}
+		
 		TrabajadorBo trabajador = null;
 		Long idTrabajador = trabajadorForm.getId();
 		if (idTrabajador == null) {

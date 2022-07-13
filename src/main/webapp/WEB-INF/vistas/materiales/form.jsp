@@ -15,35 +15,41 @@
 	
 </div>
 
-<form:form method="POST" action="/materiales/guardar" modelAttribute="materialForm">
+<form:form method="POST" action="/materiales/guardar" modelAttribute="materialForm" id="formularioMaterial">
 	<div class="container mt-4">
 	
 		<c:if test="${materialForm.id > 0}">
 			<div class="form-group">
 				<label>Id material</label>
 				<form:input path="id" cssClass="form-control" readonly="true"/>
+				<form:errors path="id" cssClass="error"/>
 			</div>
 		</c:if>
 		
 		<div class="form-group">
 			<label>Nombre</label>
 			<form:input path="nombre" cssClass="form-control" />
+			<form:errors path="nombre" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label>Cantidad</label>
 			<form:input path="cantidad" cssClass="form-control" />
+			<form:errors path="cantidad" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label>Precio</label>
 			<form:input path="precio" cssClass="form-control" />
+			<form:errors path="precio" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label>Categoria</label>
 			<form:select path="idCategoria" items="${categorias}" itemLabel="nombre" itemValue="id" cssClass="form-control"/>
+			<form:errors path="idCategoria" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label>Proveedor</label>
 			<form:select path="idProveedor" items="${proveedores}" itemLabel="nombre" itemValue="id" cssClass="form-control" id="select-categorias" />
+			<form:errors path="idProveedor" cssClass="error"/>
 		</div>
 
 

@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -12,12 +16,19 @@ public class MaterialBo {
 	@Id
 	@GeneratedValue
 	private Long Id;
+	@NotNull
 	private String nombre;
+	@Positive
+	@NotNull
 	private Long cantidad;
+	@Positive
+	@NotNull
 	private Double precio;
+	@NotNull
 	@JsonIgnore
 	@ManyToOne
 	private ProveedorBo proveedorBo;
+	@NotNull
 	@JsonIgnore
 	@ManyToOne
 	private CategoriaBo categoriaBo;

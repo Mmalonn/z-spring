@@ -10,43 +10,51 @@
 		<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajo nuevo</h2>
 	</c:if>
 </div>
-<form:form method="POST" action="/trabajos/guardar" modelAttribute="trabajoForm">
+<form:form method="POST" action="/trabajos/guardar" modelAttribute="trabajoForm" id="formularioTrabajo">
 	<div class="container mt-4">
 		<c:if test="">
 			<div class="form-group">
 				<label>Id trabajador</label>
 				<form:input path="id" cssClass="form-control" required="true" readonly="true" />
+				<form:errors path="id" cssClass="error"/>			
 			</div>
 		</c:if>
 		<div class="form-group">
 			<label>Cliente</label>
 			<form:input path="nombre" required="true" cssClass="form-control" />
+			<form:errors path="nombre" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label>Tarea a realizar</label>
 			<form:input path="tarea" required="true" cssClass="form-control" />
+			<form:errors path="tarea" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label>Fecha del inicio</label>
 			<form:input path="fecha" type="date" required="true" value="2022-01-01" cssClass="form-control" />
+			<form:errors path="fecha" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label>Ingrese Ubicacion</label>
 			<form:input path="ubicacionBo" required="true" cssClass="form-control" />
+			<form:errors path="UbicacionBo" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label>Seleccione Trabajador</label>
 			<form:select path="idTrabajador" items="${trabajadores}" itemLabel="nombre" itemValue="id" cssClass="form-control" id="t" />
+			<form:errors path="idTrabajador" cssClass="error"/>
 		</div>		
 		<div class="form-group mb-4">
 			<label>Ingrese Horas Estimadas</label>
 			<form:input path="horasEstimadas" type="number" required="true" cssClass="form-control" id="hhoras" />
+			<form:errors path="horasEstimadas" cssClass="error"/>
 		</div>
 		<hr><hr>			
 		<div class="form-group	mt-2 pt-5 pl-5 pr-5">
 			<h1 class="mb-3">Materiales</h1>
 			<label class="mt-2">Seleccione primer material</label>
 			<form:select path="idMaterial" items="${materiales}" itemLabel="nombre" itemValue="Id" cssClass="form-control" id="m1" />
+			<form:errors path="idMaterial" cssClass="error"/>
 			<div class="form-group mt-1">
 				<label>Ingrese Cantidad</label>
 				<input class="bg-secondary ml-3" type="number" required="true" class="form-control" id="cc1">

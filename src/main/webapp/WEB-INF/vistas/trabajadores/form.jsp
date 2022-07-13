@@ -15,35 +15,41 @@
 	
 </div>
 
-<form:form method="POST" action="/trabajadores/guardar" modelAttribute="trabajadorForm">
+<form:form method="POST" action="/trabajadores/guardar" modelAttribute="trabajadorForm" id="formularioTrabajador">
 	<div class="container mt-4">
 	
 		<c:if test="${trabajadorForm.id > 0}">
 			<div class="form-group">
 				<label>Id trabajador</label>
 				<form:input path="id" cssClass="form-control" readonly="true"/>
+				<form:errors path="id" cssClass="error"/>
 			</div>
 		</c:if>
 		
 		<div class="form-group">
 			<label>Nombre</label>
 			<form:input path="nombre" cssClass="form-control" />
+			<form:errors path="nombre" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label for="precio">Apellido</label> 
 			<form:input path="apellido" cssClass="form-control" />
+			<form:errors path="apellido" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label for="precio">dni</label> 
 			<form:input path="dni" cssClass="form-control" />
+			<form:errors path="dni" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label for="precio">telefono</label> 
 			<form:input path="telefono" cssClass="form-control" />
+			<form:errors path="telefono" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label for="precio">Sueldo por Hora</label> 
 			<form:input path="sueldoPorHora" cssClass="form-control" />
+			<form:errors path="sueldoPorHora" cssClass="error"/>
 		</div>
 		
 

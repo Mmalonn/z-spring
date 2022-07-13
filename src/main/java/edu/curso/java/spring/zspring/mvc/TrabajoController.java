@@ -3,11 +3,14 @@ package edu.curso.java.spring.zspring.mvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,14 +53,12 @@ public class TrabajoController {
 	@Autowired
 	private FacturaService facturaService;
 
-
 	@GetMapping("/lista")
 	public String listar(Model model) {
 		List<TrabajoBo> trabajos = trabajoService.listarTrabajos();
 		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
 		model.addAttribute("proveedores", proveedores);
 		model.addAttribute("trabajos", trabajos);
-		
 
 		log.info("mostrando trabajos");
 		return "/trabajos/listar";
@@ -71,7 +72,7 @@ public class TrabajoController {
 		model.addAttribute("trabajo", trabajo);
 		return "/trabajos/trabajo";
 	}
-	
+
 	@GetMapping("/factura/{id}")
 	public String verFactura(Model model, @PathVariable Long id) {
 		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
@@ -94,23 +95,35 @@ public class TrabajoController {
 	}
 
 	@PostMapping("/guardar")
-	public String guardar(@ModelAttribute(name = "trabajoForm") TrabajoForm trabajoForm, Model model) {
+	public String guardar(@Valid @ModelAttribute(name = "trabajoForm") TrabajoForm trabajoForm, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+			model.addAttribute("proveedores", proveedores);
+			List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
+			model.addAttribute("trabajadores", trabajadores);
+			List<MaterialBo> materiales = materialService.listarMateriales();
+			model.addAttribute("materiales", materiales);
+			model.addAttribute("trabajoForm", new TrabajoForm());
+			return "/trabajos/form";
+		}
+		
+		
+		
 		TrabajoBo trabajo = new TrabajoBo();
 		trabajo.setNombre(trabajoForm.getNombre());
 		trabajo.setTarea(trabajoForm.getTarea());
 		trabajo.setHorasEstimadas(trabajoForm.getHorasEstimadas());
-		trabajo.setFecha(trabajoForm.getFecha());			
+		trabajo.setFecha(trabajoForm.getFecha());
 		List<Long> materialesForm = trabajoForm.getIdMateriales();
 		List<String> materiales = new ArrayList<String>();
-		for (Long id : materialesForm) {			
+		for (Long id : materialesForm) {
 			MaterialBo material = materialService.obtenerMaterial(id);
 			materiales.add(material.getNombre());
 		}
-		System.out.println(materiales);
 		trabajo.setMateriales(materiales);
-		trabajo.setPrecioFinal(trabajoForm.getPrecioFinal());		
+		trabajo.setPrecioFinal(trabajoForm.getPrecioFinal());
 		UbicacionBo ubicacion = new UbicacionBo();
-		ubicacion.setDireccion(trabajoForm.getUbicacionBo()); 
+		ubicacion.setDireccion(trabajoForm.getUbicacionBo());
 		trabajo.setUbicacionBo(ubicacion);
 		Long trabajadorId = trabajoForm.getIdTrabajador();
 		ubicacionService.nuevaUbicacion(ubicacion);
@@ -144,17 +157,16 @@ public class TrabajoController {
 		trabajoService.agregarTrabajo(trabajo, trabajadorId);
 		return "redirect:/trabajos/lista";
 	}
-	
+
 	@GetMapping("/{id}/eliminar/{id2}")
 	public String eliminarTrabajo(Model model, @PathVariable Long id, @PathVariable Long id2) {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id2);
 		trabajadorService.borrarTrabajoTrabajador(id, trabajador);
-		
-		
-		trabajoService.eliminarTrabajo(id);		
+
+		trabajoService.eliminarTrabajo(id);
 		return "redirect:/trabajos/lista";
 	}
-	
+
 	@GetMapping("/{id}/terminar/{id2}")
 	public String terminarTrabajo(Model model, @PathVariable Long id, @PathVariable Long id2) {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id2);
@@ -162,9 +174,8 @@ public class TrabajoController {
 		TrabajoBo trabajo = trabajoService.obtenerTrabajo(id);
 		trabajoTerminadoService.nuevoTerminado(trabajo);
 		trabajoService.eliminarTrabajo(id);
-		
+
 		return "redirect:/trabajos/lista";
 	}
-	
-	
+
 }

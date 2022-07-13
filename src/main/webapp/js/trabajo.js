@@ -81,7 +81,7 @@ document.getElementById("boton2").addEventListener("click", function(e) {
 	let m1 = document.getElementById("idMaterial1").value;
 	let m2 = document.getElementById("idMaterial2").value;
 	let m3 = document.getElementById("idMaterial3").value;
-	if (m1 == m2 || m1 == m3 || m1 == m2) {
+	if (m1 == m2 || m1 == m3 || m3 == m2) {
 		e.preventDefault();
 		document.getElementById("noIguales").hidden = false;
 		setTimeout(function() {
