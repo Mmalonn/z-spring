@@ -102,7 +102,9 @@ public class TrabajoController {
 		Long trabajadorId = trabajoForm.getIdTrabajador();
 		ubicacionService.nuevaUbicacion(ubicacion);
 		trabajoService.agregarTrabajo(trabajo, trabajadorId);
-		trabajoService.restarMateriales(trabajoForm.getCantidades(), trabajoForm.getIdMateriales());
+		materialService.restarMateriales(trabajoForm.getIdMaterial(), trabajoForm.getCantidad1());
+		materialService.restarMateriales(trabajoForm.getIdMaterial2(), trabajoForm.getCantidad2());
+		materialService.restarMateriales(trabajoForm.getIdMaterial3(), trabajoForm.getCantidad3());
 		return "redirect:/trabajos/lista";
 	}
 	
@@ -110,7 +112,9 @@ public class TrabajoController {
 	public String eliminarTrabajo(Model model, @PathVariable Long id, @PathVariable Long id2) {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id2);
 		trabajadorService.borrarTrabajoTrabajador(id, trabajador);
-		trabajoService.eliminarTrabajo(id);
+		
+		
+		trabajoService.eliminarTrabajo(id);		
 		return "redirect:/trabajos/lista";
 	}
 	

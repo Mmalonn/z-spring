@@ -24,9 +24,53 @@ public class TrabajoForm {
 	private Long idMaterial;
 	private List<Long> idMateriales = new ArrayList<Long>();
 	private List<Long> cantidades = new ArrayList<Long>();
+	private Long idMaterial1;
+	private Long idMaterial2;
+	private Long idMaterial3;
+	private Long cantidad1;
+	private Long cantidad2;
+	private Long cantidad3;
 	
 	
 	
+	
+	
+	public Long getIdMaterial1() {
+		return idMaterial1;
+	}
+	public void setIdMaterial1(Long idMaterial1) {
+		this.idMaterial1 = idMaterial1;
+	}
+	public Long getIdMaterial2() {
+		return idMaterial2;
+	}
+	public void setIdMaterial2(Long idMaterial2) {
+		this.idMaterial2 = idMaterial2;
+	}
+	public Long getIdMaterial3() {
+		return idMaterial3;
+	}
+	public void setIdMaterial3(Long idMaterial3) {
+		this.idMaterial3 = idMaterial3;
+	}
+	public Long getCantidad1() {
+		return cantidad1;
+	}
+	public void setCantidad1(Long cantidad1) {
+		this.cantidad1 = cantidad1;
+	}
+	public Long getCantidad2() {
+		return cantidad2;
+	}
+	public void setCantidad2(Long cantidad2) {
+		this.cantidad2 = cantidad2;
+	}
+	public Long getCantidad3() {
+		return cantidad3;
+	}
+	public void setCantidad3(Long cantidad3) {
+		this.cantidad3 = cantidad3;
+	}
 	public List<Long> getCantidades() {
 		return cantidades;
 	}

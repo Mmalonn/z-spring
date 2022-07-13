@@ -89,4 +89,13 @@ public class MaterialServiceImpl implements MaterialService {
 		return material.getCantidad();
 	}
 
+	@Override
+	public void restarMateriales(Long idMaterial, Long cantidad) {
+		MaterialBo material = materialRepository.obtenerMaterial(idMaterial);
+		Long cantidadObtenida = material.getCantidad() - cantidad;
+		material.setCantidad(cantidadObtenida);
+		materialRepository.editarMaterial(material, cantidadObtenida);
+		
+	}
+
 }

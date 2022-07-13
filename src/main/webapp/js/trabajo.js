@@ -65,6 +65,19 @@ let asignarCantidades = () => {
 	document.getElementById("c2").value = cc2;
 	document.getElementById("c3").value = cc3;
 	let cantidades = [cc1, cc2, cc3];
+	
+	let m1 = document.getElementById("m1").value;
+	let m2 = document.getElementById("m2").value;
+	let m3 = document.getElementById("m3").value;
+
+	document.getElementById("idMaterial1").value = m1;
+	document.getElementById("idMaterial2").value = m2;
+	document.getElementById("idMaterial3").value = m3;
+
+	document.getElementById("cantidad1").value = cc1;
+	document.getElementById("cantidad2").value = cc2;
+	document.getElementById("cantidad3").value = cc3;
+
 	document.getElementById("cantidadesEnviar").value = cantidades;
 }
 

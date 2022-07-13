@@ -20,4 +20,7 @@ public interface MaterialService {
 	void nuevoMaterial(MaterialBo material);
 
 	Long obtenerStock(Long idMaterial);
+
+	void restarMateriales(Long idMaterial, Long cantidad);
+
 }

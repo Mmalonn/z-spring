@@ -28,9 +28,9 @@
 		</div>
 		<div class="form-group">
 			<label>Fecha del inicio</label>
-			<form:input path="fecha" cssClass="form-control" />
+			<form:input path="fecha" value="2022-01-01" cssClass="form-control" />
 		</div>
-		<div class="form-group">
+		<div class
 			<label>Ingrese Ubicacion</label>
 			<form:input path="ubicacionBo" cssClass="form-control" />
 		</div>
@@ -78,6 +78,24 @@
 		</div>
 		<div class="form-group">
 			<form:input path="cantidades" id="cantidadesEnviar" hidden="true" readonly="true"/>
+		</div>
+		<div class="form-group">
+			<form:input path="idMaterial1" id="idMaterial1" hidden="true" readonly="true"/>
+		</div>
+		<div class="form-group">
+			<form:input path="idMaterial2" id="idMaterial2" hidden="true" readonly="true"/>
+		</div>
+		<div class="form-group">
+			<form:input path="idMaterial3" id="idMaterial3" hidden="true" readonly="true"/>
+		</div>
+		<div class="form-group">
+			<form:input path="cantidad1" id="cantidad1" hidden="true" readonly="true"/>
+		</div>
+		<div class="form-group">
+			<form:input path="cantidad2" id="cantidad2" hidden="true" readonly="true"/>
+		</div>
+		<div class="form-group">
+			<form:input path="cantidad3" id="cantidad3" hidden="true" readonly="true"/>
 		</div>
 
 
