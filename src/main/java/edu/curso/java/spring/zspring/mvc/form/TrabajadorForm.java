@@ -3,14 +3,23 @@ package edu.curso.java.spring.zspring.mvc.form;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 
 public class TrabajadorForm {
 
 	private Long id;
+	@NotBlank
 	private String nombre;
+	@NotBlank
 	private String apellido;
+	@NotBlank
 	private String dni;
+	@NotNull
+	@Positive
 	private Double sueldoPorHora;
 	private String telefono;
 	private List<TrabajoBo> trabajos = new ArrayList<TrabajoBo>();

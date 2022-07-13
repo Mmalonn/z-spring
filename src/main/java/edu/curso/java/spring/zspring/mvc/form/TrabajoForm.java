@@ -4,6 +4,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.UbicacionBo;
@@ -11,13 +15,20 @@ import edu.curso.java.spring.zspring.bo.UbicacionBo;
 public class TrabajoForm {
 
 	private Long id;
+	@NotBlank
 	private String nombre;
 	private Date fecha;
-	private String tarea;	
+	@NotBlank
+	private String tarea;
+	@NotNull
+	@Positive
 	private Double horasEstimadas;
+	@NotNull
+	@Positive
 	private Double precioFinal;
 	private TrabajadorBo trabajadorBo;
 	private MaterialBo material;
+	@NotBlank
 	private String ubicacionBo;
 	private List<MaterialBo> materiales = new ArrayList<MaterialBo>();
 	private Long idTrabajador;

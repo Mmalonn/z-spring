@@ -10,9 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,17 +20,10 @@ public class TrabajoBo {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@NotNull
 	private String nombre;
-	@NotNull
 	private Date fecha;
-	@NotNull
 	private String tarea;
-	@NotNull
-	@Positive
 	private Double horasEstimadas;
-	@Positive
-	@NotNull
 	private Double precioFinal;
 	
 	@ManyToOne

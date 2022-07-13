@@ -1,16 +1,27 @@
 package edu.curso.java.spring.zspring.mvc.form;
 
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
 
 public class MaterialForm {
 
 	private Long Id;
+	@NotNull
 	private Long idCategoria;
+	@NotNull
 	private Long idProveedor;
+	@NotBlank
 	private String nombre;
+	@NotNull
+	@Positive
 	private Long cantidad;
+	@NotNull
+	@Positive
 	private Double precio;
 	private ProveedorBo proveedorBo;
 	private CategoriaBo categoriaBo;

@@ -77,27 +77,27 @@ let asignarCantidades = () => {
 
 document.getElementById("boton2").addEventListener("click", function(e) {
 	e.preventDefault();
-	
+
 	let m1 = document.getElementById("idMaterial1").value;
 	let m2 = document.getElementById("idMaterial2").value;
 	let m3 = document.getElementById("idMaterial3").value;
-	if (m1 == m2 || m1 == m3 || m3 == m2) {
+	if (m1 == m2 || m1 == m3 || m2 == m3) {
 		e.preventDefault();
 		document.getElementById("noIguales").hidden = false;
 		setTimeout(function() {
 			document.getElementById("noIguales").hidden = true;
 		}, 2000);
 	}
-	
+
 	let precioTrabajador = document.getElementById("horas").value * document.getElementById("sueldoTrabajador").value;
 	let totalMaterial1 = document.getElementById("c1").value * document.getElementById("precioM1").value;
 	let totalMaterial2 = document.getElementById("c2").value * document.getElementById("precioM2").value;
 	let totalMaterial3 = document.getElementById("c3").value * document.getElementById("precioM3").value;
 	let total = precioTrabajador + totalMaterial1 + totalMaterial2 + totalMaterial3;
 	document.getElementById("final").value = total;
-	
-	
-	
+
+
+
 });
 
 
@@ -110,7 +110,7 @@ document.getElementById("guardarTrabajoNuevo").addEventListener("click", functio
 			document.getElementById("noCero").hidden = true;
 		}, 2000);
 	}
-	
+
 
 })
 
