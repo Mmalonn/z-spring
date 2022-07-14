@@ -8,7 +8,8 @@
 <div class="m-5">
 	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Materiales</h2>
 	<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/materiales/nuevo">Agregar nuevo</a> 
-	<a class="border secondary  text-secondary rounded-lg ml-3" href="/materiales/categorias">Categorias</a>
+	<a class="border secondary  text-secondary rounded-lg ml-3 mr-3" href="/materiales/categorias">Categorias</a>
+	<select id="selectMateriales"></select>
 </div>
 
 

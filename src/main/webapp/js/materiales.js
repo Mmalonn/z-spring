@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('#selectMateriales').select2({
 		width: '200px',
-		placeholder: 'Buscar 1',
+		placeholder: 'Buscar materiales',
 		minimumInputLength: 1,
 		ajax: {
 			url: '/api/materiales/buscar',
