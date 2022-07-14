@@ -103,7 +103,7 @@ public class TrabajoController {
 			model.addAttribute("trabajadores", trabajadores);
 			List<MaterialBo> materiales = materialService.listarMateriales();
 			model.addAttribute("materiales", materiales);
-			model.addAttribute("trabajoForm", new TrabajoForm());
+			model.addAttribute("trabajoForm", trabajoForm);
 			return "/trabajos/form";
 		}
 		

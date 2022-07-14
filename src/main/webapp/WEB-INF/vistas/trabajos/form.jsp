@@ -10,6 +10,13 @@
 		<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajo nuevo</h2>
 	</c:if>
 </div>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+			$('#formularioTrabajo').validate();
+		});
+	</script>
+
 <form:form method="POST" action="/trabajos/guardar" modelAttribute="trabajoForm" id="formularioTrabajo">
 	<div class="container mt-4">
 		<c:if test="">
@@ -20,7 +27,7 @@
 		</c:if>
 		<div class="form-group">
 			<label>Cliente</label>
-			<form:input path="nombre" required="true" cssClass="form-control" />
+			<form:input path="nombre" required="true" cssClass="form-control " />
 		</div>
 		<div class="form-group">
 			<label>Tarea a realizar</label>
@@ -41,6 +48,7 @@
 		<div class="form-group mb-4">
 			<label>Ingrese Horas Estimadas</label>
 			<form:input path="horasEstimadas" type="number" required="true" cssClass="form-control" id="hhoras" />
+			<form:errors path="horasEstimadas" cssClass="text-danger"/>
 		</div>
 		<hr><hr>			
 		<div class="form-group	mt-2 pt-5 pl-5 pr-5">
