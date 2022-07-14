@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <defaultCache eternal="true" maxElementsInMemory="1000" overflowToDisk="false" />
+    <cache name="proveedores" 
+           maxElementsInMemory="100" 
+           timeToIdleSeconds="240"
+           timeToLiveSeconds="240"
+           overflowToDisk="false"
+           memoryStoreEvictionPolicy="LRU" />
+    <cache name="materiales" 
+           maxElementsInMemory="100" 
+           timeToIdleSeconds="240"
+           timeToLiveSeconds="240"
+           overflowToDisk="false"
+           memoryStoreEvictionPolicy="LRU" />
+</ehcache>

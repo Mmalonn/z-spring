@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
@@ -18,6 +19,7 @@ public class ProveedorServiceImpl implements ProveedorService {
 	@Autowired
 	private ProveedoresRepository proveedorRepository;
 	
+	@Cacheable("proveedores")
 	@Override
 	public List<ProveedorBo> listarProveedores() {
 		return proveedorRepository.listarProveedores();
