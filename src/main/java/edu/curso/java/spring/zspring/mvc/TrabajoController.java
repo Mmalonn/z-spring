@@ -166,7 +166,7 @@ public class TrabajoController {
 			model.addAttribute("trabajadores", trabajadores);
 			List<MaterialBo> materiales2 = materialService.listarMateriales();
 			model.addAttribute("materiales", materiales2);
-			trabajoForm.setNombre("POR FAVOR REVISA EL STOCK");
+			trabajoForm.setMensaje("POR FAVOR REVISA EL STOCK");
 			model.addAttribute("trabajoForm", trabajoForm);
 			return "/trabajos/form";
 		}

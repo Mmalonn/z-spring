@@ -38,9 +38,6 @@ let pedirSueldoTrabajador = () => {
 }
 
 
-
-
-
 let cargarMateriales = () => {
 	let m1 = document.getElementById("m1").value;
 	let m2 = document.getElementById("m2").value;
@@ -111,6 +108,8 @@ document.getElementById("boton").addEventListener("click", function(e) {
 		setTimeout(function() {
 			document.getElementById("noIguales").hidden = true;
 		}, 2000);
+		
+
 	} else if (cc1 == 0 || cc2 == 0 || cc3 == 0) {
 		document.getElementById("noVacios").hidden = false;
 		setTimeout(function() {
@@ -128,3 +127,7 @@ document.getElementById("boton").addEventListener("click", function(e) {
 		document.getElementById("cont").hidden = false;
 	}
 });
+
+if(!document.getElementById("oculto").value == 0){
+	document.getElementById("oculto").hidden= false;
+}

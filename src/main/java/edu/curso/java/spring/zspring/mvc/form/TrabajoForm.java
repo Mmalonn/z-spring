@@ -45,11 +45,18 @@ public class TrabajoForm {
 	private Long precioM1;
 	private Long precioM2;
 	private Long precioM3;
+	private String mensaje;
 	
 	
 	
 	
 	
+	public String getMensaje() {
+		return mensaje;
+	}
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
 	public Long getPrecioT() {
 		return precioT;
 	}

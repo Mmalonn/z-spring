@@ -74,6 +74,7 @@
 				<form:errors path="cantidad3" cssClass="error"/>
 			</div>
 		</div>
+		<form:input id="oculto" path="mensaje" required="true" hidden="true" cssClass="form-control" readonly="true"/>
 		<h3 hidden="true" id="conHoras" class="row justify-content-center text-danger">Ingrese Horas trabajador</h3>
 		<h3 hidden="true" id="noVacios" class="row justify-content-center text-danger">Ingrese cantidades</h3>
 		<h3 hidden="true" id="noIguales" class="row justify-content-center text-danger">Ingrese distintos materiales</h3>
@@ -166,8 +167,10 @@
 				<div class="col-sm">
 					<input class="alert" readonly="true" id="c3">
 				</div>
-			</div>			
-			<button class="btn btn-secondary mt-3 ml-5" id="boton2">Calcular total</button>			
+			</div>	
+			<div class="row justify-content-center">
+				<button class="btn btn-secondary mt-3 ml-5" id="boton2">Calcular total</button>								
+			</div>
 		</div>
 		<div class="form-group mt-5">
 		<hr><hr>	

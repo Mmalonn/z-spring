@@ -43,7 +43,7 @@
 		</div>
 		<div class="form-group">
 			<label>Precio</label>
-			<form:input path="precio" cssClass="form-control" />
+			<form:input path="precio" required="true" cssClass="form-control" />
 			<form:errors path="precio" cssClass="error"/>
 		</div>
 		<div class="form-group">

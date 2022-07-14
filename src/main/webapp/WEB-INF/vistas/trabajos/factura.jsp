@@ -5,7 +5,7 @@
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 
-<div class="container">
+<div class="container mt-4 l-3">
 		<h1>Factura de ${factura.nombre}</h1>
 		<table class="table">
 			<thead class="thead-dark">

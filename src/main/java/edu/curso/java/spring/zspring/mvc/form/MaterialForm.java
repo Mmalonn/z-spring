@@ -22,6 +22,7 @@ public class MaterialForm {
 	private Long cantidad;
 	@NotNull
 	@Positive
+	@NotBlank
 	private Double precio;
 	private ProveedorBo proveedorBo;
 	private CategoriaBo categoriaBo;
