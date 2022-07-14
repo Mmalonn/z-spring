@@ -15,7 +15,17 @@
 <link href="/css/bootstrap.css" rel="stylesheet">
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <meta charset="ISO-8859-1">
-<meta charset="ISO-8859-1">
+<style>
+span.error{
+	color: red;
+	font-weight:bold;
+}
+label.error{
+	color: red;
+	font-weight:bold;
+}
+
+</style>
 <title>z-Spring</title>
 </head>
 <body>

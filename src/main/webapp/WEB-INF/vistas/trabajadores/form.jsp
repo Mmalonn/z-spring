@@ -15,6 +15,12 @@
 	
 </div>
 
+<script type="text/javascript">
+		$(document).ready(function() {
+			$('#formularioTrabajador').validate();
+		});
+</script>
+
 <form:form method="POST" action="/trabajadores/guardar" modelAttribute="trabajadorForm" id="formularioTrabajador">
 	<div class="container mt-4">
 	
@@ -22,33 +28,28 @@
 			<div class="form-group">
 				<label>Id trabajador</label>
 				<form:input path="id" cssClass="form-control" readonly="true"/>
-				<form:errors path="id" cssClass="error"/>
 			</div>
 		</c:if>
 		
 		<div class="form-group">
 			<label>Nombre</label>
-			<form:input path="nombre" cssClass="form-control" />
-			<form:errors path="nombre" cssClass="error"/>
+			<form:input path="nombre" required="true" cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label for="precio">Apellido</label> 
-			<form:input path="apellido" cssClass="form-control" />
-			<form:errors path="apellido" cssClass="error"/>
+			<form:input path="apellido" required="true"  cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label for="precio">dni</label> 
-			<form:input path="dni" cssClass="form-control" />
-			<form:errors path="dni" cssClass="error"/>
+			<form:input path="dni" required="true" cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label for="precio">telefono</label> 
-			<form:input path="telefono" cssClass="form-control" />
-			<form:errors path="telefono" cssClass="error"/>
+			<form:input path="telefono" required="true"  cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label for="precio">Sueldo por Hora</label> 
-			<form:input path="sueldoPorHora" cssClass="form-control" />
+			<form:input path="sueldoPorHora" required="true" cssClass="form-control" />
 			<form:errors path="sueldoPorHora" cssClass="error"/>
 		</div>
 		

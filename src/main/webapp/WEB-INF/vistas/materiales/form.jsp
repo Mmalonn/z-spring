@@ -15,6 +15,12 @@
 	
 </div>
 
+<script type="text/javascript">
+		$(document).ready(function() {
+			$('#formularioMaterial').validate();
+		});
+</script>
+
 <form:form method="POST" action="/materiales/guardar" modelAttribute="materialForm" id="formularioMaterial">
 	<div class="container mt-4">
 	
@@ -28,13 +34,12 @@
 		
 		<div class="form-group">
 			<label>Nombre</label>
-			<form:input path="nombre" cssClass="form-control" />
-			<form:errors path="nombre" cssClass="error"/>
+			<form:input path="nombre" required="true" cssClass="form-control" />
 		</div>
 		<div class="form-group">
 			<label>Cantidad</label>
-			<form:input path="cantidad" cssClass="form-control" />
-			<form:errors path="cantidad" cssClass="error"/>
+			<form:input path="cantidad" required="true" cssClass="form-control" />
+			<form:errors path="precio" cssClass="error"/>
 		</div>
 		<div class="form-group">
 			<label>Precio</label>

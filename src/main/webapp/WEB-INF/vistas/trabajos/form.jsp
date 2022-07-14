@@ -15,16 +15,11 @@
 		$(document).ready(function() {
 			$('#formularioTrabajo').validate();
 		});
-	</script>
+</script>
 
 <form:form method="POST" action="/trabajos/guardar" modelAttribute="trabajoForm" id="formularioTrabajo">
 	<div class="container mt-4">
-		<c:if test="">
-			<div class="form-group">
-				<label>Id trabajador</label>
-				<form:input path="id" cssClass="form-control" required="true" readonly="true" />
-			</div>
-		</c:if>
+
 		<div class="form-group">
 			<label>Cliente</label>
 			<form:input path="nombre" required="true" cssClass="form-control " />
@@ -48,7 +43,7 @@
 		<div class="form-group mb-4">
 			<label>Ingrese Horas Estimadas</label>
 			<form:input path="horasEstimadas" type="number" required="true" cssClass="form-control" id="hhoras" />
-			<form:errors path="horasEstimadas" cssClass="text-danger"/>
+			<form:errors path="horasEstimadas" cssClass="error"/>
 		</div>
 		<hr><hr>			
 		<div class="form-group	mt-2 pt-5 pl-5 pr-5">
