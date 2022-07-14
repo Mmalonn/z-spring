@@ -53,6 +53,7 @@
 			<div class="form-group mt-1">
 				<label>Ingrese Cantidad</label>
 				<input class="bg-secondary ml-3" type="number" required="true" class="form-control" id="cc1">
+				<form:errors path="cantidad1" cssClass="error"/>
 			</div>
 		</div>			
 		<div class="form-group pl-5 pr-5">
@@ -61,6 +62,7 @@
 			<div class="form-group mt-1">
 				<label>Ingrese Cantidad</label> 
 				<input class="bg-secondary ml-3" type="number" required="true" class="form-control" id="cc2">
+				<form:errors path="cantidad2" cssClass="error"/>
 			</div>
 		</div>
 		<div class="form-group pl-5 pr-5">
@@ -69,9 +71,14 @@
 			<div class="form-group mt-1">
 				<label >Ingrese Cantidad</label>
 				<input class="bg-secondary ml-3" type="number" required="true" class="form-control" id="cc3">
+				<form:errors path="cantidad3" cssClass="error"/>
 			</div>
 		</div>
-		<h1 hidden="true" id="noIguales">Ingrese distintos materiales</h1>
+		<h3 hidden="true" id="conHoras" class="row justify-content-center text-danger">Ingrese Horas trabajador</h3>
+		<h3 hidden="true" id="noVacios" class="row justify-content-center text-danger">Ingrese cantidades</h3>
+		<h3 hidden="true" id="noIguales" class="row justify-content-center text-danger">Ingrese distintos materiales</h3>
+		<button class="btn btn-secondary mt-3 mr-5 mb-5" id="boton">Calcular Previo</button>
+		
 		
 		
 		<div class="form-group">
@@ -159,21 +166,13 @@
 				<div class="col-sm">
 					<input class="alert" readonly="true" id="c3">
 				</div>
-			</div>
-			<h1 hidden="true" id="noIguales">Ingrese distintos materiales</h1>
-			<div class="row">
-   			 	<div class="col-sm">
-				</div>
-				<div class="col-sm">		
-				</div>
-				<button class="btn btn-secondary mt-3 ml-5" id="boton2">Calcular total</button>	
-			</div>
+			</div>			
+			<button class="btn btn-secondary mt-3 ml-5" id="boton2">Calcular total</button>			
 		</div>
-		  	<button class="btn btn-secondary mt-3 mr-5 mb-5" id="boton">Calcular Previo</button>
 		<div class="form-group mt-5">
 		<hr><hr>	
 			<h2 class="p-2 mt-3">Total a pagar</h2>
-			<h1 hidden="true" id="noCero">El valor del precio a pagar no puede ser cero</h1>
+			<h1 hidden="true" id="noCero" class="row justify-content-center text-danger">El valor del precio a pagar no puede ser cero</h1>
 			<h1 class="d-inline">$</h1>
 			<form:input class="d-inline" path="precioFinal" required="true" cssClass="mt-4 ml-3 alert alert-secondary" readonly="true" id="final"/>
 		</div>

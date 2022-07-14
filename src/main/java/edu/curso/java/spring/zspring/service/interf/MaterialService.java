@@ -3,6 +3,7 @@ package edu.curso.java.spring.zspring.service.interf;
 import java.util.List;
 
 import edu.curso.java.spring.zspring.bo.MaterialBo;
+import edu.curso.java.spring.zspring.service.MaterialException;
 
 
 public interface MaterialService {
@@ -21,6 +22,6 @@ public interface MaterialService {
 
 	Long obtenerStock(Long idMaterial);
 
-	void restarMateriales(Long idMaterial, Long cantidad);
+	Long restarMateriales(Long idMaterial, Long cantidad) throws MaterialException;
 
 }

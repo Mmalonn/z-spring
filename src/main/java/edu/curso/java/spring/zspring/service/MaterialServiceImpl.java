@@ -64,17 +64,14 @@ public class MaterialServiceImpl implements MaterialService {
 			proveedorRepository.editarProveedor(proveedor, idProveedor);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("malio sal");
 		}
 		try {
 			List<MaterialBo> materiales = categoriaRepository.obtenerMaterialesCategoria(categoria);
 			materiales.add(material);
-			System.out.println(material.getNombre());
 			categoria.setMateriales(materiales);
 			categoriaRepository.editarCategoria(categoria, idCategoria);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("malio sal 2");
 		}
 	}
 
@@ -90,15 +87,18 @@ public class MaterialServiceImpl implements MaterialService {
 	}
 
 	@Override
-	public void restarMateriales(Long idMaterial, Long cantidad) {
+	public Long restarMateriales(Long idMaterial, Long cantidad) throws MaterialException {
 		MaterialBo material = materialRepository.obtenerMaterial(idMaterial);
+		String nombre = material.getNombre();
 		Long cantidadObtenida = material.getCantidad() - cantidad;
 		if (cantidadObtenida < 1) {
-			System.out.println("no alcanza, compra mas");
+			throw new MaterialException("no alcanza el material, necesitas comprar mas");
 		} else {
 			material.setCantidad(cantidadObtenida);
 			materialRepository.editarMaterial(material, idMaterial);
 		}
+		return idMaterial;
+		
 	}
 
 }

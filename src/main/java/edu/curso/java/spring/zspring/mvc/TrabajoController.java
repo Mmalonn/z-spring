@@ -1,5 +1,6 @@
 package edu.curso.java.spring.zspring.mvc;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,7 @@ import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.bo.UbicacionBo;
 import edu.curso.java.spring.zspring.mvc.form.TrabajoForm;
+import edu.curso.java.spring.zspring.service.MaterialException;
 import edu.curso.java.spring.zspring.service.interf.FacturaService;
 import edu.curso.java.spring.zspring.service.interf.MaterialService;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
@@ -95,7 +97,7 @@ public class TrabajoController {
 	}
 
 	@PostMapping("/guardar")
-	public String guardar(@Valid @ModelAttribute(name = "trabajoForm") TrabajoForm trabajoForm, BindingResult bindingResult, Model model) {
+	public String guardar(@Valid @ModelAttribute(name = "trabajoForm") TrabajoForm trabajoForm, BindingResult bindingResult, Model model) throws IOException{
 		if(bindingResult.hasErrors()) {
 			List<ProveedorBo> proveedores = proveedorService.listarProveedores();
 			model.addAttribute("proveedores", proveedores);
@@ -126,6 +128,7 @@ public class TrabajoController {
 		ubicacion.setDireccion(trabajoForm.getUbicacionBo());
 		trabajo.setUbicacionBo(ubicacion);
 		Long trabajadorId = trabajoForm.getIdTrabajador();
+		try {
 		ubicacionService.nuevaUbicacion(ubicacion);
 		materialService.restarMateriales(trabajoForm.getIdMaterial(), trabajoForm.getCantidad1());
 		materialService.restarMateriales(trabajoForm.getIdMaterial2(), trabajoForm.getCantidad2());
@@ -155,6 +158,19 @@ public class TrabajoController {
 		trabajo.setFactura(factura);
 		facturaService.crearFactura(factura);
 		trabajoService.agregarTrabajo(trabajo, trabajadorId);
+		}catch(MaterialException e) {
+			e.printStackTrace();
+			List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+			model.addAttribute("proveedores", proveedores);
+			List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
+			model.addAttribute("trabajadores", trabajadores);
+			List<MaterialBo> materiales2 = materialService.listarMateriales();
+			model.addAttribute("materiales", materiales2);
+			trabajoForm.setNombre("POR FAVOR REVISA EL STOCK");
+			model.addAttribute("trabajoForm", trabajoForm);
+			return "/trabajos/form";
+		}
+		
 		return "redirect:/trabajos/lista";
 	}
 
