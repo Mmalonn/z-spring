@@ -7,6 +7,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 
 public class TrabajadorForm {
@@ -23,7 +25,15 @@ public class TrabajadorForm {
 	private Double sueldoPorHora;
 	private String telefono;
 	private List<TrabajoBo> trabajos = new ArrayList<TrabajoBo>();
+	private MultipartFile foto;
 	
+	
+	public MultipartFile getFoto() {
+		return foto;
+	}
+	public void setFoto(MultipartFile foto) {
+		this.foto = foto;
+	}
 	public Long getId() {
 		return id;
 	}

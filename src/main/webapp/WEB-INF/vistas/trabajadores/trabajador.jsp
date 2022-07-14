@@ -19,7 +19,7 @@
 					<p class="card-text">DNI trabajador: ${trabajador.dni}</p>
     			</div>
     			<div class="col-sm">
-      				<div >Hola aca va la foto</div>
+      				<div ><img src="/trabajadores/recuperar-foto/${trabajador.id}"></div>
     			</div>
   			</div>
 		</div>	

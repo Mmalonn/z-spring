@@ -21,7 +21,7 @@
 		});
 </script>
 
-<form:form method="POST" action="/trabajadores/guardar" modelAttribute="trabajadorForm" id="formularioTrabajador">
+<form:form method="POST" action="/trabajadores/guardar" modelAttribute="trabajadorForm" id="formularioTrabajador" enctype="multipart/form-data">
 	<div class="container mt-4">
 	
 		<c:if test="${trabajadorForm.id > 0}">
@@ -36,23 +36,26 @@
 			<form:input path="nombre" required="true" cssClass="form-control" />
 		</div>
 		<div class="form-group">
-			<label for="precio">Apellido</label> 
+			<label>Apellido</label> 
 			<form:input path="apellido" required="true"  cssClass="form-control" />
 		</div>
 		<div class="form-group">
-			<label for="precio">dni</label> 
+			<label>Dni</label> 
 			<form:input path="dni" required="true" cssClass="form-control" />
 		</div>
 		<div class="form-group">
-			<label for="precio">telefono</label> 
+			<label>Telefono</label> 
 			<form:input path="telefono" required="true"  cssClass="form-control" />
 		</div>
 		<div class="form-group">
-			<label for="precio">Sueldo por Hora</label> 
+			<label>Sueldo por Hora</label> 
 			<form:input path="sueldoPorHora" required="true" cssClass="form-control" />
 			<form:errors path="sueldoPorHora" cssClass="error"/>
 		</div>
-		
+		<div class="form-group">
+			<label>Ingrese foto del trabajador</label>
+			<input type="file" name="foto" class="form-control">
+		</div>
 
 		<button type="submit" class="btn btn-secondary mt-2">Guardar Trabajador</button>
 	</div>

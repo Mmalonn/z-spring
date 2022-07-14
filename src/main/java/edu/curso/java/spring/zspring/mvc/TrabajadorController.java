@@ -1,5 +1,8 @@
 package edu.curso.java.spring.zspring.mvc;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -7,6 +10,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
@@ -90,7 +95,34 @@ public class TrabajadorController {
 		} else {
 			trabajadorService.editarTrabajador(trabajador, idTrabajador);
 		}
+		
+		
+		File imagen = new File("C:/Users/marco/Desktop/eclipse-workspace/z-spring/src/main/webapp/WEB-INF/foto-" + trabajador.getId() + ".jpg");
+
+		try(FileOutputStream out = new FileOutputStream(imagen)) {
+			out.write(trabajadorForm.getFoto().getBytes());
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		return "redirect:/trabajadores/lista";
+	}
+	
+	@GetMapping(value = "/recuperar-foto/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
+	public @ResponseBody byte[] recuperarFotoProducto(@PathVariable Long id) {
+		
+		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id);
+
+		if(trabajador != null) {	
+			File imagen = new File("C:/Users/marco/Desktop/eclipse-workspace/z-spring/src/main/webapp/WEB-INF/foto-" + trabajador.getId() + ".jpg");
+			if(imagen.exists()) {
+				try(FileInputStream in = new FileInputStream(imagen)) {
+					return in.readAllBytes();					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
 	}
 	
 	@GetMapping("/{id}/editar")
