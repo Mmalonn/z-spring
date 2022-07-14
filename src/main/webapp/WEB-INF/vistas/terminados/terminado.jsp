@@ -11,33 +11,26 @@
 	<h5 class="card-header">Cliente: ${terminado.nombre}</h5>
 	<div class="card-body">
 		<h5 class="card-title">Ubicacion: ${terminado.ubicacionBo}</h5>
-		<p class="card-text">Tarea: ${terminado.tarea}</p>
+		<p class="card-text ml-5 mb-5">Tarea: ${terminado.tarea}</p>	
+		<table class="table mt-5">
+				<tr>
+					<th class="card-header">Trabajador: </th>
+					<th class="card-header">Precio: </th>
+				</tr>
+				<tr>						
+					<td>${terminado.trabajadorBo}</td>
+					<td>$ ${terminado.precioFinal}</td>		
+				</tr>			
+				<tr>
+					<th class="card-header">Iniciado el dia: </th>
+					<th class="card-header">Terminado el dia: </th>
+				</tr>			
+				<tr>						
+					<td>${terminado.fecha}</td>
+					<td>${terminado.fechaFinalizacion} </th>		
+				</tr>			
+		</table>
 	</div>
-	<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Trabajador: </th>
-					<th scope="col">Precio: </th>
-				</tr>
-			</thead>
-				<tr>						
-					<td scope="row">${terminado.trabajadorBo}</td>
-					<th>$ ${terminado.precioFinal} </th>		
-				</tr>
-	</table>
-	
-	<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Iniciado el dia: </th>
-					<th scope="col">Terminado el dia: </th>
-				</tr>
-			</thead>
-				<tr>						
-					<td scope="row">${terminado.fecha}</td>
-					<th>${terminado.fechaFinalizacion} </th>		
-				</tr>
-	</table>
 </div>
 
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

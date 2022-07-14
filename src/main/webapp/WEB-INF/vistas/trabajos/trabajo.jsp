@@ -12,32 +12,32 @@
 	<h5 class="card-header">Cliente: ${trabajo.nombre}</h5>
 	<div class="card-body">
 		<h5 class="card-title">Ubicacion: ${trabajo.ubicacionBo.direccion}</h5>
-		<p class="card-text">Tarea: ${trabajo.tarea}</p>
-	</div>
-	<table class="table">
+		<p class="card-text ml-5 mb-5">Tarea: ${trabajo.tarea}</p>
+		<table class="table ">
 			<thead>
 				<tr>
-					<th scope="col">Materiales:</th>
+					<th class="card-header" scope="col">Materiales:</th>
 				</tr>
 			</thead>
-			<c:forEach items="${trabajo.materiales}" var="t">
+			<c:forEach items="${trabajo.materiales}" var="t" >
 				<tr>						
 					<td scope="row">${t}</td>			
 				</tr>
 			</c:forEach>	
-	</table>
-	<table class="table">
+		</table>
+		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">Trabajador: </th>
-					<th scope="col">Fecha de inicio: </th>
+					<th scope="col" class="card-header" >Trabajador: </th>
+					<th scope="col" class="card-header" >Fecha de inicio: </th>
 				</tr>
 			</thead>
 				<tr>						
 					<td scope="row">${trabajo.trabajadorBo.nombre} ${trabajo.trabajadorBo.apellido}</td>
 					<th scope="row">${trabajo.fecha}</th>					
 				</tr>
-	</table>
+		</table>
+	</div>
 </div>
 
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

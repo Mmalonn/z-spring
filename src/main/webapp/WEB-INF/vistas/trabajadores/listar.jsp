@@ -18,7 +18,9 @@
 		<tr>
 			<th scope="col">Nombre</th>
 			<th scope="col">Apellido</th>
-			<th scope="col">Opciones</th>
+			<th scope="col"></th>
+			<th scope="col"></th>
+			<th scope="col"></th>
 		</tr>
 	</thead>
 	<c:forEach items="${trabajadores}" var="t">
@@ -26,8 +28,12 @@
 			<td>${t.nombre}</td>
 			<td>${t.apellido}</td>
 			<td>
-				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}">Ver</a>		
-				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}/editar">Editar</a>			
+				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}">Ver</a>
+			</td>
+			<td>
+				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}/editar">Editar</a>
+			</td>
+			<td>
 				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}/eliminar">Eliminar</a>
 			</td>
 		</tr>

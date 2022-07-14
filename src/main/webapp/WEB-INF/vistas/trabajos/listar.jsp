@@ -10,13 +10,17 @@
 	<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/trabajos/nuevo">Agregar nuevo</a>
 </div>
 <div class="container">
-	<table class="table mt-4 ">
+<div class="table responsive">
+	<table class="table user table-hover mt-4 ">
 		<thead>
 			<tr>
-				<th scope="col">Cliente</th>
-				<th scope="col">Ubicacion</th>
-				<th scope="col">Fecha</th>
-				<th scope="col">Opciones</th>
+				<th>Cliente</th>
+				<th>Ubicacion</th>
+				<th>Fecha</th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,14 +31,21 @@
 					<td>${t.fecha}</td>
 					<td>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}">Ver</a>
+					</td>
+					<td>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/eliminar/${t.trabajadorBo.id}">Eliminar</a>
+					</td>
+					<td>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/terminar/${t.trabajadorBo.id}"}">Terminado</a>
+					</td>
+					<td>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/factura/${t.factura.id}"}">Ver Factura</a>
 					</td>
-				</tr>
+				</tr>			
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
 </div>
 
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

@@ -11,18 +11,19 @@
 <div class="card mt-2">
 	<h5 class="card-header">${trabajador.nombre}
 		${trabajador.apellido}</h5>
-	<div class="card-body">
-		<h5 class="card-title">Telefono trabajador: ${trabajador.telefono}</h5>
-		<p class="card-text">DNI trabajador: ${trabajador.dni}</p>
-		
-		
-		
-		<div>
-			<div>Hola aca va la foto</div>
-		</div>
-		
-		
-		
+	<div class="card-body">				
+		<div class="container mb-5">
+  			<div class="row">
+    			<div class="col-sm">
+     				<h5 class="card-title" >Telefono trabajador: ${trabajador.telefono}</h5>
+					<p class="card-text">DNI trabajador: ${trabajador.dni}</p>
+    			</div>
+    			<div class="col-sm">
+      				<div >Hola aca va la foto</div>
+    			</div>
+  			</div>
+		</div>	
+		<br>
 		<table class="table">
 			<thead>
 				<tr>

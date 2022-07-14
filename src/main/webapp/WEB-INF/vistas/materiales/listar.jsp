@@ -5,14 +5,12 @@
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
-<div class="mt-4 ml-3">
+<div class="m-5">
 	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Materiales</h2>
 	<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/materiales/nuevo">Agregar nuevo</a> 
+	<a class="border secondary  text-secondary rounded-lg ml-3" href="/materiales/categorias">Categorias</a>
+</div>
 
-</div>
-<div class="mt-2 ml-3 ">
-	<a class="border secondary  text-secondary rounded-lg" href="/materiales/categorias">Categorias</a>
-</div>
 
 <table class="table mt-4 ">
 	<thead>
