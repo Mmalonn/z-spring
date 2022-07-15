@@ -28,7 +28,6 @@ public class ZSpringApplication {
         executor.setMaxPoolSize(5);
         executor.setThreadNamePrefix("ASYNC-");
         executor.initialize();
-        System.out.println("Listo cargo el taskExecutor");
         return executor;
     }
 }

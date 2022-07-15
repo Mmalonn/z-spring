@@ -74,7 +74,6 @@ public class TrabajoServiceImpl implements TrabajoService {
 		trabajoRepository.editarTrabajo(trabajo, id2);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
 	@Async
 	@Override
 	public void enviarCorreoFactura(String emailCliente, String titulo, String mensaje) {
@@ -86,8 +85,11 @@ public class TrabajoServiceImpl implements TrabajoService {
 		message.setTo(emailCliente);
 		message.setSubject(titulo);
 		message.setText(mensaje);
+		try {
 		javaMailSender.send(message);
-		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	

@@ -32,30 +32,6 @@ public class FacturaBo {
 	private Long precioM3;
 	
 	
-	
-	public FacturaBo(Long id, String nombre, Date fecha, String tarea, Double horasEstimadas, Double precioFinal,
-			String trabajadorBo, String ubicacionBo, String material1, String material2, String material3,
-			Long cantidad1, Long cantidad2, Long cantidad3, Long precioT, Long precioM1, Long precioM2, Long precioM3) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.fecha = fecha;
-		this.tarea = tarea;
-		this.horasEstimadas = horasEstimadas;
-		this.precioFinal = precioFinal;
-		this.trabajadorBo = trabajadorBo;
-		this.ubicacionBo = ubicacionBo;
-		Material1 = material1;
-		Material2 = material2;
-		Material3 = material3;
-		this.cantidad1 = cantidad1;
-		this.cantidad2 = cantidad2;
-		this.cantidad3 = cantidad3;
-		this.precioT = precioT;
-		this.precioM1 = precioM1;
-		this.precioM2 = precioM2;
-		this.precioM3 = precioM3;
-	}
 	public Long getPrecioT() {
 		return precioT;
 	}
