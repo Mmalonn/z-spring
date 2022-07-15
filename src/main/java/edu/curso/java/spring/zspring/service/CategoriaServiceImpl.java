@@ -20,7 +20,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
-	//@Cacheable("categorias")
+	@Cacheable("categorias")
 	@Override
 	public List<CategoriaBo> listarCategorias() {
 		return categoriaRepository.listarCategorias();

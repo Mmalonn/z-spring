@@ -3,14 +3,14 @@
     <defaultCache eternal="true" maxElementsInMemory="1000" overflowToDisk="false" />
     <cache name="proveedores" 
            maxElementsInMemory="100" 
-           timeToIdleSeconds="240"
-           timeToLiveSeconds="240"
+           timeToIdleSeconds="60"
+           timeToLiveSeconds="60"
            overflowToDisk="false"
            memoryStoreEvictionPolicy="LRU" />
     <cache name="categorias" 
            maxElementsInMemory="100" 
-           timeToIdleSeconds="240"
-           timeToLiveSeconds="240"
+           timeToIdleSeconds="60"
+           timeToLiveSeconds="60"
            overflowToDisk="false"
            memoryStoreEvictionPolicy="LRU" />
 </ehcache>
