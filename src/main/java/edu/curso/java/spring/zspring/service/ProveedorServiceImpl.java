@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
@@ -30,16 +31,19 @@ public class ProveedorServiceImpl implements ProveedorService {
 		return proveedorRepository.obtenerProveedor(id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public ProveedorBo nuevoProveedor(ProveedorBo proveedorBo) {
 		return proveedorRepository.nuevoProveedor(proveedorBo);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void borrarProveedor(Long id) {
 		proveedorRepository.borrarProveedor(id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void editarProveedor(ProveedorBo proveedorBo, Long id) {
 		proveedorRepository.editarProveedor(proveedorBo, id);

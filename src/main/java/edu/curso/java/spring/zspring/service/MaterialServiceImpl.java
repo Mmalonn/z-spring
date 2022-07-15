@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
@@ -40,16 +41,19 @@ public class MaterialServiceImpl implements MaterialService {
 		return materialRepository.obtenerMaterial(id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void eliminarMaterial(Long id) {
 		materialRepository.eliminarMaterial(id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void editarMaterial(MaterialBo material, Long id) {
 		materialRepository.editarMaterial(material, id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void nuevoMaterial(MaterialBo material, Long idCategoria, Long idProveedor) {
 		CategoriaBo categoria = categoriaRepository.obtenerCategoria(idCategoria);
@@ -77,6 +81,7 @@ public class MaterialServiceImpl implements MaterialService {
 		}
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void nuevoMaterial(MaterialBo material) {
 		materialRepository.nuevoMaterial(material);
@@ -88,10 +93,10 @@ public class MaterialServiceImpl implements MaterialService {
 		return material.getCantidad();
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public Long restarMateriales(Long idMaterial, Long cantidad) throws MaterialException {
 		MaterialBo material = materialRepository.obtenerMaterial(idMaterial);
-		String nombre = material.getNombre();
 		Long cantidadObtenida = material.getCantidad() - cantidad;
 		if (cantidadObtenida < 1) {
 			throw new MaterialException("no alcanza el material, necesitas comprar mas");

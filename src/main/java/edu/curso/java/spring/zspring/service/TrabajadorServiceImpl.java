@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
@@ -32,22 +33,26 @@ public class TrabajadorServiceImpl implements TrabajadorService {
 		return trabajadorRepository.obtenerTrabajador(id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public TrabajadorBo nuevoTrabajador(TrabajadorBo trabajadorBo) {
 		return trabajadorRepository.nuevoTrabajador(trabajadorBo);
 		
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void editarTrabajador(TrabajadorBo trabajador, Long id) {
 		trabajadorRepository.editarTrabajador(trabajador, id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void borrarTrabajador(Long id) {
 		trabajadorRepository.borrarTrabajador(id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void borrarTrabajoTrabajador(Long id, TrabajadorBo trabajador) {	
 		List<TrabajoBo> trabajos = trabajadorRepository.obtenerTrabajosTrabajador(trabajador);

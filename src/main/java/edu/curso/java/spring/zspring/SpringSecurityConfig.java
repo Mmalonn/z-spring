@@ -18,10 +18,10 @@ public class SpringSecurityConfig {
 
 	@Bean
 	public InMemoryUserDetailsManager userDetailsService() {
-		UserDetails user1 = User.withDefaultPasswordEncoder().username("general").password("general1234").roles("USER")
+		UserDetails user1 = User.withDefaultPasswordEncoder().username("general").password("general").roles("USER")
 				.build();
 
-		UserDetails user2 = User.withDefaultPasswordEncoder().username("admin").password("admin1234")
+		UserDetails user2 = User.withDefaultPasswordEncoder().username("admin").password("admin")
 				.roles("USER", "ADMIN").build();
 
 		ArrayList<UserDetails> users = new ArrayList<UserDetails>();
@@ -34,8 +34,7 @@ public class SpringSecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		http.authorizeHttpRequests()
-			.antMatchers("/api/**").authenticated()
-			.antMatchers("/**").permitAll().and()
+			.antMatchers("/**").authenticated().and()
 			.httpBasic().and().csrf().disable();
 
 		return http.build();

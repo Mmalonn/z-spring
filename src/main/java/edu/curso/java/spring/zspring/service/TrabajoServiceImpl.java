@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
@@ -41,6 +42,7 @@ public class TrabajoServiceImpl implements TrabajoService {
 		return trabajoRepository.obtenerTrabajo(id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void agregarTrabajo(TrabajoBo trabajo, Long id) {
 		UbicacionBo ubicacion = trabajo.getUbicacionBo();
@@ -59,17 +61,20 @@ public class TrabajoServiceImpl implements TrabajoService {
 		}
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void eliminarTrabajo(Long id) {
 		trabajoRepository.borrarTrabajo(id);
 	}
-
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void editarTrabajo(TrabajoBo trabajoBo, Long id2) {
 		TrabajoBo trabajo = trabajoRepository.obtenerTrabajo(id2);
 		trabajoRepository.editarTrabajo(trabajo, id2);
 	}
-
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@Async
 	@Override
 	public void enviarCorreoFactura(String emailCliente, String titulo, String mensaje) {

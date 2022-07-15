@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
@@ -30,16 +31,19 @@ public class CategoriaServiceImpl implements CategoriaService {
 		return categoriaRepository.obtenerCategoria(id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void nuevaCategoria(CategoriaBo categoria) {
 		categoriaRepository.nuevaCategoria(categoria);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void nuevaCategoria(CategoriaBo categoria, Long id) {
 		categoriaRepository.editarCategoria(categoria, id);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void eliminarCategoria(Long id) {
 		categoriaRepository.eliminarCategoria(id);
