@@ -25,6 +25,11 @@
 			<form:input path="nombre" required="true" cssClass="form-control " />
 		</div>
 		<div class="form-group">
+			<label>Ingrese el correo del cliente</label>
+			<form:input path="correo" required="true" cssClass="form-control " />
+			<form:errors path="correo" cssClass="error"/>
+		</div>
+		<div class="form-group">
 			<label>Tarea a realizar</label>
 			<form:input path="tarea" required="true" cssClass="form-control" />
 		</div>

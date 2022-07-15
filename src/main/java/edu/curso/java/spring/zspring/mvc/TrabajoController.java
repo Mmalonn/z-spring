@@ -115,6 +115,7 @@ public class TrabajoController {
 		
 		
 		TrabajoBo trabajo = new TrabajoBo();
+		trabajo.setCorreo(trabajoForm.getCorreo());
 		trabajo.setNombre(trabajoForm.getNombre());
 		trabajo.setTarea(trabajoForm.getTarea());
 		trabajo.setHorasEstimadas(trabajoForm.getHorasEstimadas());

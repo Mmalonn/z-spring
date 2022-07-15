@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -49,6 +50,8 @@ public class TrabajoForm {
 	private Long precioM2;
 	private Long precioM3;
 	private String mensaje;
+	@NotBlank
+	@Email
 	private String correo;
 	
 	

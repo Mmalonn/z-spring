@@ -13,6 +13,7 @@
 	<div class="card-body">
 		<h5 class="card-title">Ubicacion: ${trabajo.ubicacionBo.direccion}</h5>
 		<p class="card-text ml-5 mb-5">Tarea: ${trabajo.tarea}</p>
+		<p class="card-text ml-5 mb-3">Correo: ${trabajo.correo}</p>
 		<table class="table ">
 			<thead>
 				<tr>
