@@ -33,9 +33,14 @@
 			<td>
 				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}/editar">Editar</a>
 			</td>
+			<c:if test="${t.trabajos[0] == null}">
 			<td>
 				<a type="button" class="btn btn-secondary btn-sm eliminarTrabajador" href="/trabajadores/${t.id}/eliminar">Eliminar</a>
 			</td>
+			</c:if>	
+			<c:if test="${t.trabajos[0] != null}">
+				<td><p id="trabajador${t.id}">Asignado</p></td>				
+			</c:if>
 		</tr>
 	</c:forEach>
 </table>
