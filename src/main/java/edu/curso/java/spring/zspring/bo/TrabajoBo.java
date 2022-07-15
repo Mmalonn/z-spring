@@ -24,8 +24,7 @@ public class TrabajoBo {
 	private Date fecha;
 	private String tarea;
 	private Double horasEstimadas;
-	private Double precioFinal;
-	
+	private Double precioFinal;	
 	@ManyToOne
 	@JsonIgnore
 	private TrabajadorBo trabajadorBo;
@@ -35,7 +34,19 @@ public class TrabajoBo {
 	private UbicacionBo ubicacionBo;
 	@OneToOne
 	private FacturaBo factura;
+	private String correo;
+	
+	
+
  
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
 	public FacturaBo getFactura() {
 		return factura;
 	}
@@ -116,7 +127,7 @@ public class TrabajoBo {
 		this.fecha = fecha;
 	}
 
-	public TrabajoBo(String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre, Date fecha,
+	public TrabajoBo(String correo, String tarea, Double horasEstimadas, Double precioFinal, Long id, String nombre, Date fecha,
 			TrabajadorBo trabajadorBo, List<String> materiales, UbicacionBo ubicacionBo, FacturaBo factura) {
 		super();
 		this.id = id;
@@ -129,6 +140,7 @@ public class TrabajoBo {
 		this.precioFinal = precioFinal;
 		this.tarea = tarea;
 		this.factura = factura;
+		this.correo = correo;
 	}
 
 	public TrabajoBo() {

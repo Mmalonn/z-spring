@@ -38,19 +38,26 @@ public class TrabajoForm {
 	private Long idMaterial1;
 	private Long idMaterial2;
 	private Long idMaterial3;
+	@Positive
 	private Long cantidad1;
+	@Positive
 	private Long cantidad2;
+	@Positive
 	private Long cantidad3;
 	private Long precioT;
 	private Long precioM1;
 	private Long precioM2;
 	private Long precioM3;
 	private String mensaje;
+	private String correo;
 	
 	
-	
-	
-	
+	public String getCorreo() {
+		return correo;
+	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
 	public String getMensaje() {
 		return mensaje;
 	}
