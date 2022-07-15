@@ -25,7 +25,7 @@
 			
 			<c:if test="${p.materiales[0] == null }">
 				<td scope="row">${p.telefono}
-					<p class="mt-3 mr-4 border-bottom">Proveedor Vacio</p>
+					<p class="mt-3 mr-4 border-bottom">Proveedor sin materiales</p>
 				</td>
 				<td scope="row"><p>${p.direccion}</p>
 					<a class="btn btn-secondary proveedorBorrar" href="/proveedores/${p.id}/eliminar">Borrar</a>
