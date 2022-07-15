@@ -13,4 +13,6 @@ public interface CategoriaService {
 	void nuevaCategoria(CategoriaBo categoria);
 
 	void nuevaCategoria(CategoriaBo categoria, Long id);
+
+	void eliminarCategoria(Long id);
 }

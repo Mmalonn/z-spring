@@ -74,7 +74,7 @@ public class TrabajadorController {
 			List<ProveedorBo> proveedores = proveedorService.listarProveedores();
 			model.addAttribute("proveedores", proveedores);
 			model.addAttribute("trabajadorForm", new TrabajadorForm());
-			return"/trabajadores/form";
+			return "/trabajadores/form";
 		}
 		
 		TrabajadorBo trabajador = null;

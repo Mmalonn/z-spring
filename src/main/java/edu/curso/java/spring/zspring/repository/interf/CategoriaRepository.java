@@ -18,4 +18,6 @@ public interface CategoriaRepository {
 
 	public List<MaterialBo> obtenerMaterialesCategoria(CategoriaBo categoria);
 
+	public void eliminarCategoria(Long id);
+
 }

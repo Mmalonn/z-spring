@@ -46,6 +46,12 @@ public class CategoriaRepositoryHibernateImpl implements CategoriaRepository {
 		return entityManager.createQuery("select materiales from CategoriaBo as b where b.nombre = :custName").setParameter("custName", categoriaBo.getNombre()).getResultList();
 	}
 
+	@Override
+	public void eliminarCategoria(Long id) {
+		CategoriaBo categoria = entityManager.find(CategoriaBo.class, id);
+		entityManager.remove(categoria);
+	}
+
 
 
 }

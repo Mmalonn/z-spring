@@ -40,4 +40,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 		categoriaRepository.editarCategoria(categoria, id);
 	}
 
+	@Override
+	public void eliminarCategoria(Long id) {
+		categoriaRepository.eliminarCategoria(id);
+	}
+
 }
