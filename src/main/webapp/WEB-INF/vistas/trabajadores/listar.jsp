@@ -34,12 +34,12 @@
 				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}/editar">Editar</a>
 			</td>
 			<td>
-				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}/eliminar">Eliminar</a>
+				<a type="button" class="btn btn-secondary btn-sm eliminarTrabajador" href="/trabajadores/${t.id}/eliminar">Eliminar</a>
 			</td>
 		</tr>
 	</c:forEach>
 </table>
 </div>
 
-
+<script type="text/javascript" src="<c:url value ="/js/trabajadores.js"/>"></script>
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

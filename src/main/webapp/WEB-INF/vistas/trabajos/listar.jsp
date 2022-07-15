@@ -33,7 +33,7 @@
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}">Ver</a>
 					</td>
 					<td>
-						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/eliminar/${t.trabajadorBo.id}">Eliminar</a>
+						<a type="button" class="btn btn-secondary btn-sm eliminarTrabajo" href="/trabajos/${t.id}/eliminar/${t.trabajadorBo.id}">Eliminar</a>
 					</td>
 					<td>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/terminar/${t.trabajadorBo.id}"}">Terminado</a>
@@ -48,4 +48,5 @@
 	</div>
 </div>
 
+<script type="text/javascript" src="<c:url value ="/js/trabajadores.js"/>"></script>
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

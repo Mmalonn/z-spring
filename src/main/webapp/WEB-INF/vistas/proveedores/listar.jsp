@@ -14,14 +14,14 @@
 		<tr>
 			<th scope="col">Nombre</th>
 			<th scope="col">Telefono</th>
-			<th scope="col"></th>
+			<th scope="col">Direccion</th>
 		</tr>
 	</thead>
 	<c:forEach items="${proveedores}" var="p">
 		<tr>
 			<td scope="row">${p.nombre}</td>
 			<td scope="row">${p.telefono}</td>
-			<td></td>
+			<td scope="row">${p.direccion}</td>
 		</tr>
 	</c:forEach>
 </table>

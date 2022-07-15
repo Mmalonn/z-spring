@@ -12,6 +12,8 @@
 <script type="text/javascript" src="<c:url value ="/js/messages_es_AR.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/select2.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/materiales.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/bootbox.all.js"/>"></script>
+
 
 
 <link href="<c:url value="/css/select2.min.css"/>" rel="stylesheet" >
