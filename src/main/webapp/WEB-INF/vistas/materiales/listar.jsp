@@ -7,8 +7,18 @@
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="m-5">
 	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Materiales</h2>
-	<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/materiales/nuevo">Agregar nuevo</a> 
-	<a class="border secondary  text-secondary rounded-lg ml-3 mr-3" href="/materiales/categorias">Categorias</a>
+	<c:choose>
+  		<c:when test="${categorias[0] == null}">
+			<p class="d-inline border secondary rounded-lg bg-secondary px-2 ml-3">Para crear material ingrese una categoria primero</p>			
+  		</c:when>
+  		<c:when test="${proveedores[0] == null}">
+			<p class="d-inline border secondary rounded-lg bg-secondary px-2 ml-3">Para crear material ingrese un proveedor primero</p>			
+  		</c:when>
+  		<c:otherwise>
+			<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/materiales/nuevo">Agregar nuevo</a>
+  		</c:otherwise>
+	</c:choose>
+	<a class="border secondary  text-secondary rounded-lg px-2 ml-3 mr-3" href="/materiales/categorias">Categorias</a>
 	<select id="selectMateriales"></select>
 </div>
 

@@ -7,7 +7,17 @@
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
 	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajos</h2>
-	<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/trabajos/nuevo">Agregar nuevo</a>
+	<c:choose>
+  		<c:when test="${materiales[3] == null}">
+			<p class="d-inline border secondary rounded-lg bg-secondary px-2 ml-3">Para guardar ingrese mas materiales</p>			
+  		</c:when>
+  		<c:when test="${trabajadores[0] == null}">
+			<p class="d-inline border secondary rounded-lg bg-secondary px-2 ml-3">Para guardar ingrese un Trabajador</p>			
+  		</c:when>
+  		<c:otherwise>
+			<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/trabajos/nuevo">Agregar nuevo</a>
+  		</c:otherwise>
+	</c:choose>
 </div>
 <div class="container">
 <div class="table responsive">

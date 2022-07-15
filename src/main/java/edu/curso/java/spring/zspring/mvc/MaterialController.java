@@ -39,6 +39,8 @@ public class MaterialController {
 	public String listar(Model model) {
 		List<MaterialBo> materiales = materialService.listarMateriales();
 		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+		List<CategoriaBo> categorias = categoriaService.listarCategorias();
+		model.addAttribute("categorias", categorias);
 		model.addAttribute("proveedores", proveedores);
 		model.addAttribute("materiales", materiales);
 		log.info("mostrando materiales");
