@@ -1,14 +1,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 
 <div class="mt-4 ml-3">
 	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Trabajadores</h2>
-	<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/trabajadores/nuevo">Agregar nuevo</a>
+	<sec:authorize access="hasRole('ADMIN')">
+		<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/trabajadores/nuevo">Agregar nuevo</a>
+	</sec:authorize>
 </div>
 
 
@@ -30,13 +32,17 @@
 			<td>
 				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}">Ver</a>
 			</td>
-			<td>
+			<sec:authorize access="hasRole('ADMIN')">
+				<td>
 				<a type="button" class="btn btn-secondary btn-sm" href="/trabajadores/${t.id}/editar">Editar</a>
 			</td>
+			</sec:authorize>			
 			<c:if test="${t.trabajos[0] == null}">
-			<td>
-				<a type="button" class="btn btn-secondary btn-sm eliminarTrabajador" href="/trabajadores/${t.id}/eliminar">Eliminar</a>
-			</td>
+			<sec:authorize access="hasRole('ADMIN')">
+				<td>
+					<a type="button" class="btn btn-secondary btn-sm eliminarTrabajador" href="/trabajadores/${t.id}/eliminar">Eliminar</a>
+				</td>
+			</sec:authorize>		
 			</c:if>	
 			<c:if test="${t.trabajos[0] != null}">
 				<td><p id="trabajador${t.id}">Asignado</p></td>				

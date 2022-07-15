@@ -1,8 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
@@ -15,7 +14,9 @@
 			<p class="d-inline border secondary rounded-lg bg-secondary px-2 ml-3">Para guardar ingrese un Trabajador</p>			
   		</c:when>
   		<c:otherwise>
-			<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/trabajos/nuevo">Agregar nuevo</a>
+  			<sec:authorize access="hasRole('ADMIN')">
+  				 <a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/trabajos/nuevo">Agregar nuevo</a>
+			</sec:authorize>
   		</c:otherwise>
 	</c:choose>
 </div>
@@ -42,12 +43,14 @@
 					<td>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}">Ver</a>
 					</td>
-					<td>
-						<a type="button" class="btn btn-secondary btn-sm eliminarTrabajo" href="/trabajos/${t.id}/eliminar/${t.trabajadorBo.id}">Eliminar</a>
-					</td>
-					<td>
-						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/terminar/${t.trabajadorBo.id}"}">Terminado</a>
-					</td>
+					<sec:authorize access="hasRole('ADMIN')">
+						<td>
+							<a type="button" class="btn btn-secondary btn-sm eliminarTrabajo" href="/trabajos/${t.id}/eliminar/${t.trabajadorBo.id}">Eliminar</a>
+						</td>
+						<td>
+							<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/${t.id}/terminar/${t.trabajadorBo.id}"}">Terminado</a>
+						</td>
+					</sec:authorize>						
 					<td>
 						<a type="button" class="btn btn-secondary btn-sm" href="/trabajos/factura/${t.factura.id}"}">Ver Factura</a>
 					</td>

@@ -34,7 +34,12 @@ public class SpringSecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		http.authorizeHttpRequests()
-			.antMatchers("/**").authenticated().and()
+			.antMatchers("/trabajos/**").authenticated()
+			.antMatchers("/trabajadores/**").authenticated()
+			.antMatchers("/materiales/**").authenticated()
+			.antMatchers("/proveedores/**").authenticated()
+			.antMatchers("/terminados**").authenticated()
+			.and()
 			.httpBasic().and().csrf().disable();
 
 		return http.build();

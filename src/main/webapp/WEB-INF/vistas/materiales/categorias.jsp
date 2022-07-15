@@ -1,13 +1,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
 <div class="mt-4 ml-3">
 	<h2 class="d-inline border secondary rounded-lg bg-secondary px-2">Categorias</h2>
-	<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/materiales/categorias/nuevo">Agregar nueva</a>
+	<sec:authorize access="hasRole('ADMIN')">
+		<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/materiales/categorias/nuevo">Agregar nueva</a>
+	</sec:authorize>	
 </div>
 <div class="container">
 	<table class="table mt-4 ">
@@ -32,7 +34,9 @@
 					</c:if>
 					<c:if test="${c.materiales[0] == null }">
 						<p class="d-inline mr-4">Categoria Vacia</p>
-						<a class="btn btn-secondary ml-4 d-inline categoriaBorrar" href="/materiales/categorias/${c.id}/eliminar">Borrar</a>
+						<sec:authorize access="hasRole('ADMIN')">
+							<a class="btn btn-secondary ml-4 d-inline categoriaBorrar" href="/materiales/categorias/${c.id}/eliminar">Borrar</a>
+						</sec:authorize>					
 					</c:if>
 					</td>
 				</tr>

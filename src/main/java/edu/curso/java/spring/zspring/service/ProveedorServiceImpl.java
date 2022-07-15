@@ -20,7 +20,7 @@ public class ProveedorServiceImpl implements ProveedorService {
 	@Autowired
 	private ProveedoresRepository proveedorRepository;
 	
-	@Cacheable("proveedores")
+	//@Cacheable("proveedores")
 	@Override
 	public List<ProveedorBo> listarProveedores() {
 		return proveedorRepository.listarProveedores();

@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <jsp:include page="/WEB-INF/vistas/template_superior.jsp"></jsp:include>
@@ -15,7 +15,9 @@
 			<p class="d-inline border secondary rounded-lg bg-secondary px-2 ml-3">Para crear material ingrese un proveedor primero</p>			
   		</c:when>
   		<c:otherwise>
-			<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/materiales/nuevo">Agregar nuevo</a>
+  			<sec:authorize access="hasRole('ADMIN')">
+  				<a class="d-inline border secondary text-secondary rounded-lg px-2 ml-3" href="/materiales/nuevo">Agregar nuevo</a>
+			</sec:authorize>		
   		</c:otherwise>
 	</c:choose>
 	<a class="border secondary  text-secondary rounded-lg px-2 ml-3 mr-3" href="/materiales/categorias">Categorias</a>
@@ -41,7 +43,9 @@
 			<td scope="row">${m.categoriaBo.nombre}</td>
 			<td scope="row">${m.precio}</td>
 			<td scope="row">${m.cantidad}</td>
-			<td scope="row" class="flex-row-reverse"><a type="button" class="btn btn-secondary btn-sm" href="/materiales/${m.id}/comprar">Comprar mas</a></td>
+			<sec:authorize access="hasRole('ADMIN')">
+				<td scope="row" class="flex-row-reverse"><a type="button" class="btn btn-secondary btn-sm" href="/materiales/${m.id}/comprar">Comprar mas</a></td>
+			</sec:authorize>
 		</tr>
 	</c:forEach>
 </table>
