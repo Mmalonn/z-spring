@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('#selectMateriales').select2({
 		width: '200px',
-		placeholder: 'Buscar materiales',
+		placeholder: 'Buscar material',
 		minimumInputLength: 1,
 		ajax: {
 			url: '/api/materiales/buscar',
@@ -12,18 +12,19 @@ $(document).ready(function() {
 				return query;
 			},
 			processResults: function(data) {
-				var nuevos = [];
+				var nuevosDatos = [];
+
 				for (var material of data) {
-					nuevos.push({ id: material.id, text: material.nombre + ' ' + material.precio });
+					nuevosDatos.push({ id: material.id, text: material.nombre + '  $' + material.precio + ' c/u' });
 				}
 
 				return {
-					results: nuevos
+					results: nuevosDatos
 				};
 			},
 			dataType: 'json'
 		}
 	}).on('select2:select', function(event) {
 		window.location = '/materiales/' + event.params.data.id;
-	})
+	});
 });

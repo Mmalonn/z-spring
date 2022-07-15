@@ -24,4 +24,6 @@ public interface MaterialService {
 
 	Long restarMateriales(Long idMaterial, Long cantidad) throws MaterialException;
 
+	List<MaterialBo> buscarMaterialPorNombre(String nombre);
+
 }

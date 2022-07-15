@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
@@ -18,6 +19,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
+	//@Cacheable("categorias")
 	@Override
 	public List<CategoriaBo> listarCategorias() {
 		return categoriaRepository.listarCategorias();

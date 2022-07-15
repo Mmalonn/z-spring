@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.curso.java.spring.zspring.bo.MaterialBo;
@@ -42,7 +43,6 @@ public class MaterialRestController {
 			materialesDto.add(new MaterialDto(material));
 			System.out.println(material);
 		}
-		System.out.println(materiales);
 		System.out.println(materialesDto);
 		
 		return materialesDto;
@@ -54,6 +54,17 @@ public class MaterialRestController {
 		MaterialDto materialDto = new MaterialDto(material);
 		return ResponseEntity.ok(materialDto);
 	}
+	
+	@GetMapping("materiales/buscar")
+	public List<MaterialDto> buscarMaterialesPorNombre(@RequestParam String nombre){
+		List<MaterialBo> materiales = materialService.buscarMaterialPorNombre(nombre);
+		List<MaterialDto> materialesDto = new ArrayList<MaterialDto>();
+		for (MaterialBo materialBo : materiales) {
+			materialesDto.add(new MaterialDto(materialBo));
+		}
+		return materialesDto;
+	}
+	
 
 	@PostMapping("/materiales")
 	public ResponseEntity<MaterialDto> nuevoMaterial(@RequestBody MaterialDto materialDto) {

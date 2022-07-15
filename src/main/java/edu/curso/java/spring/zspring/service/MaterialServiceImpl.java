@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
 import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
+import edu.curso.java.spring.zspring.repository.MaterialRepositoryJdbc;
 import edu.curso.java.spring.zspring.repository.interf.CategoriaRepository;
 import edu.curso.java.spring.zspring.repository.interf.MaterialRepository;
 import edu.curso.java.spring.zspring.repository.interf.ProveedoresRepository;
@@ -22,14 +23,13 @@ public class MaterialServiceImpl implements MaterialService {
 
 	@Autowired
 	private MaterialRepository materialRepository;
-
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-
 	@Autowired
 	private ProveedoresRepository proveedorRepository;
+	@Autowired
+	private MaterialRepositoryJdbc materialRepositoryJdbc;
 
-	@Cacheable("materiales")
 	@Override
 	public List<MaterialBo> listarMateriales() {
 		return materialRepository.listarMateriales();
@@ -101,6 +101,11 @@ public class MaterialServiceImpl implements MaterialService {
 		}
 		return idMaterial;
 		
+	}
+
+	@Override
+	public List<MaterialBo> buscarMaterialPorNombre(String nombre) {
+		return materialRepositoryJdbc.buscarProductos(nombre);
 	}
 
 }

@@ -35,5 +35,4 @@
 		</tr>
 	</c:forEach>
 </table>
-
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

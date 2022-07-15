@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.stereotype.Repository;
 
 import edu.curso.java.spring.zspring.bo.MaterialBo;
@@ -47,6 +48,7 @@ public class MaterialRepositoryHibernateImpl implements MaterialRepository {
 		material.setProveedorBo(materialBo.getProveedorBo());
 		entityManager.merge(material);
 	}
-	
 
+
+	
 }
