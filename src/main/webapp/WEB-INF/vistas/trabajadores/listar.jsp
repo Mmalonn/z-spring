@@ -46,5 +46,5 @@
 </table>
 </div>
 
-<script type="text/javascript" src="<c:url value ="/js/trabajadores.js"/>"></script>
+<script type="text/javascript" src="<c:url value ="/js/botonbootbox.js"/>"></script>
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

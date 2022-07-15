@@ -33,4 +33,16 @@ $(document).ready(function() {
 			}
 		});			
 	});
+});
+
+$(document).ready(function() {
+		$('.proveedorBorrar').on('click', function(event) {
+			event.preventDefault();
+			var hrefOriginal = $(this).attr('href');
+			bootbox.confirm("Esta seguro de eliminar el proveedor?", function(result){ 
+				if(result) {
+					window.location = hrefOriginal;
+			}
+		});			
+	});
 });	
