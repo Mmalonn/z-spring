@@ -16,4 +16,5 @@ public interface TrabajoService {
 
 	void editarTrabajo(TrabajoBo trabajo, Long id2);
 
+	void enviarCorreoFactura(String emailCliente, String titulo, String mensaje);
 }

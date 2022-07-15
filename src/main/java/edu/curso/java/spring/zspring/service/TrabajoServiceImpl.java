@@ -5,6 +5,9 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
@@ -25,7 +28,9 @@ public class TrabajoServiceImpl implements TrabajoService {
 	private UbicacionRepository ubicacionRepository;
 	@Autowired
 	private TrabajadorRepository trabajadorRepository;
-
+	@Autowired
+	private JavaMailSender javaMailSender;
+	
 	@Override
 	public List<TrabajoBo> listarTrabajos() {
 		return trabajoRepository.listarTrabajos();
@@ -65,4 +70,20 @@ public class TrabajoServiceImpl implements TrabajoService {
 		trabajoRepository.editarTrabajo(trabajo, id2);
 	}
 
+	@Async
+	@Override
+	public void enviarCorreoFactura(String emailCliente, String titulo, String mensaje) {
+		System.out.println(emailCliente);
+		System.out.println(titulo);
+		System.out.println(mensaje);
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom("emaildeprueba@gmail.com");
+		message.setTo(emailCliente);
+		message.setSubject(titulo);
+		message.setText(mensaje);
+		javaMailSender.send(message);
+		
+	}
+
+	
 }

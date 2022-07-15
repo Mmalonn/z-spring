@@ -54,6 +54,7 @@ public class TrabajoController {
 	private TrabajoTerminadoService trabajoTerminadoService;
 	@Autowired
 	private FacturaService facturaService;
+	
 
 	@GetMapping("/lista")
 	public String listar(Model model) {
@@ -162,6 +163,9 @@ public class TrabajoController {
 		trabajo.setFactura(factura);
 		facturaService.crearFactura(factura);
 		trabajoService.agregarTrabajo(trabajo, trabajadorId);
+		String correo = trabajoForm.getCorreo();
+		String titulo = "Factura";
+		trabajoService.enviarCorreoFactura(correo, titulo, "localhost:8080/trabajos/factura/"+trabajo.getId());
 		}catch(MaterialException e) {
 			e.printStackTrace();
 			List<ProveedorBo> proveedores = proveedorService.listarProveedores();
