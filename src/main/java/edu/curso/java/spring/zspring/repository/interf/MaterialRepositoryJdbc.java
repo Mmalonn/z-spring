@@ -1,4 +1,4 @@
-package edu.curso.java.spring.zspring.repository;
+package edu.curso.java.spring.zspring.repository.interf;
 
 import java.util.List;
 

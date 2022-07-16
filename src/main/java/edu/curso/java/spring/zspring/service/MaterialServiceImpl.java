@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
 import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
-import edu.curso.java.spring.zspring.repository.MaterialRepositoryJdbc;
 import edu.curso.java.spring.zspring.repository.interf.CategoriaRepository;
 import edu.curso.java.spring.zspring.repository.interf.MaterialRepository;
+import edu.curso.java.spring.zspring.repository.interf.MaterialRepositoryJdbc;
 import edu.curso.java.spring.zspring.repository.interf.ProveedoresRepository;
 import edu.curso.java.spring.zspring.service.interf.MaterialService;
 
