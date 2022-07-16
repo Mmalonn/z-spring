@@ -2,32 +2,33 @@ package edu.curso.java.spring.zspring;
 
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
+@SuppressWarnings("deprecation")
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig {
 
 	@Bean
-	public InMemoryUserDetailsManager userDetailsService() {
-		UserDetails user1 = User.withDefaultPasswordEncoder().username("general").password("general").roles("USER")
-				.build();
-
-		UserDetails user2 = User.withDefaultPasswordEncoder().username("admin").password("admin")
-				.roles("USER", "ADMIN").build();
-
-		ArrayList<UserDetails> users = new ArrayList<UserDetails>();
-		users.add(user1);
-		users.add(user2);
-		return new InMemoryUserDetailsManager(users);
+	public UserDetailsService jdbcUserDetailsService(DataSource dataSource) {
+		 JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
+		return users;
+	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return NoOpPasswordEncoder.getInstance();
 	}
 	
 	@Bean
