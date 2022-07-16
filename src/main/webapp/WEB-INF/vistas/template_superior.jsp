@@ -67,7 +67,7 @@ label.error{
 					</a>
 				</li>
 				<sec:authorize access="isAuthenticated()">
-				<li class="nav-item mt-3">
+				<li class="nav-item mt-3 ml-4">
 					<a class="nav-link" href="/logout">
 						<p>
 							<u>Cerrar sesion</u>

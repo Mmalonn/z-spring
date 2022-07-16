@@ -21,7 +21,7 @@
 		});
 </script>
 
-<form:form method="POST" action="/materiales/guardar" modelAttribute="materialForm" id="formularioMaterial">
+<form:form method="POST" action="/registro/guardar" modelAttribute="materialForm" id="formularioMaterial">
 	<div class="container mt-4">
 	
 		<c:if test="${materialForm.id > 0}">

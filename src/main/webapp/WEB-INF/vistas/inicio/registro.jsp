@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,17 +32,17 @@
 
           <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
-            <form style="width: 23rem;" method="post" action="/validar">
+            <form:form modelAttribute="usuarioForm" style="width: 23rem;" method="post" action="/registro/guardar">
 
               <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign in</h3>
 
               <div class="form-outline mb-4">
-                <input type="text" name="username" id="usuario" class="form-control form-control-lg" />
+                <form:input type="text" path="USERNAME" id="usuario" class="form-control form-control-lg" />
                 <label class="form-label" for="usuario">Usuario nuevo</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input type="password" name="password" id="contraseña" class="form-control form-control-lg" />
+                <form:input type="password" path="PASSWORD" id="contraseña" class="form-control form-control-lg" />
                 <label class="form-label" for="contraseña">Contraseña nueva</label>
               </div>
 
@@ -49,7 +50,7 @@
                 <button class="btn btn-secondary btn-lg btn-block"  type="submit">Sign in</button>
                 <p>Ya tienes cuenta? <a href="/" class="link-info">Inicia sesion aqui</a></p>
               </div>            
-            </form>
+            </form:form>
           </div>
 	</div>	
 </div>
