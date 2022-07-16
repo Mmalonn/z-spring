@@ -38,9 +38,13 @@ public class SpringSecurityConfig {
 			.antMatchers("/trabajadores/**").authenticated()
 			.antMatchers("/materiales/**").authenticated()
 			.antMatchers("/proveedores/**").authenticated()
-			.antMatchers("/terminados**").authenticated()
-			.and()
-			.httpBasic().and().csrf().disable();
+			.antMatchers("/terminados**").authenticated().and()
+			.formLogin(form -> {
+				form.loginPage("/");
+				form.loginProcessingUrl("/validar");
+				form.failureUrl("/");
+				form.defaultSuccessUrl("/trabajos/lista");
+			}).httpBasic().and().csrf().disable();
 
 		return http.build();
 	}
