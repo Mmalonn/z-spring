@@ -1,8 +1,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,31 +41,40 @@ label.error{
 		<div class="navbar-nav-scroll ">
 			<ul class="navbar-nav bd-navbar-nav flex-row">
 				<li class="nav-item mr-5 mt-1">
-					<a class="nav-link" href="/" onclick=" ">
+					<a class="nav-link" href="/trabajos/lista">
 						<h2 class="border secondary rounded-lg px-3">Inicio</h2>
 					</a>
 				</li>
 				<li class="nav-item mt-3">
-					<a class="nav-link" href="/trabajos/lista" onclick=" ">
+					<a class="nav-link" href="/trabajos/lista">
 						<p>
 							<u>Trabajos pendientes</u>
 						</p>
 					</a>
 				</li>
 				<li class="nav-item mt-3">
-					<a class="nav-link " href="/materiales/lista" onclick=" ">
+					<a class="nav-link " href="/materiales/lista">
 						<p>
 							<u>Materiales</u>
 						</p>
 					</a>
 				</li>
 				<li class="nav-item mt-3">
-					<a class="nav-link" href="/trabajadores/lista" onclick=" ">
+					<a class="nav-link" href="/trabajadores/lista">
 						<p>
-						<u>Personal</u>
+							<u>Personal</u>
 						</p>
 					</a>
 				</li>
+				<sec:authorize access="isAuthenticated()">
+				<li class="nav-item mt-3">
+					<a class="nav-link" href="/logout">
+						<p>
+							<u>Cerrar sesion</u>
+						</p>
+					</a>
+				</li>
+				</sec:authorize>
 			</ul>
 		</div>
 

@@ -42,9 +42,12 @@ public class SpringSecurityConfig {
 			.formLogin(form -> {
 				form.loginPage("/");
 				form.loginProcessingUrl("/validar");
-				form.failureUrl("/");
+				form.failureUrl("/?error=true");
 				form.defaultSuccessUrl("/trabajos/lista");
-			}).httpBasic().and().csrf().disable();
+			}).httpBasic().and().csrf().disable()
+			.logout().logoutUrl("/logout").logoutSuccessUrl("/")
+			.invalidateHttpSession(true)
+			.deleteCookies("JSESSIONID");
 
 		return http.build();
 	}

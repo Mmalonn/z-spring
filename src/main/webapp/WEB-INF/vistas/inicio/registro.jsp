@@ -1,8 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,22 +33,22 @@
 
             <form style="width: 23rem;" method="post" action="/validar">
 
-              <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+              <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign in</h3>
 
               <div class="form-outline mb-4">
                 <input type="text" name="username" id="usuario" class="form-control form-control-lg" />
-                <label class="form-label" for="usuario">Usuario</label>
+                <label class="form-label" for="usuario">Usuario nuevo</label>
               </div>
 
               <div class="form-outline mb-4">
                 <input type="password" name="password" id="contraseña" class="form-control form-control-lg" />
-                <label class="form-label" for="contraseña">Contraseña</label>
+                <label class="form-label" for="contraseña">Contraseña nueva</label>
               </div>
 
               <div class="pt-1 mb-4">
-                <button class="btn btn-secondary btn-lg btn-block"  type="submit">Login</button>
+                <button class="btn btn-secondary btn-lg btn-block"  type="submit">Sign in</button>
+                <p>Ya tienes cuenta? <a href="/" class="link-info">Inicia sesion aqui</a></p>
               </div>            
-              <p>No tienes cuenta? <a href="/registro" class="link-info">Crea una aqui</a></p>
             </form>
           </div>
 	</div>	
