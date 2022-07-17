@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
 import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
+import edu.curso.java.spring.zspring.mvc.form.MaterialForm;
 import edu.curso.java.spring.zspring.repository.interf.CategoriaRepository;
 import edu.curso.java.spring.zspring.repository.interf.MaterialRepository;
 import edu.curso.java.spring.zspring.repository.interf.MaterialRepositoryJdbc;
@@ -53,21 +54,24 @@ public class MaterialServiceImpl implements MaterialService {
 	public void editarMaterial(MaterialBo material, Long id) {
 		materialRepository.editarMaterial(material, id);
 	}
-
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
-	public void nuevoMaterial(MaterialBo material, Long idCategoria, Long idProveedor) {
-		CategoriaBo categoria = categoriaRepository.obtenerCategoria(idCategoria);
-		ProveedorBo proveedor = proveedorRepository.obtenerProveedor(idProveedor);
+	public void nuevoMaterial(MaterialForm materialForm) {
+		CategoriaBo categoria = categoriaRepository.obtenerCategoria(materialForm.getIdCategoria());
+		ProveedorBo proveedor = proveedorRepository.obtenerProveedor(materialForm.getIdProveedor());	
+		MaterialBo material = new MaterialBo();
+		material.setNombre(materialForm.getNombre());
+		material.setPrecio(materialForm.getPrecio());
+		material.setCantidad(materialForm.getCantidad());
 		material.setCategoriaBo(categoria);
 		material.setProveedorBo(proveedor);
 		materialRepository.nuevoMaterial(material);
 		try {
 			List<MaterialBo> materiales = proveedorRepository.obtenerMaterialesProveedor(proveedor);
 			materiales.add(material);
-			System.out.println(material.getNombre());
 			proveedor.setMateriales(materiales);
-			proveedorRepository.editarProveedor(proveedor, idProveedor);
+			proveedorRepository.editarProveedor(proveedor, proveedor.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -75,7 +79,7 @@ public class MaterialServiceImpl implements MaterialService {
 			List<MaterialBo> materiales = categoriaRepository.obtenerMaterialesCategoria(categoria);
 			materiales.add(material);
 			categoria.setMateriales(materiales);
-			categoriaRepository.editarCategoria(categoria, idCategoria);
+			categoriaRepository.editarCategoria(categoria, categoria.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -113,6 +117,7 @@ public class MaterialServiceImpl implements MaterialService {
 		return materialRepositoryJdbc.buscarProductos(nombre);
 	}
 	
+	@Override
 	public void cargarMateriales(Model model) {
 		List<MaterialBo> materiales = this.listarMateriales();
 		model.addAttribute("materiales", materiales);

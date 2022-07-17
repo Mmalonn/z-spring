@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.ui.Model;
 
 import edu.curso.java.spring.zspring.bo.MaterialBo;
+import edu.curso.java.spring.zspring.mvc.form.MaterialForm;
 import edu.curso.java.spring.zspring.service.MaterialException;
 
 
@@ -18,7 +19,7 @@ public interface MaterialService {
 
 	void editarMaterial(MaterialBo material, Long id);
 
-	void nuevoMaterial(MaterialBo material, Long idCategoria, Long idProveedor);
+	void nuevoMaterial(MaterialForm materialForm);
 
 	void nuevoMaterial(MaterialBo material);
 

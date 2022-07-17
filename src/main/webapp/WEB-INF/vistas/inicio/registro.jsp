@@ -38,13 +38,16 @@
 
               <div class="form-outline mb-4">
                 <form:input type="text" path="USERNAME" id="usuario" class="form-control form-control-lg" />
+                <form:errors path="USERNAME" cssClass="error"/>
                 <label class="form-label" for="usuario">Usuario nuevo</label>
               </div>
 
               <div class="form-outline mb-4">
                 <form:input type="password" path="PASSWORD" id="contraseña" class="form-control form-control-lg" />
+                <form:errors path="PASSWORD" cssClass="error"/>
                 <label class="form-label" for="contraseña">Contraseña nueva</label>
               </div>
+              
 
               <div class="pt-1 mb-4">
                 <button class="btn btn-secondary btn-lg btn-block"  type="submit">Sign in</button>

@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.bo.UbicacionBo;

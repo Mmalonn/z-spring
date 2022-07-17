@@ -3,7 +3,6 @@ package edu.curso.java.spring.zspring.mvc;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
-import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.mvc.form.TrabajadorForm;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajadorService;
@@ -40,18 +38,17 @@ public class TrabajadorController {
 
 	@GetMapping("/lista")
 	public String listar(Model model) {
-		List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
+		trabajadorService.cargarTrabajadores(model);
 		proveedorService.cargarProveedores(model);
-		model.addAttribute("trabajadores", trabajadores);
 		log.info("mostrando trabajadores");
 		return "/trabajadores/listar";
 	}
 
 	@GetMapping("/{id}")
 	public String verTrabajador(Model model, @PathVariable Long id) {
-		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id);
 		proveedorService.cargarProveedores(model);
 		trabajadorService.cargarTrabajosTrabajador(model, id);
+		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id);
 		model.addAttribute("trabajador", trabajador);
 		return "/trabajadores/trabajador";
 	}
@@ -103,10 +100,8 @@ public class TrabajadorController {
 	}
 	
 	@GetMapping(value = "/recuperar-foto/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
-	public @ResponseBody byte[] recuperarFotoProducto(@PathVariable Long id) {
-		
+	public @ResponseBody byte[] recuperarFotoProducto(@PathVariable Long id) {		
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id);
-
 		if(trabajador != null) {	
 			File imagen = new File("C:/Users/marco/Desktop/eclipse-workspace/z-spring/src/main/webapp/WEB-INF/foto-" + trabajador.getId() + ".jpg");
 			if(imagen.exists()) {

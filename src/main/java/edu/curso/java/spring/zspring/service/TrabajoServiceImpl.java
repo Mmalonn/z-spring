@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
@@ -90,6 +91,12 @@ public class TrabajoServiceImpl implements TrabajoService {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public void cargarTrabajos(Model model) {
+		List<TrabajoBo> trabajos = this.listarTrabajos();
+		model.addAttribute("trabajos", trabajos);
 	}
 
 	

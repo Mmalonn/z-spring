@@ -1,6 +1,5 @@
 package edu.curso.java.spring.zspring.mvc;
 
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,10 +34,9 @@ public class MaterialController {
 	
 	@GetMapping("/lista")
 	public String listar(Model model) {
-		List<MaterialBo> materiales = materialService.listarMateriales();
+		materialService.cargarMateriales(model);
 		proveedorService.cargarProveedores(model);
-		categoriaService.obtenerCategorias(model);
-		model.addAttribute("materiales", materiales);
+		categoriaService.obtenerCategorias(model);	
 		log.info("mostrando materiales");
 		return "/materiales/listar";
 	}
@@ -59,23 +57,7 @@ public class MaterialController {
 			model.addAttribute("materialForm", new MaterialForm());
 			return "/materiales/form";
 		}
-		MaterialBo material = null;
-		Long idMaterial = materialForm.getId();
-		if(idMaterial == null) {
-			material = new MaterialBo();
-		} else {
-			material = materialService.obtenerMaterial(idMaterial);
-		}
-		material.setNombre(materialForm.getNombre());
-		material.setPrecio(materialForm.getPrecio());
-		if(idMaterial == null) {
-			material.setCantidad(materialForm.getCantidad());
-			materialService.nuevoMaterial(material, materialForm.getIdCategoria(), materialForm.getIdProveedor());
-		} else {
-			Long stockActual= materialService.obtenerStock(idMaterial);
-			material.setCantidad(materialForm.getCantidad()+stockActual);
-			materialService.editarMaterial(material, idMaterial);
-		}
+		materialService.nuevoMaterial(materialForm);	
 		return "redirect:/materiales/lista";
 	}
 

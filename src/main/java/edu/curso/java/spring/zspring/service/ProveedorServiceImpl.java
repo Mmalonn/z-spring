@@ -50,6 +50,7 @@ public class ProveedorServiceImpl implements ProveedorService {
 		proveedorRepository.editarProveedor(proveedorBo, id);
 	}
 
+	@Override
 	public void cargarProveedores(Model model) {
 		List<ProveedorBo> proveedores = this.listarProveedores();
 		model.addAttribute("proveedores", proveedores);

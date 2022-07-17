@@ -50,6 +50,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 		categoriaRepository.eliminarCategoria(id);
 	}
 	
+	@Override
 	public void obtenerCategorias(Model model) {
 		List<CategoriaBo> categorias = this.listarCategorias();
 		model.addAttribute("categorias", categorias);

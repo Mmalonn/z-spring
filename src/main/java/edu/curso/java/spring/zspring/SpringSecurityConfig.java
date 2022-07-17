@@ -1,7 +1,5 @@
 package edu.curso.java.spring.zspring;
 
-import java.util.ArrayList;
-
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;

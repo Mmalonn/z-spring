@@ -3,7 +3,6 @@ package edu.curso.java.spring.zspring.rest;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.curso.java.spring.zspring.bo.MaterialBo;
-import edu.curso.java.spring.zspring.rest.dto.CategoriaDto;
 import edu.curso.java.spring.zspring.rest.dto.MaterialDto;
 import edu.curso.java.spring.zspring.service.interf.MaterialService;
 
@@ -44,7 +42,7 @@ public class MaterialRestController {
 			System.out.println(material);
 		}
 		System.out.println(materialesDto);
-		
+		log.info("mostrando materiales");
 		return materialesDto;
 	}
 

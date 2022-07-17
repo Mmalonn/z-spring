@@ -2,19 +2,11 @@ package edu.curso.java.spring.zspring.rest.dto;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
-import edu.curso.java.spring.zspring.bo.MaterialBo;
-import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoTerminadoBo;
-import edu.curso.java.spring.zspring.bo.UbicacionBo;
 
 public class TrabajoTerminadoDto {
 

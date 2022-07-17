@@ -53,7 +53,7 @@ public class ProveedorController {
 	}
 	
 	@PostMapping("/guardar")
-		public String guardarCategoria(@Valid @ModelAttribute(name = "proveedorForm" ) ProveedorForm proveedorForm, BindingResult bindingResult, Model model){
+		public String guardarProveedor(@Valid @ModelAttribute(name = "proveedorForm" ) ProveedorForm proveedorForm, BindingResult bindingResult, Model model){
 		if(bindingResult.hasErrors()) {
 			return "/proveedores/form";
 		}

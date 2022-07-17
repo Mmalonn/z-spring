@@ -56,14 +56,15 @@ public class TrabajoController {
 
 	@GetMapping("/lista")
 	public String listar(Model model) {
-		List<TrabajoBo> trabajos = trabajoService.listarTrabajos();
-		model.addAttribute("trabajos", trabajos);
+		trabajoService.cargarTrabajos(model);
 		proveedorService.cargarProveedores(model);
 		materialService.cargarMateriales(model);
 		trabajadorService.cargarTrabajadores(model);
 		log.info("mostrando trabajos");
 		return "/trabajos/listar";
 	}
+
+	
 
 	@GetMapping("/{id}")
 	public String verTrabajo(Model model, @PathVariable Long id) {
