@@ -29,8 +29,7 @@ public class CategoriaController {
 	
 	private static  Logger log = LoggerFactory.getLogger(CategoriaController.class);
 
-	@Autowired
-	private MaterialService materialService;
+
 	@Autowired
 	private ProveedorService proveedorService;
 	@Autowired
@@ -38,9 +37,9 @@ public class CategoriaController {
 	
 	@GetMapping
 	public String listar(Model model) {
-		List<CategoriaBo> categorias = categoriaService.listarCategorias();
 		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
 		model.addAttribute("proveedores", proveedores);
+		List<CategoriaBo> categorias = categoriaService.listarCategorias();
 		model.addAttribute("categorias", categorias);
 		log.info("mostrando categorias");
 		return "/materiales/categorias";

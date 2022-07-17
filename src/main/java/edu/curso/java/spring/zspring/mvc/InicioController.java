@@ -44,7 +44,12 @@ public class InicioController {
 		usuario.setPASSWORD(usuarioForm.getPASSWORD());
 		usuario.setENABLED("Y");
 		System.out.println(usuario.getUSERNAME());
-		usuarioService.guardarUsuario(usuario);
+		try {
+			usuarioService.guardarUsuario(usuario);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "/inicio/registro";
+		}
 		return "redirect:/";
 	}
 }

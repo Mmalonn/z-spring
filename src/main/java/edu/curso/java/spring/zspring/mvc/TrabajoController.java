@@ -111,10 +111,7 @@ public class TrabajoController {
 			model.addAttribute("materiales", materiales);
 			model.addAttribute("trabajoForm", trabajoForm);
 			return "/trabajos/form";
-		}
-		
-		
-		
+		}	
 		TrabajoBo trabajo = new TrabajoBo();
 		trabajo.setCorreo(trabajoForm.getCorreo());
 		trabajo.setNombre(trabajoForm.getNombre());
