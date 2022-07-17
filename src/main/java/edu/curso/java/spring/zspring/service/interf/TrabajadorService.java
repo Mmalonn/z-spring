@@ -2,6 +2,8 @@ package edu.curso.java.spring.zspring.service.interf;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 
@@ -20,4 +22,8 @@ public interface TrabajadorService {
 	void borrarTrabajoTrabajador(Long id, TrabajadorBo trabajador);
 
 	List<TrabajoBo> obtenerTrabajosTrabajador(Long id);
+	
+	void cargarTrabajosTrabajador(Model model, Long id);
+	
+	void cargarTrabajadores(Model model);
 }

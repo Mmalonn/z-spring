@@ -51,11 +51,12 @@ public class TrabajadorController {
 	public String verTrabajador(Model model, @PathVariable Long id) {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id);
 		proveedorService.cargarProveedores(model);
-		List<TrabajoBo> trabajos = trabajadorService.obtenerTrabajosTrabajador(id);
-		model.addAttribute("trabajos", trabajos);
+		trabajadorService.cargarTrabajosTrabajador(model, id);
 		model.addAttribute("trabajador", trabajador);
 		return "/trabajadores/trabajador";
 	}
+
+	
 
 	@GetMapping("/nuevo")
 	public String nuevoTrabajador(Model model) {
@@ -70,8 +71,7 @@ public class TrabajadorController {
 			proveedorService.cargarProveedores(model);
 			model.addAttribute("trabajadorForm", new TrabajadorForm());
 			return "/trabajadores/form";
-		}
-		
+		}		
 		TrabajadorBo trabajador = null;
 		Long idTrabajador = trabajadorForm.getId();
 		if (idTrabajador == null) {

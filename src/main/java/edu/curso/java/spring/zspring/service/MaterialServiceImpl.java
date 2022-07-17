@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
 import edu.curso.java.spring.zspring.bo.MaterialBo;
@@ -110,6 +111,11 @@ public class MaterialServiceImpl implements MaterialService {
 	@Override
 	public List<MaterialBo> buscarMaterialPorNombre(String nombre) {
 		return materialRepositoryJdbc.buscarProductos(nombre);
+	}
+	
+	public void cargarMateriales(Model model) {
+		List<MaterialBo> materiales = this.listarMateriales();
+		model.addAttribute("materiales", materiales);
 	}
 
 }

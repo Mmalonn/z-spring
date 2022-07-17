@@ -29,11 +29,12 @@ public class TrabajoTerminadoController {
 	@GetMapping("/lista")
 	public String listar(Model model) {
 		proveedorService.cargarProveedores(model);
-		List<TrabajoTerminadoBo> trabajosTerminados = trabajoTerminadoService.listarTrabajosTerminados();		
-		model.addAttribute("terminados", trabajosTerminados);
+		trabajoTerminadoService.cargarTerminados(model);
 		log.info("mostrando terminados");
 		return "/terminados/listar";	
 	}
+
+	
 	
 	@GetMapping("/{id}")
 	public String verTerminado(Model model, @PathVariable Long id) {

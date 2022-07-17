@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
@@ -68,5 +69,19 @@ public class TrabajadorServiceImpl implements TrabajadorService {
 		TrabajadorBo trabajador = trabajadorRepository.obtenerTrabajador(id);
 		return trabajadorRepository.obtenerTrabajosTrabajador(trabajador);
 	}
+	
+	@Override
+	public void cargarTrabajosTrabajador(Model model, Long id) {
+		List<TrabajoBo> trabajos = this.obtenerTrabajosTrabajador(id);
+		model.addAttribute("trabajos", trabajos);
+	}
+	
+	@Override
+	public void cargarTrabajadores(Model model) {
+		List<TrabajadorBo> trabajadores = this.listarTrabajadores();
+		model.addAttribute("trabajadores", trabajadores);
+	}
+	
+	
 
 }

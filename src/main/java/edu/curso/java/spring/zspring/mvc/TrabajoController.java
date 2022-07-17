@@ -53,17 +53,14 @@ public class TrabajoController {
 	private TrabajoTerminadoService trabajoTerminadoService;
 	@Autowired
 	private FacturaService facturaService;
-	
 
 	@GetMapping("/lista")
 	public String listar(Model model) {
 		List<TrabajoBo> trabajos = trabajoService.listarTrabajos();
-		proveedorService.cargarProveedores(model);
 		model.addAttribute("trabajos", trabajos);
-		List<MaterialBo> materiales = materialService.listarMateriales();
-		model.addAttribute("materiales", materiales);
-		List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
-		model.addAttribute("trabajadores", trabajadores);
+		proveedorService.cargarProveedores(model);
+		materialService.cargarMateriales(model);
+		trabajadorService.cargarTrabajadores(model);
 		log.info("mostrando trabajos");
 		return "/trabajos/listar";
 	}
@@ -87,25 +84,22 @@ public class TrabajoController {
 	@GetMapping("/nuevo")
 	public String nuevoTrabajo(Model model) {
 		proveedorService.cargarProveedores(model);
-		List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
-		model.addAttribute("trabajadores", trabajadores);
-		List<MaterialBo> materiales = materialService.listarMateriales();
-		model.addAttribute("materiales", materiales);
+		trabajadorService.cargarTrabajadores(model);
+		materialService.cargarMateriales(model);
 		model.addAttribute("trabajoForm", new TrabajoForm());
 		return "/trabajos/form";
 	}
 
 	@PostMapping("/guardar")
-	public String guardar(@Valid @ModelAttribute(name = "trabajoForm") TrabajoForm trabajoForm, BindingResult bindingResult, Model model) throws IOException{
-		if(bindingResult.hasErrors()) {
+	public String guardar(@Valid @ModelAttribute(name = "trabajoForm") TrabajoForm trabajoForm,
+			BindingResult bindingResult, Model model) throws IOException {
+		if (bindingResult.hasErrors()) {
 			proveedorService.cargarProveedores(model);
-			List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
-			model.addAttribute("trabajadores", trabajadores);
-			List<MaterialBo> materiales = materialService.listarMateriales();
-			model.addAttribute("materiales", materiales);
+			trabajadorService.cargarTrabajadores(model);
+			materialService.cargarMateriales(model);
 			model.addAttribute("trabajoForm", trabajoForm);
 			return "/trabajos/form";
-		}	
+		}
 		TrabajoBo trabajo = new TrabajoBo();
 		trabajo.setCorreo(trabajoForm.getCorreo());
 		trabajo.setNombre(trabajoForm.getNombre());
@@ -125,50 +119,48 @@ public class TrabajoController {
 		trabajo.setUbicacionBo(ubicacion);
 		Long trabajadorId = trabajoForm.getIdTrabajador();
 		try {
-		ubicacionService.nuevaUbicacion(ubicacion);
-		materialService.restarMateriales(trabajoForm.getIdMaterial(), trabajoForm.getCantidad1());
-		materialService.restarMateriales(trabajoForm.getIdMaterial2(), trabajoForm.getCantidad2());
-		materialService.restarMateriales(trabajoForm.getIdMaterial3(), trabajoForm.getCantidad3());
-		FacturaBo factura = new FacturaBo();
-		factura.setNombre(trabajoForm.getNombre());
-		factura.setTarea(trabajoForm.getTarea());
-		factura.setFecha(trabajoForm.getFecha());
-		factura.setUbicacionBo(trabajoForm.getUbicacionBo());
-		factura.setHorasEstimadas(trabajoForm.getHorasEstimadas());
-		factura.setCantidad1(trabajoForm.getCantidad1());
-		factura.setCantidad2(trabajoForm.getCantidad2());
-		factura.setCantidad3(trabajoForm.getCantidad3());
-		factura.setPrecioFinal(trabajoForm.getPrecioFinal());
-		factura.setPrecioT(trabajoForm.getPrecioT());
-		factura.setPrecioM1(trabajoForm.getPrecioM1());
-		factura.setPrecioM2(trabajoForm.getPrecioM2());
-		factura.setPrecioM3(trabajoForm.getPrecioM3());
-		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(trabajoForm.getIdTrabajador());
-		factura.setTrabajadorBo(trabajador.getNombre() + " " + trabajador.getApellido());
-		String material1 = materialService.obtenerMaterial(trabajoForm.getIdMaterial1()).getNombre();
-		factura.setMaterial1(material1);
-		String material2 = materialService.obtenerMaterial(trabajoForm.getIdMaterial2()).getNombre();
-		factura.setMaterial2(material2);
-		String material3 = materialService.obtenerMaterial(trabajoForm.getIdMaterial3()).getNombre();
-		factura.setMaterial3(material3);
-		trabajo.setFactura(factura);
-		facturaService.crearFactura(factura);
-		trabajoService.agregarTrabajo(trabajo, trabajadorId);
-		String correo = trabajoForm.getCorreo();
-		String titulo = "Factura";
-		trabajoService.enviarCorreoFactura(correo, titulo, "localhost:8080/trabajos/factura/"+trabajo.getId());
-		}catch(MaterialException e) {
+			ubicacionService.nuevaUbicacion(ubicacion);
+			materialService.restarMateriales(trabajoForm.getIdMaterial(), trabajoForm.getCantidad1());
+			materialService.restarMateriales(trabajoForm.getIdMaterial2(), trabajoForm.getCantidad2());
+			materialService.restarMateriales(trabajoForm.getIdMaterial3(), trabajoForm.getCantidad3());
+			FacturaBo factura = new FacturaBo();
+			factura.setNombre(trabajoForm.getNombre());
+			factura.setTarea(trabajoForm.getTarea());
+			factura.setFecha(trabajoForm.getFecha());
+			factura.setUbicacionBo(trabajoForm.getUbicacionBo());
+			factura.setHorasEstimadas(trabajoForm.getHorasEstimadas());
+			factura.setCantidad1(trabajoForm.getCantidad1());
+			factura.setCantidad2(trabajoForm.getCantidad2());
+			factura.setCantidad3(trabajoForm.getCantidad3());
+			factura.setPrecioFinal(trabajoForm.getPrecioFinal());
+			factura.setPrecioT(trabajoForm.getPrecioT());
+			factura.setPrecioM1(trabajoForm.getPrecioM1());
+			factura.setPrecioM2(trabajoForm.getPrecioM2());
+			factura.setPrecioM3(trabajoForm.getPrecioM3());
+			TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(trabajoForm.getIdTrabajador());
+			factura.setTrabajadorBo(trabajador.getNombre() + " " + trabajador.getApellido());
+			String material1 = materialService.obtenerMaterial(trabajoForm.getIdMaterial1()).getNombre();
+			factura.setMaterial1(material1);
+			String material2 = materialService.obtenerMaterial(trabajoForm.getIdMaterial2()).getNombre();
+			factura.setMaterial2(material2);
+			String material3 = materialService.obtenerMaterial(trabajoForm.getIdMaterial3()).getNombre();
+			factura.setMaterial3(material3);
+			trabajo.setFactura(factura);
+			facturaService.crearFactura(factura);
+			trabajoService.agregarTrabajo(trabajo, trabajadorId);
+			String correo = trabajoForm.getCorreo();
+			String titulo = "Factura";
+			trabajoService.enviarCorreoFactura(correo, titulo, "localhost:8080/trabajos/factura/" + trabajo.getId());
+		} catch (MaterialException e) {
 			e.printStackTrace();
 			proveedorService.cargarProveedores(model);
-			List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
-			model.addAttribute("trabajadores", trabajadores);
-			List<MaterialBo> materiales2 = materialService.listarMateriales();
-			model.addAttribute("materiales", materiales2);
+			trabajadorService.cargarTrabajadores(model);
+			materialService.cargarMateriales(model);
 			trabajoForm.setMensaje("POR FAVOR REVISA EL STOCK");
 			model.addAttribute("trabajoForm", trabajoForm);
 			return "/trabajos/form";
 		}
-		
+
 		return "redirect:/trabajos/lista";
 	}
 
@@ -176,7 +168,6 @@ public class TrabajoController {
 	public String eliminarTrabajo(Model model, @PathVariable Long id, @PathVariable Long id2) {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id2);
 		trabajadorService.borrarTrabajoTrabajador(id, trabajador);
-
 		trabajoService.eliminarTrabajo(id);
 		return "redirect:/trabajos/lista";
 	}
@@ -188,7 +179,6 @@ public class TrabajoController {
 		TrabajoBo trabajo = trabajoService.obtenerTrabajo(id);
 		trabajoTerminadoService.nuevoTerminado(trabajo);
 		trabajoService.eliminarTrabajo(id);
-
 		return "redirect:/trabajos/lista";
 	}
 

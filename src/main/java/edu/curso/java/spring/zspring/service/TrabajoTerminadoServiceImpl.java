@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.bo.TrabajoTerminadoBo;
@@ -48,6 +49,12 @@ public class TrabajoTerminadoServiceImpl implements TrabajoTerminadoService {
 	@Override
 	public void nuevoTerminado(TrabajoTerminadoBo trabajo) {
 		trabajoTerminadoRepository.nuevoTerminado(trabajo);
+	}
+	
+	@Override
+	public void cargarTerminados(Model model) {
+		List<TrabajoTerminadoBo> trabajosTerminados = this.listarTrabajosTerminados();		
+		model.addAttribute("terminados", trabajosTerminados);
 	}
 
 }
