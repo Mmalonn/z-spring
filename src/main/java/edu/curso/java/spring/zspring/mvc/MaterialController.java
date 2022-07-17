@@ -67,12 +67,16 @@ public class MaterialController {
 		MaterialBo material = materialService.obtenerMaterial(id);
 		MaterialForm form = new MaterialForm();
 		proveedorService.cargarProveedores(model);
+		setearForm(model, material, form);
+		return "/materiales/comprar";
+	}
+
+	private void setearForm(Model model, MaterialBo material, MaterialForm form) {
 		form.setId(material.getId());
 		form.setNombre(material.getNombre());
 		form.setPrecio(material.getPrecio());
 		form.setProveedorBo(material.getProveedorBo());
 		model.addAttribute("materialForm", form);
-		return "/materiales/comprar";
 	}
 	
 	

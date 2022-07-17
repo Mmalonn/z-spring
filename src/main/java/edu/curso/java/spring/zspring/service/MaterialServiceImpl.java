@@ -5,7 +5,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -60,12 +59,7 @@ public class MaterialServiceImpl implements MaterialService {
 	public void nuevoMaterial(MaterialForm materialForm) {
 		CategoriaBo categoria = categoriaRepository.obtenerCategoria(materialForm.getIdCategoria());
 		ProveedorBo proveedor = proveedorRepository.obtenerProveedor(materialForm.getIdProveedor());	
-		MaterialBo material = new MaterialBo();
-		material.setNombre(materialForm.getNombre());
-		material.setPrecio(materialForm.getPrecio());
-		material.setCantidad(materialForm.getCantidad());
-		material.setCategoriaBo(categoria);
-		material.setProveedorBo(proveedor);
+		MaterialBo material = setearMaterial(materialForm, categoria, proveedor);
 		materialRepository.nuevoMaterial(material);
 		try {
 			List<MaterialBo> materiales = proveedorRepository.obtenerMaterialesProveedor(proveedor);
@@ -85,6 +79,7 @@ public class MaterialServiceImpl implements MaterialService {
 		}
 	}
 
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void nuevoMaterial(MaterialBo material) {
@@ -121,6 +116,16 @@ public class MaterialServiceImpl implements MaterialService {
 	public void cargarMateriales(Model model) {
 		List<MaterialBo> materiales = this.listarMateriales();
 		model.addAttribute("materiales", materiales);
+	}
+
+	private MaterialBo setearMaterial(MaterialForm materialForm, CategoriaBo categoria, ProveedorBo proveedor) {
+		MaterialBo material = new MaterialBo();
+		material.setNombre(materialForm.getNombre());
+		material.setPrecio(materialForm.getPrecio());
+		material.setCantidad(materialForm.getCantidad());
+		material.setCategoriaBo(categoria);
+		material.setProveedorBo(proveedor);
+		return material;
 	}
 
 }

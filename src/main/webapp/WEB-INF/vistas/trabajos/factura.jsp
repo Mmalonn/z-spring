@@ -74,5 +74,4 @@
 	</div>
 
 <script type="text/javascript" src="<c:url value ="/js/factura.js"/>"></script>
-
 <jsp:include page="/WEB-INF/vistas/template_inferior.jsp"></jsp:include>

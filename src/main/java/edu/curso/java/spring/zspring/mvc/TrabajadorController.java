@@ -53,8 +53,6 @@ public class TrabajadorController {
 		return "/trabajadores/trabajador";
 	}
 
-	
-
 	@GetMapping("/nuevo")
 	public String nuevoTrabajador(Model model) {
 		proveedorService.cargarProveedores(model);
@@ -63,12 +61,13 @@ public class TrabajadorController {
 	}
 
 	@PostMapping("/guardar")
-	public String guardar(@Valid @ModelAttribute(name = "trabajadorForm") TrabajadorForm trabajadorForm, BindingResult bindingResult, Model model) {
-		if(bindingResult.hasErrors()) {
+	public String guardar(@Valid @ModelAttribute(name = "trabajadorForm") TrabajadorForm trabajadorForm,
+			BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
 			proveedorService.cargarProveedores(model);
 			model.addAttribute("trabajadorForm", new TrabajadorForm());
 			return "/trabajadores/form";
-		}		
+		}
 		TrabajadorBo trabajador = null;
 		Long idTrabajador = trabajadorForm.getId();
 		if (idTrabajador == null) {
@@ -76,37 +75,27 @@ public class TrabajadorController {
 		} else {
 			trabajador = trabajadorService.obtenerTrabajador(idTrabajador);
 		}
-		trabajador.setNombre(trabajadorForm.getNombre());
-		trabajador.setApellido(trabajadorForm.getApellido());
-		trabajador.setDni(trabajadorForm.getDni());
-		trabajador.setTelefono(trabajadorForm.getTelefono());
-		trabajador.setSueldoPorHora(trabajadorForm.getSueldoPorHora());
 
+		this.setearTrabajador(trabajadorForm, trabajador);
 		if (idTrabajador == null) {
 			trabajadorService.nuevoTrabajador(trabajador);
 		} else {
 			trabajadorService.editarTrabajador(trabajador, idTrabajador);
 		}
-		
-		
-		File imagen = new File("C:/Users/marco/Desktop/eclipse-workspace/z-spring/src/main/webapp/WEB-INF/foto-" + trabajador.getId() + ".jpg");
 
-		try(FileOutputStream out = new FileOutputStream(imagen)) {
-			out.write(trabajadorForm.getFoto().getBytes());
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		guardarFoto(trabajadorForm, trabajador);
 		return "redirect:/trabajadores/lista";
 	}
-	
+
 	@GetMapping(value = "/recuperar-foto/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
-	public @ResponseBody byte[] recuperarFotoProducto(@PathVariable Long id) {		
+	public @ResponseBody byte[] recuperarFotoProducto(@PathVariable Long id) {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id);
-		if(trabajador != null) {	
-			File imagen = new File("C:/Users/marco/Desktop/eclipse-workspace/z-spring/src/main/webapp/WEB-INF/foto-" + trabajador.getId() + ".jpg");
-			if(imagen.exists()) {
-				try(FileInputStream in = new FileInputStream(imagen)) {
-					return in.readAllBytes();					
+		if (trabajador != null) {
+			File imagen = new File("C:/Users/marco/Desktop/eclipse-workspace/z-spring/src/main/webapp/WEB-INF/foto-"
+					+ trabajador.getId() + ".jpg");
+			if (imagen.exists()) {
+				try (FileInputStream in = new FileInputStream(imagen)) {
+					return in.readAllBytes();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -114,12 +103,41 @@ public class TrabajadorController {
 		}
 		return null;
 	}
-	
+
 	@GetMapping("/{id}/editar")
 	public String editar(Model model, @PathVariable Long id) {
-		proveedorService.cargarProveedores(model);		
-		TrabajadorBo trabajador= trabajadorService.obtenerTrabajador(id);
-		TrabajadorForm form = new TrabajadorForm();		
+		proveedorService.cargarProveedores(model);
+		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id);
+		setearForm(model, trabajador);
+		return "/trabajadores/form";
+	}
+
+	@GetMapping("/{id}/eliminar")
+	public String eliminarTrabajador(Model model, @PathVariable Long id) {
+		trabajadorService.borrarTrabajador(id);
+		return "redirect:/trabajadores/lista";
+	}
+
+	private void setearTrabajador(TrabajadorForm trabajadorForm, TrabajadorBo trabajador) {
+		trabajador.setNombre(trabajadorForm.getNombre());
+		trabajador.setApellido(trabajadorForm.getApellido());
+		trabajador.setDni(trabajadorForm.getDni());
+		trabajador.setTelefono(trabajadorForm.getTelefono());
+		trabajador.setSueldoPorHora(trabajadorForm.getSueldoPorHora());
+	}
+
+	private void guardarFoto(TrabajadorForm trabajadorForm, TrabajadorBo trabajador) {
+		File imagen = new File("C:/Users/marco/Desktop/eclipse-workspace/z-spring/src/main/webapp/WEB-INF/foto-"
+				+ trabajador.getId() + ".jpg");
+		try (FileOutputStream out = new FileOutputStream(imagen)) {
+			out.write(trabajadorForm.getFoto().getBytes());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void setearForm(Model model, TrabajadorBo trabajador) {
+		TrabajadorForm form = new TrabajadorForm();
 		form.setId(trabajador.getId());
 		form.setNombre(trabajador.getNombre());
 		form.setApellido(trabajador.getApellido());
@@ -127,13 +145,5 @@ public class TrabajadorController {
 		form.setTelefono(trabajador.getTelefono());
 		form.setSueldoPorHora(trabajador.getSueldoPorHora());
 		model.addAttribute("trabajadorForm", form);
-		return "/trabajadores/form";
 	}
-	
-	@GetMapping("/{id}/eliminar")
-	public String eliminarTrabajador(Model model, @PathVariable Long id) {
-		trabajadorService.borrarTrabajador(id);
-		return "redirect:/trabajadores/lista";
-	}
-
 }
