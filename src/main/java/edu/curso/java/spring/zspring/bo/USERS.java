@@ -1,7 +1,6 @@
 package edu.curso.java.spring.zspring.bo;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity

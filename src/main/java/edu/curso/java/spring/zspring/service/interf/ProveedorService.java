@@ -2,6 +2,8 @@ package edu.curso.java.spring.zspring.service.interf;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
 
 
@@ -16,4 +18,6 @@ public interface ProveedorService {
 	void borrarProveedor(Long id);
 
 	void editarProveedor(ProveedorBo proveedorBo, Long id);
+	
+	void cargarProveedores(Model model);
 }

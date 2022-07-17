@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import edu.curso.java.spring.zspring.bo.CategoriaBo;
 import edu.curso.java.spring.zspring.bo.MaterialBo;
-import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.mvc.form.MaterialForm;
 import edu.curso.java.spring.zspring.service.interf.CategoriaService;
 import edu.curso.java.spring.zspring.service.interf.MaterialService;
@@ -38,10 +36,8 @@ public class MaterialController {
 	@GetMapping("/lista")
 	public String listar(Model model) {
 		List<MaterialBo> materiales = materialService.listarMateriales();
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		List<CategoriaBo> categorias = categoriaService.listarCategorias();
-		model.addAttribute("categorias", categorias);
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
+		categoriaService.obtenerCategorias(model);
 		model.addAttribute("materiales", materiales);
 		log.info("mostrando materiales");
 		return "/materiales/listar";
@@ -49,10 +45,8 @@ public class MaterialController {
 	
 	@GetMapping("/nuevo")
 	public String nuevoMaterial(Model model) {
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
-		List<CategoriaBo> categorias = categoriaService.listarCategorias();
-		model.addAttribute("categorias", categorias);
+		proveedorService.cargarProveedores(model);
+		categoriaService.obtenerCategorias(model);
 		model.addAttribute("materialForm", new MaterialForm());
 		return "/materiales/form";
 	}
@@ -60,10 +54,8 @@ public class MaterialController {
 	@PostMapping("/guardar")
 	public String guardar(@ModelAttribute(name="materialForm") MaterialForm materialForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-			model.addAttribute("proveedores", proveedores);
-			List<CategoriaBo> categorias = categoriaService.listarCategorias();
-			model.addAttribute("categorias", categorias);
+			proveedorService.cargarProveedores(model);
+			categoriaService.obtenerCategorias(model);
 			model.addAttribute("materialForm", new MaterialForm());
 			return "/materiales/form";
 		}
@@ -92,8 +84,7 @@ public class MaterialController {
 	public String comprar(Model model, @PathVariable Long id) {
 		MaterialBo material = materialService.obtenerMaterial(id);
 		MaterialForm form = new MaterialForm();
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		form.setId(material.getId());
 		form.setNombre(material.getNombre());
 		form.setPrecio(material.getPrecio());

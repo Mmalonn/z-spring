@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.repository.interf.ProveedoresRepository;
@@ -49,5 +50,9 @@ public class ProveedorServiceImpl implements ProveedorService {
 		proveedorRepository.editarProveedor(proveedorBo, id);
 	}
 
+	public void cargarProveedores(Model model) {
+		List<ProveedorBo> proveedores = this.listarProveedores();
+		model.addAttribute("proveedores", proveedores);
+	}
 
 }

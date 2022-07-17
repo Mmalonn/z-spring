@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.curso.java.spring.zspring.bo.FacturaBo;
 import edu.curso.java.spring.zspring.bo.MaterialBo;
-import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.bo.UbicacionBo;
@@ -59,8 +58,7 @@ public class TrabajoController {
 	@GetMapping("/lista")
 	public String listar(Model model) {
 		List<TrabajoBo> trabajos = trabajoService.listarTrabajos();
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		model.addAttribute("trabajos", trabajos);
 		List<MaterialBo> materiales = materialService.listarMateriales();
 		model.addAttribute("materiales", materiales);
@@ -73,16 +71,14 @@ public class TrabajoController {
 	@GetMapping("/{id}")
 	public String verTrabajo(Model model, @PathVariable Long id) {
 		TrabajoBo trabajo = trabajoService.obtenerTrabajo(id);
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		model.addAttribute("trabajo", trabajo);
 		return "/trabajos/trabajo";
 	}
 
 	@GetMapping("/factura/{id}")
 	public String verFactura(Model model, @PathVariable Long id) {
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		FacturaBo factura = facturaService.obtenerFactura(id);
 		model.addAttribute("factura", factura);
 		return "/trabajos/factura";
@@ -90,8 +86,7 @@ public class TrabajoController {
 
 	@GetMapping("/nuevo")
 	public String nuevoTrabajo(Model model) {
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
 		model.addAttribute("trabajadores", trabajadores);
 		List<MaterialBo> materiales = materialService.listarMateriales();
@@ -103,8 +98,7 @@ public class TrabajoController {
 	@PostMapping("/guardar")
 	public String guardar(@Valid @ModelAttribute(name = "trabajoForm") TrabajoForm trabajoForm, BindingResult bindingResult, Model model) throws IOException{
 		if(bindingResult.hasErrors()) {
-			List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-			model.addAttribute("proveedores", proveedores);
+			proveedorService.cargarProveedores(model);
 			List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
 			model.addAttribute("trabajadores", trabajadores);
 			List<MaterialBo> materiales = materialService.listarMateriales();
@@ -165,8 +159,7 @@ public class TrabajoController {
 		trabajoService.enviarCorreoFactura(correo, titulo, "localhost:8080/trabajos/factura/"+trabajo.getId());
 		}catch(MaterialException e) {
 			e.printStackTrace();
-			List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-			model.addAttribute("proveedores", proveedores);
+			proveedorService.cargarProveedores(model);
 			List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
 			model.addAttribute("trabajadores", trabajadores);
 			List<MaterialBo> materiales2 = materialService.listarMateriales();

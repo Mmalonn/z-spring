@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoBo;
 import edu.curso.java.spring.zspring.mvc.form.TrabajadorForm;
@@ -42,8 +41,7 @@ public class TrabajadorController {
 	@GetMapping("/lista")
 	public String listar(Model model) {
 		List<TrabajadorBo> trabajadores = trabajadorService.listarTrabajadores();
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		model.addAttribute("trabajadores", trabajadores);
 		log.info("mostrando trabajadores");
 		return "/trabajadores/listar";
@@ -52,18 +50,16 @@ public class TrabajadorController {
 	@GetMapping("/{id}")
 	public String verTrabajador(Model model, @PathVariable Long id) {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id);
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
+		proveedorService.cargarProveedores(model);
 		List<TrabajoBo> trabajos = trabajadorService.obtenerTrabajosTrabajador(id);
 		model.addAttribute("trabajos", trabajos);
-		model.addAttribute("proveedores", proveedores);
 		model.addAttribute("trabajador", trabajador);
 		return "/trabajadores/trabajador";
 	}
 
 	@GetMapping("/nuevo")
 	public String nuevoTrabajador(Model model) {
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		model.addAttribute("trabajadorForm", new TrabajadorForm());
 		return "/trabajadores/form";
 	}
@@ -71,8 +67,7 @@ public class TrabajadorController {
 	@PostMapping("/guardar")
 	public String guardar(@Valid @ModelAttribute(name = "trabajadorForm") TrabajadorForm trabajadorForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-			model.addAttribute("proveedores", proveedores);
+			proveedorService.cargarProveedores(model);
 			model.addAttribute("trabajadorForm", new TrabajadorForm());
 			return "/trabajadores/form";
 		}
@@ -127,10 +122,9 @@ public class TrabajadorController {
 	
 	@GetMapping("/{id}/editar")
 	public String editar(Model model, @PathVariable Long id) {
+		proveedorService.cargarProveedores(model);		
 		TrabajadorBo trabajador= trabajadorService.obtenerTrabajador(id);
-		TrabajadorForm form = new TrabajadorForm();
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		TrabajadorForm form = new TrabajadorForm();		
 		form.setId(trabajador.getId());
 		form.setNombre(trabajador.getNombre());
 		form.setApellido(trabajador.getApellido());

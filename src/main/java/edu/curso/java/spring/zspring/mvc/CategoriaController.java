@@ -1,6 +1,5 @@
 package edu.curso.java.spring.zspring.mvc;
 
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -17,10 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
-import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.mvc.form.CategoriaForm;
 import edu.curso.java.spring.zspring.service.interf.CategoriaService;
-import edu.curso.java.spring.zspring.service.interf.MaterialService;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 
 @Controller
@@ -37,18 +34,17 @@ public class CategoriaController {
 	
 	@GetMapping
 	public String listar(Model model) {
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
-		List<CategoriaBo> categorias = categoriaService.listarCategorias();
-		model.addAttribute("categorias", categorias);
+		proveedorService.cargarProveedores(model);
+		categoriaService.obtenerCategorias(model);
 		log.info("mostrando categorias");
 		return "/materiales/categorias";
 	}
+
+	
 	
 	@GetMapping("/nuevo")
 	public String nuevaCategoria(Model model) {
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		model.addAttribute("categoriaForm", new CategoriaForm());
 		return "/materiales/categoriasform";
 	}

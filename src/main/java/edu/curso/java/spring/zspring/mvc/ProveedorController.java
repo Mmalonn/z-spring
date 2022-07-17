@@ -1,6 +1,5 @@
 package edu.curso.java.spring.zspring.mvc;
 
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -31,8 +30,7 @@ public class ProveedorController {
 	
 	@GetMapping
 	public String listar(Model model) {
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		log.info("mostrando proveedores");
 		return "/proveedores/listar";
 	}
@@ -40,16 +38,16 @@ public class ProveedorController {
 	@GetMapping("/{id}")
 	public String verProveedor(Model model, @PathVariable Long id) {
 		ProveedorBo proveedor= proveedorService.obtenerProveedor(id);
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		model.addAttribute("proveedor", proveedor);
 		return "/proveedores/proveedor";
 	}
+
+	
 	
 	@GetMapping("/nuevo")
 	public String nuevoProveedor(Model model) {
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		model.addAttribute("proveedorForm", new ProveedorForm());
 		return "/proveedores/form";
 	}
@@ -72,4 +70,6 @@ public class ProveedorController {
 		proveedorService.borrarProveedor(id);
 		return "redirect:/proveedores";
 	}
+	
+
 }

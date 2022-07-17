@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import edu.curso.java.spring.zspring.bo.ProveedorBo;
 import edu.curso.java.spring.zspring.bo.TrabajoTerminadoBo;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 import edu.curso.java.spring.zspring.service.interf.TrabajoTerminadoService;
@@ -29,9 +28,8 @@ public class TrabajoTerminadoController {
 	
 	@GetMapping("/lista")
 	public String listar(Model model) {
-		List<TrabajoTerminadoBo> trabajosTerminados = trabajoTerminadoService.listarTrabajosTerminados();
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
+		List<TrabajoTerminadoBo> trabajosTerminados = trabajoTerminadoService.listarTrabajosTerminados();		
 		model.addAttribute("terminados", trabajosTerminados);
 		log.info("mostrando terminados");
 		return "/terminados/listar";	
@@ -40,8 +38,7 @@ public class TrabajoTerminadoController {
 	@GetMapping("/{id}")
 	public String verTerminado(Model model, @PathVariable Long id) {
 		TrabajoTerminadoBo terminado = trabajoTerminadoService.obtenerTerminado(id);
-		List<ProveedorBo> proveedores = proveedorService.listarProveedores();
-		model.addAttribute("proveedores", proveedores);
+		proveedorService.cargarProveedores(model);
 		model.addAttribute("terminado", terminado);
 		return "/terminados/terminado";
 	}

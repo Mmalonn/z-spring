@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import edu.curso.java.spring.zspring.bo.CategoriaBo;
 import edu.curso.java.spring.zspring.repository.interf.CategoriaRepository;
@@ -47,6 +48,11 @@ public class CategoriaServiceImpl implements CategoriaService {
 	@Override
 	public void eliminarCategoria(Long id) {
 		categoriaRepository.eliminarCategoria(id);
+	}
+	
+	public void obtenerCategorias(Model model) {
+		List<CategoriaBo> categorias = this.listarCategorias();
+		model.addAttribute("categorias", categorias);
 	}
 
 }

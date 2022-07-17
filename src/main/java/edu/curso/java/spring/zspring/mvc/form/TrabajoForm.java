@@ -11,7 +11,6 @@ import javax.validation.constraints.Positive;
 
 import edu.curso.java.spring.zspring.bo.MaterialBo;
 import edu.curso.java.spring.zspring.bo.TrabajadorBo;
-import edu.curso.java.spring.zspring.bo.UbicacionBo;
 
 public class TrabajoForm {
 

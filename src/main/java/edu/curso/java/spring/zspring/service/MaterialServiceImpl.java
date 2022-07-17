@@ -58,7 +58,6 @@ public class MaterialServiceImpl implements MaterialService {
 	public void nuevoMaterial(MaterialBo material, Long idCategoria, Long idProveedor) {
 		CategoriaBo categoria = categoriaRepository.obtenerCategoria(idCategoria);
 		ProveedorBo proveedor = proveedorRepository.obtenerProveedor(idProveedor);
-
 		material.setCategoriaBo(categoria);
 		material.setProveedorBo(proveedor);
 		materialRepository.nuevoMaterial(material);
