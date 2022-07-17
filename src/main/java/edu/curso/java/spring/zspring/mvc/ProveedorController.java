@@ -57,11 +57,7 @@ public class ProveedorController {
 		if(bindingResult.hasErrors()) {
 			return "/proveedores/form";
 		}
-		ProveedorBo proveedor = new ProveedorBo();
-		proveedor.setNombre(proveedorForm.getNombre());
-		proveedor.setTelefono(proveedorForm.getTelefono());
-		proveedor.setDireccion(proveedorForm.getDireccion());
-		proveedorService.nuevoProveedor(proveedor);
+		proveedorService.nuevoProveedor(proveedorForm);
 		return "redirect:/proveedores";
 	}
 	
