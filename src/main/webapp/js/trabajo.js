@@ -1,8 +1,9 @@
+let m1 = document.getElementById("m1").value;
+let m2 = document.getElementById("m2").value;
+let m3 = document.getElementById("m3").value;
+
 let pedirSueldoTrabajador = () => {
 	let idTrabajador = document.getElementById("t").value;
-	let m1 = document.getElementById("m1").value;
-	let m2 = document.getElementById("m2").value;
-	let m3 = document.getElementById("m3").value;
 	axios.get(`http://localhost:8080/api/trabajadores/${idTrabajador}`)
 		.then(response => {
 			numero = response.data.sueldoPorHora;
@@ -39,9 +40,6 @@ let pedirSueldoTrabajador = () => {
 
 
 let cargarMateriales = () => {
-	let m1 = document.getElementById("m1").value;
-	let m2 = document.getElementById("m2").value;
-	let m3 = document.getElementById("m3").value;
 	let mids = [m1, m2, m3];
 	document.getElementById("materialesEnviar").value = mids;
 };
@@ -56,10 +54,6 @@ let asignarCantidades = () => {
 	document.getElementById("c2").value = cc2;
 	document.getElementById("c3").value = cc3;
 	let cantidades = [cc1, cc2, cc3];
-
-	let m1 = document.getElementById("m1").value;
-	let m2 = document.getElementById("m2").value;
-	let m3 = document.getElementById("m3").value;
 
 	document.getElementById("idMaterial1").value = m1;
 	document.getElementById("idMaterial2").value = m2;
@@ -108,7 +102,7 @@ document.getElementById("boton").addEventListener("click", function(e) {
 		setTimeout(function() {
 			document.getElementById("noIguales").hidden = true;
 		}, 2000);
-		
+
 
 	} else if (cc1 == 0 || cc2 == 0 || cc3 == 0) {
 		document.getElementById("noVacios").hidden = false;
@@ -128,6 +122,6 @@ document.getElementById("boton").addEventListener("click", function(e) {
 	}
 });
 
-if(!document.getElementById("oculto").value == 0){
-	document.getElementById("oculto").hidden= false;
+if (!document.getElementById("oculto").value == 0) {
+	document.getElementById("oculto").hidden = false;
 }
