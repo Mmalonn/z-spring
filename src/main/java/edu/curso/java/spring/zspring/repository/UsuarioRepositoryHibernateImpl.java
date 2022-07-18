@@ -14,6 +14,7 @@ public class UsuarioRepositoryHibernateImpl implements UsuarioRepository {
 	@Autowired
 	private EntityManager entityManager;
 	
+	//se define el nuevo usuario y se asigna su grupo y su nivel de autoridad
 	@Override
 	public void guardarUsuario(USERS usuario) {
 		entityManager.persist(usuario);

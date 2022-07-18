@@ -33,9 +33,12 @@ public class InicioController {
 		return "/inicio/registro";
 	}
 
+	
+	//permite crear usuario, si el usuario existe te devuelve
 	@PostMapping("/registro/guardar")
 	public String guardarUsuario(@Valid @ModelAttribute(name = "usuarioForm") UsuarioForm usuarioForm, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("usuarioForm", usuarioForm);
 			return "/inicio/registro";
 		}
 		model.addAttribute("usuarioForm", new UsuarioForm());
