@@ -48,6 +48,8 @@ public class MaterialServiceImpl implements MaterialService {
 		materialRepository.eliminarMaterial(id);
 	}
 
+	//luego de recibir el formulario con los datos del nuevo material, incluidos su categoria y proveedor,
+	//busca dicha categoria y proveedor, y agrega el material nuevo a su propia lista
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void nuevoMaterial(MaterialForm materialForm) {

@@ -89,6 +89,10 @@ public class TrabajoController {
 		return "/trabajos/form";
 	}
 
+	//este metodo permite guardar un trabajo nuevo, para ello tiene recoge los datos del formulario, incluido el trabajador elegido, los materiales y un precio
+	//final calculado con javascript desde el frontend.
+	//tambien toma la cantidad de material elegido para el trabajo y lo resta del stock de dicho material.
+	//finalmente toma una factura creada con javascript para mostrarla en una nueva vista y envia el url de dicha vista al cliente del trabajo.
 	@PostMapping("/guardar")
 	public String guardar(@Valid @ModelAttribute(name = "trabajoForm") TrabajoForm trabajoForm, BindingResult bindingResult, Model model) throws IOException {
 		if (bindingResult.hasErrors()) {
@@ -131,11 +135,8 @@ public class TrabajoController {
 
 		return "redirect:/trabajos/lista";
 	}
-
 	
-
-	
-
+	//elimina el trabajo definitivamente, tambien eliminando de la lista del trabajo del trabajador, dicho trabajo
 	@GetMapping("/{id}/eliminar/{id2}")
 	public String eliminarTrabajo(Model model, @PathVariable Long id, @PathVariable Long id2) {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id2);
@@ -144,6 +145,8 @@ public class TrabajoController {
 		return "redirect:/trabajos/lista";
 	}
 
+	//elimina el trabajo y da de alta un nuevo objeto de la clase trabajosterminados para mostrarlo en una nueva vista
+	//donde se listan todos los trabajos que fueron terminados exitosamente
 	@GetMapping("/{id}/terminar/{id2}")
 	public String terminarTrabajo(Model model, @PathVariable Long id, @PathVariable Long id2) {
 		TrabajadorBo trabajador = trabajadorService.obtenerTrabajador(id2);

@@ -60,9 +60,9 @@ public class TrabajadorController {
 		return "/trabajadores/form";
 	}
 
+	//este metodo permite guardar un nuevo trabajador o guardar la edicion sobre un trabajador indicado por id, ademas de poder guardar una foto del mismo
 	@PostMapping("/guardar")
-	public String guardar(@Valid @ModelAttribute(name = "trabajadorForm") TrabajadorForm trabajadorForm,
-			BindingResult bindingResult, Model model) {
+	public String guardar(@Valid @ModelAttribute(name = "trabajadorForm") TrabajadorForm trabajadorForm, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			proveedorService.cargarProveedores(model);
 			model.addAttribute("trabajadorForm", new TrabajadorForm());
@@ -103,7 +103,8 @@ public class TrabajadorController {
 		}
 		return null;
 	}
-
+	
+	//envia a la pagina de edicion del trabajador con los modelos correspondientes, rellenando el form con sus datos previos
 	@GetMapping("/{id}/editar")
 	public String editar(Model model, @PathVariable Long id) {
 		proveedorService.cargarProveedores(model);

@@ -49,6 +49,8 @@ public class MaterialController {
 		return "/materiales/form";
 	}
 	
+	//este metodo permite agregar nuevo material y tambien sirve para editar la cantidad del determinado material si es que se acaba,
+	//ingresando una cantidad, a partir de javascript te permite hacer un calculo del costo segun el precio y poder """"comprar""""
 	@PostMapping("/guardar")
 	public String guardar(@ModelAttribute(name="materialForm") MaterialForm materialForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
@@ -67,7 +69,7 @@ public class MaterialController {
 		return "redirect:/materiales/lista";
 	}
 
-	
+	//este es el metodo que te envia a la pagina donde """"comprar"""" mas del determinado material
 	@GetMapping("/{id}/comprar")
 	public String comprar(Model model, @PathVariable Long id) {
 		MaterialBo material = materialService.obtenerMaterial(id);
