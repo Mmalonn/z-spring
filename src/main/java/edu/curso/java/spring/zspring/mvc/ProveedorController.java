@@ -55,12 +55,14 @@ public class ProveedorController {
 	@PostMapping("/guardar")
 		public String guardarProveedor(@Valid @ModelAttribute(name = "proveedorForm" ) ProveedorForm proveedorForm, BindingResult bindingResult, Model model){
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("proveedorForm", proveedorForm);
 			return "/proveedores/form";
 		}
 		proveedorService.nuevoProveedor(proveedorForm);
 		return "redirect:/proveedores";
 	}
 	
+	//solo se puede eliminar si no tiene materiales asignados, si los tiene no aparece el boton eliminar en la vista
 	@GetMapping("{id}/eliminar")
 	public String eliminarProveedor(Model model, @PathVariable Long id) {
 		proveedorService.borrarProveedor(id);

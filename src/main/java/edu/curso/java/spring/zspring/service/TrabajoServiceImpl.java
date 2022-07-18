@@ -20,6 +20,8 @@ import edu.curso.java.spring.zspring.repository.interf.TrabajoRepository;
 import edu.curso.java.spring.zspring.repository.interf.UbicacionRepository;
 import edu.curso.java.spring.zspring.service.interf.TrabajoService;
 
+//los metodos de edicion, alta y eliminacion solo son accesibles con la cuenta admin y no se muestran los botones en las vistas en el resto de cuentas
+
 @Service
 @Transactional
 public class TrabajoServiceImpl implements TrabajoService {
@@ -43,6 +45,7 @@ public class TrabajoServiceImpl implements TrabajoService {
 		return trabajoRepository.obtenerTrabajo(id);
 	}
 
+	//aca se agregan el trabajo nuevo a la lista de trabajos que el empleado ya tenia
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void agregarTrabajo(TrabajoBo trabajo, Long id) {

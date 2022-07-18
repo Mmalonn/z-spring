@@ -113,6 +113,8 @@ public class TrabajadorController {
 		return "/trabajadores/form";
 	}
 
+	//elimina al trabajador, pero solo es posible si no tiene trabajos asignados, por lo que si ese es el caso, no aparece el boton de eliminar en la vista
+	//primero se debe eliminar el trabajo asignado
 	@GetMapping("/{id}/eliminar")
 	public String eliminarTrabajador(Model model, @PathVariable Long id) {
 		trabajadorService.borrarTrabajador(id);

@@ -14,6 +14,8 @@ import edu.curso.java.spring.zspring.mvc.form.ProveedorForm;
 import edu.curso.java.spring.zspring.repository.interf.ProveedoresRepository;
 import edu.curso.java.spring.zspring.service.interf.ProveedorService;
 
+//los metodos de edicion, alta y eliminacion solo son accesibles con la cuenta admin y no se muestran los botones en las vistas en el resto de cuentas
+
 @Service
 @Transactional
 public class ProveedorServiceImpl implements ProveedorService {

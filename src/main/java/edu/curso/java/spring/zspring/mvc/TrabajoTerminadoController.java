@@ -33,7 +33,7 @@ public class TrabajoTerminadoController {
 	}
 
 	
-	
+	//los trabajos terminados solo se pueden ver
 	@GetMapping("/{id}")
 	public String verTerminado(Model model, @PathVariable Long id) {
 		TrabajoTerminadoBo terminado = trabajoTerminadoService.obtenerTerminado(id);

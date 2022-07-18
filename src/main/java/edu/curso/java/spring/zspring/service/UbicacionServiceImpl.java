@@ -28,6 +28,7 @@ public class UbicacionServiceImpl implements UbicacionService {
 		return ubicacionRepository.obtenerUbicacion(id);
 	}
 
+	//el objeto de la ubicacion se crea unicamente cuando se crea un trabajo y se asigna automaticamente a el
 	@Override
 	public void nuevaUbicacion(UbicacionBo ubicacion) {
 		ubicacionRepository.nuevaUbicacion(ubicacion);

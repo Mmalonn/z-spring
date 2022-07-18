@@ -29,6 +29,10 @@ public class SpringSecurityConfig {
 		return NoOpPasswordEncoder.getInstance();
 	}
 	
+	//los datos de los usuarios se leen directamente de una tabla, que es tambien donde se almacenan cuando se da de alta uno nuevo,
+	//pero solo es posible crear desde el front end usuarios con el rol general, los de admin directamente con la tabla
+	//a su vez estan quitados todos los botones de edicion, alta y eliminacion de los objetos a los usuarios generales, solo se le permite ver
+	//la aplicacion completa la ven los admin
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 

@@ -1,6 +1,8 @@
 package edu.curso.java.spring.zspring.mvc;
 
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,11 +54,11 @@ public class MaterialController {
 	//este metodo permite agregar nuevo material y tambien sirve para editar la cantidad del determinado material si es que se acaba,
 	//ingresando una cantidad, a partir de javascript te permite hacer un calculo del costo segun el precio y poder """"comprar""""
 	@PostMapping("/guardar")
-	public String guardar(@ModelAttribute(name="materialForm") MaterialForm materialForm, BindingResult bindingResult, Model model) {
+	public String guardar(@Valid @ModelAttribute(name="materialForm") MaterialForm materialForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			proveedorService.cargarProveedores(model);
 			categoriaService.obtenerCategorias(model);
-			model.addAttribute("materialForm", new MaterialForm());
+			model.addAttribute("materialForm", materialForm);
 			return "/materiales/form";
 		}
 		Long idMaterial = materialForm.getId();

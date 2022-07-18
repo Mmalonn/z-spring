@@ -19,6 +19,8 @@ import edu.curso.java.spring.zspring.repository.interf.MaterialRepositoryJdbc;
 import edu.curso.java.spring.zspring.repository.interf.ProveedoresRepository;
 import edu.curso.java.spring.zspring.service.interf.MaterialService;
 
+//los metodos de edicion, alta y eliminacion solo son accesibles con la cuenta admin y no se muestran los botones en las vistas en el resto de cuentas
+
 @Service
 @Transactional
 public class MaterialServiceImpl implements MaterialService {
@@ -96,6 +98,7 @@ public class MaterialServiceImpl implements MaterialService {
 		return material.getCantidad();
 	}
 
+	//resta las cantidades necesarias para el trabajo al stock del material elegido y lanza una excepcion personalizada si no alcanza el stock
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public Long restarMateriales(Long idMaterial, Long cantidad) throws MaterialException {
@@ -122,6 +125,11 @@ public class MaterialServiceImpl implements MaterialService {
 		model.addAttribute("materiales", materiales);
 	}
 
+	@Override
+	public void editarMaterial(MaterialBo material, Long id) {
+		materialRepository.editarMaterial(material, id);
+	}
+	
 	private MaterialBo setearMaterial(MaterialForm materialForm, CategoriaBo categoria, ProveedorBo proveedor) {
 		MaterialBo material = new MaterialBo();
 		material.setNombre(materialForm.getNombre());
@@ -130,11 +138,6 @@ public class MaterialServiceImpl implements MaterialService {
 		material.setCategoriaBo(categoria);
 		material.setProveedorBo(proveedor);
 		return material;
-	}
-
-	@Override
-	public void editarMaterial(MaterialBo material, Long id) {
-		materialRepository.editarMaterial(material, id);
 	}
 
 }

@@ -15,6 +15,8 @@ import edu.curso.java.spring.zspring.repository.interf.TrabajadorRepository;
 import edu.curso.java.spring.zspring.repository.interf.TrabajoRepository;
 import edu.curso.java.spring.zspring.service.interf.TrabajadorService;
 
+//los metodos de edicion, alta y eliminacion solo son accesibles con la cuenta admin y no se muestran los botones en las vistas en el resto de cuentas
+
 @Service
 @Transactional
 public class TrabajadorServiceImpl implements TrabajadorService {
@@ -53,6 +55,7 @@ public class TrabajadorServiceImpl implements TrabajadorService {
 		trabajadorRepository.borrarTrabajador(id);
 	}
 
+	//mediante este metodo se elimina el trabajo que se va a eliminar, de la lista de trabajos del empleado
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void borrarTrabajoTrabajador(Long id, TrabajadorBo trabajador) {	

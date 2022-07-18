@@ -60,6 +60,7 @@ public class CategoriaController {
 		return "redirect:/materiales/categorias";
 	}
 	
+	//solo se puede eliminar si no tiene materiales asignados, si los tiene no aparece el boton eliminar en la vista
 	@GetMapping("/{id}/eliminar")
 		public String eliminarCategoria(Model model, @PathVariable Long id) {
 		categoriaService.eliminarCategoria(id);

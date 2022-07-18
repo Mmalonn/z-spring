@@ -31,6 +31,7 @@ public class TrabajoTerminadoServiceImpl implements TrabajoTerminadoService {
 		return trabajoTerminadoRepository.obtenerTerminado(id);
 	}
 
+	//trabajo terminado se da de alta unicamente cuando se da de baja un trabajo
 	@Override
 	public void nuevoTerminado(TrabajoBo trabajo) {
 		TrabajoTerminadoBo terminado = new TrabajoTerminadoBo();
