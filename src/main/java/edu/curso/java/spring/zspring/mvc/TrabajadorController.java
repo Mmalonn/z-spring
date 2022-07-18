@@ -65,7 +65,7 @@ public class TrabajadorController {
 	public String guardar(@Valid @ModelAttribute(name = "trabajadorForm") TrabajadorForm trabajadorForm, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			proveedorService.cargarProveedores(model);
-			model.addAttribute("trabajadorForm", new TrabajadorForm());
+			model.addAttribute("trabajadorForm", trabajadorForm);
 			return "/trabajadores/form";
 		}
 		TrabajadorBo trabajador = null;
