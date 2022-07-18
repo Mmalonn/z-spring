@@ -17,7 +17,7 @@ public interface MaterialService {
 
 	void eliminarMaterial(Long id);
 
-	void editarMaterial(MaterialBo material, Long id);
+	void editarMaterial(MaterialForm materialForm, Long id, Long stockACtual);
 
 	void nuevoMaterial(MaterialForm materialForm);
 
@@ -30,5 +30,7 @@ public interface MaterialService {
 	List<MaterialBo> buscarMaterialPorNombre(String nombre);
 	
 	void cargarMateriales(Model model);
+
+	void editarMaterial(MaterialBo material, Long id);
 
 }

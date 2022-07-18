@@ -50,15 +50,9 @@ public class MaterialServiceImpl implements MaterialService {
 
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
-	public void editarMaterial(MaterialBo material, Long id) {
-		materialRepository.editarMaterial(material, id);
-	}
-	
-	@PreAuthorize("hasRole('ADMIN')")
-	@Override
 	public void nuevoMaterial(MaterialForm materialForm) {
 		CategoriaBo categoria = categoriaRepository.obtenerCategoria(materialForm.getIdCategoria());
-		ProveedorBo proveedor = proveedorRepository.obtenerProveedor(materialForm.getIdProveedor());	
+		ProveedorBo proveedor = proveedorRepository.obtenerProveedor(materialForm.getIdProveedor());
 		MaterialBo material = setearMaterial(materialForm, categoria, proveedor);
 		materialRepository.nuevoMaterial(material);
 		try {
@@ -79,7 +73,15 @@ public class MaterialServiceImpl implements MaterialService {
 		}
 	}
 
-	
+	@PreAuthorize("hasRole('ADMIN')")
+	@Override
+	public void editarMaterial(MaterialForm materialForm, Long id, Long stockActual) {
+		MaterialBo material = materialRepository.obtenerMaterial(materialForm.getId());
+		material.setCantidad(materialForm.getCantidad() + stockActual);
+		materialRepository.editarMaterial(material, id);
+
+	}
+
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	public void nuevoMaterial(MaterialBo material) {
@@ -104,14 +106,14 @@ public class MaterialServiceImpl implements MaterialService {
 			materialRepository.editarMaterial(material, idMaterial);
 		}
 		return idMaterial;
-		
+
 	}
 
 	@Override
 	public List<MaterialBo> buscarMaterialPorNombre(String nombre) {
 		return materialRepositoryJdbc.buscarProductos(nombre);
 	}
-	
+
 	@Override
 	public void cargarMateriales(Model model) {
 		List<MaterialBo> materiales = this.listarMateriales();
@@ -126,6 +128,11 @@ public class MaterialServiceImpl implements MaterialService {
 		material.setCategoriaBo(categoria);
 		material.setProveedorBo(proveedor);
 		return material;
+	}
+
+	@Override
+	public void editarMaterial(MaterialBo material, Long id) {
+		materialRepository.editarMaterial(material, id);
 	}
 
 }

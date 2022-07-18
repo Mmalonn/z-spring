@@ -57,7 +57,13 @@ public class MaterialController {
 			model.addAttribute("materialForm", new MaterialForm());
 			return "/materiales/form";
 		}
-		materialService.nuevoMaterial(materialForm);	
+		Long idMaterial = materialForm.getId();
+		if(idMaterial == null) {
+		materialService.nuevoMaterial(materialForm);
+		}else {
+			Long stockActual = materialService.obtenerStock(idMaterial);
+			materialService.editarMaterial(materialForm, idMaterial, stockActual);
+		}
 		return "redirect:/materiales/lista";
 	}
 
